@@ -1,0 +1,5 @@
+/.metadata/
+build
+/DojoSample/database.mv.db
+/DojoSample/database.trace.db
+/Servers
