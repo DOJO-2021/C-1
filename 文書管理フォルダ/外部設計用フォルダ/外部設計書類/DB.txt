@@ -1,0 +1,95 @@
+-- テーブル削除
+drop table if exists user;
+-- テーブル作成
+create table user (
+  id int primary key auto_increment not null default null,
+  name vardhar(20) not null,
+  pw varchar(20) not null
+  type int not null,
+  mail varchar(100) not null,
+  count int(3) default 0,
+  nameCount int default 0  
+);
+-- データ追加
+insert into user values (
+null,
+'',
+'',
+'0',
+'',
+'0',
+'0',
+);
+
+-- テーブル削除
+drop table if exists board;
+-- テーブル作成
+create table board (
+  id int primary key auto_increment,
+  topic varchar(40) not null,
+  main varchar(500) not null,
+  smile int default 0,
+  shock int default 0,
+  tear int default 0,
+  update datetime,
+  user_id int
+);
+-- データ追加
+insert into board (
+null,
+'',
+'',
+'0',
+'0',
+'0',
+'',
+''
+);
+
+-- テーブル削除
+drop table if exists reply;
+-- テーブル作成
+create table reply (
+  id int primary key auto_increment null,
+  main text(400) not null,
+  date datetime,
+  user_id int,
+  board_id int
+);
+-- データ追加
+insert into reply (
+null,
+'',
+'',
+'',
+'' 
+);
+
+-- テーブル削除
+drop table if exists manager;
+-- テーブル作成
+create table manager (
+  id int primary key auto_increment null,
+  pw varchar(20) not null,
+  mail varchar(100) not null
+);
+-- データ追加
+insert into manager (
+null,
+'',
+''
+);
+
+-- テーブル削除
+drop table if exists search;
+-- テーブル作成
+create table search (
+  id int primary key auto_increment null,
+  word varchar(10) not null
+);
+-- データ追加
+insert into search (
+null,
+''
+);
+
