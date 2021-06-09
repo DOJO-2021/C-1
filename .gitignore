@@ -3,3 +3,5 @@ build
 /DojoSample/database.mv.db
 /DojoSample/database.trace.db
 /Servers
+/database.mv.db
+/database.trace.db
