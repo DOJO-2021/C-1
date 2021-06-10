@@ -1,7 +1,27 @@
 @charset "UTF-8";
 /* メインページ */
 .scroll {
-width: 200px;
-height: 100px;
-overflow-y: scroll;
+height: 250px;
+overflow: scroll;
+}
+
+.page {
+	text-align : center;
+    padding: 0.2em 0.5em;
+    margin: 2em 0;
+    background: #eee8aa;
+    box-shadow: 0px 0px 0px 4px #ffff00;
+    border: dashed 2px white;
+}
+
+.page p {
+	text-align:left;
+}
+
+.rule {
+    background-color: #eee8aa;
+    content: "てらちゃんねる利用のルール";
+    font-weight: bold;
+    position: absolute;
+ 	text-align : left;
 }

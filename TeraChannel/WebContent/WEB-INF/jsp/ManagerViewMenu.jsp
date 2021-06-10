@@ -8,10 +8,19 @@
 </head>
 <body>
 
-<!-- ヘッダー -->
-<header>
-
-</header>
+<!-- ヘッダーここから -->
+	<header>
+		<h1>
+			<a href="/TeraChannel/MenuServlet"><img src="/TeraChannel/image/teraco.jpg"
+			alt="TERACO"></a>
+		</h1>
+		<h2>
+			<a href="/TeraChannel/ViewMenuServlet"><img src="/TeraChannel/image/keijiban.jpg"
+			alt="てらちゃんねる"></a>
+		</h2>
+		<a href="/TeraChannel/BoardServlet">投稿</a> <a
+			href="/TeraChannel/MenuServlet">メニューページへ戻る</a>
+	</header>
 <!-- ヘッダーここまで -->
 
 	<form action="TeraChannel/Board" method="post">
