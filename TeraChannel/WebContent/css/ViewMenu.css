@@ -1,27 +1,89 @@
 @charset "UTF-8";
-/* メインページ */
-.scroll {
-height: 250px;
-overflow: scroll;
+/*ユーザー共通部分*/
+header {
+	display: flex;
+	border-bottom: 2px solid #d3d3d3;
 }
 
+.teraco {
+	padding-left: 30px;
+}
+
+.terachan {
+	padding-top: 23px;
+	padding-left: 300px;
+	padding-right: 85px;
+}
+
+.navi {
+	padding-top: 25px;
+	padding-left: 50px;
+}
+
+.button_board {
+	width: 7em;
+	height: 3em;
+	background-color: #f4a460;
+	border: none;
+	border-radius: 15px;
+	margin-right: 20px;
+}
+
+.button_menu {
+	width: 15em;
+	height: 3em;
+	background-color: #f4a460;
+	border: none;
+	border-radius: 15px;
+	margin-right: 20px;
+}
+
+button:hover {
+	background-color: #ff8c00;
+}
+button:active {
+	background-color: #ffd700;
+}
+footer {
+	background-color: #dcdcdc;
+	font-size: 14px;
+	padding-left: 180px;
+	padding-right: 180px;
+}
+
+
+
+/* メインページ */
+.scroll {
+height: 500px;
+width: 750px;
+overflow: scroll;
+}
 .page {
+	display:flex;
 	text-align : center;
-    padding: 0.2em 0.5em;
-    margin: 2em 0;
+    padding:40px 40px 30px 30px;
+    margin: 30px 40px 30px 350px;
     background: #eee8aa;
     box-shadow: 0px 0px 0px 4px #ffff00;
     border: dashed 2px white;
+    max-width: 750px;
 }
 
 .page p {
 	text-align:left;
 }
-
 .rule {
-    background-color: #eee8aa;
-    content: "てらちゃんねる利用のルール";
-    font-weight: bold;
-    position: absolute;
- 	text-align : left;
+	border: 2px solid;
+	width: 20em;
+	margin-right: 15px;
 }
+
+
+.list {
+	display:flex;
+	text-align : right;
+	margin: 30px 80px 180px 700px;
+	margin-bottom: 0px;
+}
+
