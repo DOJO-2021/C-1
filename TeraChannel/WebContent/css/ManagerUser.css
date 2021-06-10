@@ -1,1 +1,13 @@
 @charset "UTF-8";
+
+/* テーブルの枠の部分 */
+
+.info {
+	border-collapse: collapse;
+}
+
+.info td {
+	padding: 8px;
+	border: 1px solid 	#000000;
+	text-align: left;
+}
