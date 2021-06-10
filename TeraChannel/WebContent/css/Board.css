@@ -61,14 +61,14 @@ footer {
 
 .rule {
 	border: 2px solid;
-	width: 20em;
+	width: 25em;
 	margin-right: 15px;
 }
 
 .board {
 	border: 2px solid;
 	width: 50em;
-	padding-left: 8em;
+	padding-left: 6em;
 	padding-top: 3em;
 }
 
@@ -88,4 +88,12 @@ footer {
 	background-color: #f4a460;
 	border: none;
 	border-radius: 15px;
+	margin-top: 10px;
+	margin-left: 190px;
+}
+.upload:hover {
+	background-color: #ff8c00;
+}
+.upload:active {
+	background-color: #ffd700;
 }
