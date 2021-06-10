@@ -5,3 +5,5 @@ build
 /Servers
 /database.mv.db
 /database.trace.db
+database.mv.db
+database.trace.db
