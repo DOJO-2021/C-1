@@ -4,30 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TERACO</title>
+<title>管理者メニューページ</title>
+
+<img src="image/teraco.jpg" alt="logo">
+
+<h3 style="text-align:right">
+<a href="/TeraChannel/BoardServlet">掲示板</a>
+<a href="/TeraChannel/ManagerUserServlet">ユーザー管理</a>
+<a href="/TeraChannel/LoginServlet">ログアウト</a>
+</h3>
+
 </head>
 <body>
-<p>現在のあなたの段位:<b>段位なし</b></p>
-<p>メインメニュー</p>
-<hr>
-<ul>
-<li>パーソナルスキルコース</li>
-<li>IT関連</li>
-<li>Java基礎</li>
-<li>開発演習[現在開発中]</li>
-</ul>
-<hr>
-<p>お知らせ</p>
-<ul>
-<li>20210603の日報が18件届いてます</li>
-<li>20210602の日報が18件届いてます</li>
-<li>20210601の日報が18件届いてます</li>
-<li>20210531の日報が18件届いてます</li>
-<li>20210528の日報が18件届いてます</li>
-<li>20210527の日報が18件届いてます</li>
-<li>20210526の日報が18件届いてます</li>
-<li>20210525の日報が18件届いてます</li>
-<li>20210524の日報が18件届いてます</li>
-</ul>
+<h1>管理者メニューページ</h1>
+<h2>～管理者用お知らせ～</h2>
 </body>
 </html>
