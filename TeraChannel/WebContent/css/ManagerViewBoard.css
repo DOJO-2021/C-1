@@ -1,1 +1,45 @@
 @charset "UTF-8";
+
+header{
+	display:flex;
+
+}
+
+.board_image{
+	text-align:center;
+	margin: 0 auto;
+	display: inline-block;
+}
+
+.yokonarabi{
+	display:flex;
+	position:relative;
+	padding:15px;
+	box-sizing:border-box;
+}
+
+.manual{
+	width:300px;
+	border: 2px solid;
+	padding:10px;
+	margin:5px
+}
+
+.board{
+	border: 2px solid;
+	padding:10px;
+	margin:5px
+}
+
+.reply{
+	border: 2px solid;
+	margin:5px;
+}
+
+.search{
+
+}
+.searchbutton{
+	padding-top:10px;
+	marigin-top:5px;
+}
