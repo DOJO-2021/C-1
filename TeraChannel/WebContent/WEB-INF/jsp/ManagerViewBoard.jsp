@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/TeraChannel/css/ManagerViewBoard.css">
 </head>
 <body>
+	<header>
 	<a href="ManagerMenu.jsp"><img class="logo" src=""
 		alt="TERACO風メニュー画面へ"></a>
 	<h1>
@@ -19,6 +20,9 @@
 	<nav class="nav">
 		<li><a href="/TeraChannel/ManagerMenuServlet">メニューページに戻る</a>
 	</nav>
+	</header>
+<!-- ヘッダーここまで -->
+<!-- メインここから -->
 	<form>
 		<input class="search" type="text" name="search" placeholder="検索内容">
 		<input class="searchButton" type="button" name="searchButton" value="検索">
