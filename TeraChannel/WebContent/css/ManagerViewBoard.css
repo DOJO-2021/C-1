@@ -30,24 +30,10 @@ header{
 	padding:10px;
 	margin:5px
 }
-.board_main{
-	border: 2px solid;
-	padding:10px;
-	margin:5px
-}
-
 
 .reply{
 	border: 2px solid;
 	margin:5px;
-}
-
-.reply_text{
-	/*resizeでサイズを固定できる none:全て固定
-	vertical:縦のみ可動可 horizontal:横のみ可動可*/
-	resize: vertical;
-	width:250;
-
 }
 
 .search{

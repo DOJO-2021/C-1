@@ -1,1 +1,11 @@
 @charset "UTF-8";
+.commonLogo{
+	border-radius: 10;
+	text-align: left;
+}
+.commonMenuBack{
+	text-align: right
+}
+footer{
+	background-color: #c0c0c0
+}
