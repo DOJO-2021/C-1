@@ -1,1 +1,41 @@
 @charset "UTF-8";
+
+header {
+	display: flex;
+}
+
+.main {
+	display: flex;
+	padding: 20px 8px;
+	margin: 0 auto 0 auto;
+	max-width: 960px;
+}
+
+.rule {
+	border: 2px solid;
+	width: 20em;
+	margin-right: 15px;
+}
+
+.board {
+	border: 2px solid;
+	text-align: center;
+	width: 50em;
+}
+
+.title {
+	width: 20em;
+	height: 2em;
+}
+
+.content {
+	width: 35em;
+	height: 15em;
+}
+.upload {
+	width: 7em;
+	height: 3em;
+	background-color: #f4a460;
+	border: none;
+	border-radius: 15px;
+}
