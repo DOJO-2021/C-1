@@ -6,8 +6,10 @@
 <meta charset="UTF-8">
 <title>ユーザー管理</title>
 <link rel="stylesheet" href="/TeraChannel/css/ManagerUser.css">
-<a href="/TeraChannel/MenuServlet">メニューへ戻る</a>
+<img src="image/teraco.jpg" alt="logo">
+<h3 style="text-align:right"><a href="/TeraChannel/MenuServlet">メニューへ戻る</a></h3>
 </head>
+
 <body>
 <h1>ユーザー管理</h1>
 
@@ -36,7 +38,5 @@
   <td>実名化カウント</td>
 </tr>
 </table>
-
-
 </body>
 </html>
