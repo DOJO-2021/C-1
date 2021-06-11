@@ -1,1 +1,17 @@
 @charset "UTF-8";
+
+.menu {
+	display: flex;
+}
+
+.manual {
+	margin-right: 10px;
+}
+
+.manual {
+	width: 20em; border: solid 3px #000;
+}
+
+.notice {
+	width: 60em; border: solid 3px #000;
+}

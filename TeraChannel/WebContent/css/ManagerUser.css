@@ -11,3 +11,16 @@
 	border: 1px solid 	#000000;
 	text-align: left;
 }
+
+.menu {
+	display: flex;
+}
+
+.manual {
+	margin-right: 10px;
+}
+
+.manual {
+	width: 20em; border: solid 3px #000;
+}
+
