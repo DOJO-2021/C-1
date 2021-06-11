@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!-- 各配置はcssファイル上でabsoluteで場所を指定すればよいのでタグの
 順番はある程度配慮するものの確定ではない -->
@@ -21,8 +22,10 @@
 				src="/TeraChannel/image/keijiban.jpg" alt="てらちゃんねる"></a>
 		</div>
 		<div class="navi">
-			<button onclick="location.href='/TeraChannel/BoardServlet'" class="button_board">投稿</button>
-			<button onclick="location.href='/TeraChannel/MenuServlet'" class="button_menu">メニューページへ戻る</button>
+			<button onclick="location.href='/TeraChannel/BoardServlet'"
+				class="button_board">投稿</button>
+			<button onclick="location.href='/TeraChannel/MenuServlet'"
+				class="button_menu">メニューページへ戻る</button>
 		</div>
 	</header>
 	<!-- ヘッダーここまで -->
@@ -56,12 +59,22 @@
 						<input class"delete" type="button" name="deleteButton" value="削除">
 					</div>
 					<div class="reaction">
-						<image class="smile" src="image/smile.jpg" alt="リアクション（笑顔）">
-						<image class="shock" src="image/shock.jpg" alt="リアクション（驚愕）">
-						<image class="tear" src="image/tear.jpg" alt="リアクション（感涙）">
+						<div class="smileCount">
+							<image class="smile" onclick="reactionCount()"
+								src="image/smile.jpg" alt="リアクション（笑顔）"></image>
+							<p>${e.m_id}</p>
+						</div>
+						<div class="shockCount">
+							<image class="shock" onclick="reactionCount()"
+								src="image/shock.jpg" alt="リアクション（驚愕）"></image>
+						</div>
+						<div class="tearCount">
+							<image class="tear" onclick="reactionCount()"
+								src="image/tear.jpg" alt="リアクション（感涙）"></image>
+						</div>
 					</div>
-			<!-- ここから返信欄（forEach部分） -->
-			<!-- 矢印の部分はおそらく画像挿入の形 -->
+					<!-- ここから返信欄（forEach部分） -->
+					<!-- 矢印の部分はおそらく画像挿入の形 -->
 					<p class="updateDate">投稿日時６月１０日</p>
 					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
 					<div class="editDelete">
@@ -122,7 +135,14 @@
 	<!--  投稿内容自体を表示した後、forEach文で各返信を出力 -->
 	<!--  例:<div>投稿内容 <form><forEach>返信内容</form></div>-->
 
+	<!-- ここからjavaScript -->
+	<script>
+		'use strict';
+		function reactionCount() {
 
+		}
+	</script>
+	<!-- ここまでjavaScript -->
 
 </body>
 </html>
