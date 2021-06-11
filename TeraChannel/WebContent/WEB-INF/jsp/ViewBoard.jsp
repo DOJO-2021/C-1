@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <!-- 各配置はcssファイル上でabsoluteで場所を指定すればよいのでタグの
 順番はある程度配慮するものの確定ではない -->
@@ -58,22 +58,22 @@
 						<input class"edit" type="button" name="editButton" value="編集">
 						<input class"delete" type="button" name="deleteButton" value="削除">
 					</div>
-			<!-- リアクション表示部分 -->
+					<!-- リアクション表示部分 -->
 					<div class="reaction">
 						<div>
 							<image class="smile" onclick="reactionSmileCount()"
 								src="image/smile.jpg" alt="リアクション（笑顔）"></image>
-							<p class="reactionCount" id="smile">125</p>
+							<p class="reactionCount" id="smile" data-smileBool="1">125</p>
 						</div>
 						<div>
 							<image class="shock" onclick="reactionShockCount()"
 								src="image/shock.jpg" alt="リアクション（驚愕）"></image>
-							<p class="reactionCount" id="shock">${e.m_id}125</p>
+							<p class="reactionCount" id="shock" data-shockTF="1">125</p>
 						</div>
 						<div>
 							<image class="tear" onclick="reactionTearCount()"
 								src="image/tear.jpg" alt="リアクション（感涙）"></image>
-							<p class="reactionCount" id="tear">${e.m_id}125</p>
+							<p class="reactionCount" id="tear" data-tearTF="1">125</p>
 						</div>
 					</div>
 					<!-- ここから返信欄（forEach部分） -->
@@ -139,25 +139,60 @@
 	<!--  例:<div>投稿内容 <form><forEach>返信内容</form></div>-->
 
 	<!-- ここからjavaScript -->
-	<script>
+	<script type="text/javascript">
 		'use strict';
 		let smileTF;
 		let shockTF;
 		let tearTF;
-		let count;
+		let countSmile;
+		let countShock;
+		let countTear;
+		//いいねアイコンの増減
 		function reactionSmileCount() {
-			count = parseInt(document.getElementById("smile"));
-			console.log(count);
-			count++;
-			document.getElementById("smile").innerHTML="<p>" + count + "</p>";
-			console.log(count);
 
+			countSmile = parseInt(document.getElementById("smile").textContent);
+			//smileTF=parseInt(document.getElementById("smile").dataset.smilebool);
+			if (smileTF == 0) {
+				countSmile--;
+				smileTF = 1;
+			} else {
+				countSmile++;
+				smileTF = 0;
+			}
+			document.getElementById("smile").innerHTML = "<p class=\"reactionCount\" id=\"smile\" data-smileBool=\""+smileTF+"\">"
+					+ countSmile + "</p>";
+			//document.getElementById("smile").innerHTML="<p class="+"reactionCount"+">" + count + "</p>";
 		}
+
+		//驚きアイコンの増減
 		function reactionShockCount() {
-
+			countShock = parseInt(document.getElementById("shock").textContent);
+			//smileTF=parseInt(document.getElementById("smile").dataset.smilebool);
+			if (shockTF == 0) {
+				countShock--;
+				shockTF = 1;
+			} else {
+				countShock++;
+				shockTF = 0;
+			}
+			document.getElementById("shock").innerHTML = "<p class=\"reactionCount\" id=\"shock\">"
+					+ countShock + "</p>";
+			//document.getElementById("smile").innerHTML="<p class="+"reactionCount"+">" + count + "</p>";
 		}
+		//涙アイコンの増減
 		function reactionTearCount() {
-
+			countTear = parseInt(document.getElementById("tear").textContent);
+			//smileTF=parseInt(document.getElementById("smile").dataset.smilebool);
+			if (tearTF == 0) {
+				countTear--;
+				tearTF = 1;
+			} else {
+				countTear++;
+				tearTF = 0;
+			}
+			document.getElementById("tear").innerHTML = "<p class=\"reactionCount\" id=\"tear\">"
+					+ countTear + "</p>";
+			//document.getElementById("smile").innerHTML="<p class="+"reactionCount"+">" + count + "</p>";
 		}
 	</script>
 	<!-- ここまでjavaScript -->
