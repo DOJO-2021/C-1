@@ -53,12 +53,15 @@ footer {
 	padding-right: 180px;
 }
 
+p {
+	font-size:12px;
+}
 /* メインページ */
 .scroll {
 	display: flex;
-	height: 500px;
+	height: 520px;
 	width: 550px;
-	overflow: scroll;
+	overflow-y:scroll;
 }
 
 .mainpage {
@@ -73,7 +76,7 @@ footer {
 	padding: 40px 40px 30px 30px;
 	margin: 0px 40px 30px 30px;
 	background: #eee8aa;
-	box-shadow: 0px 0px 0px 4px #ffff00;
+	box-shadow: 0px 0px 0px 1px #ffff00;
 	border: dashed 2px white;
 }
 
@@ -82,14 +85,26 @@ footer {
 }
 
 .rule {
-	border: 2px solid;
 	width: 20em;
+	height:565px;
 	margin-right: 15px;
+	font-family:'Comic Sans MS';
+  	background: #eee8aa;
+ 	border-left: 7px dotted rgba(255,0,0,0.2);
+ 	box-shadow: 0 0 0 5 #ffff00;
+ 	padding: 1em;
+
+}
+
+.rule p{
+  margin: 0;
+  padding: 0;
+  font-family:'Comic Sans MS';
 }
 
 .list {
 	display: flex;
 	text-align: right;
-	margin: 30px 80px 180px 700px;
+	margin: 30px 80px 180px 645px;
 	margin-bottom: 0px;
 }
