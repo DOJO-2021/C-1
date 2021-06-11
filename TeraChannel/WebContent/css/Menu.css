@@ -4,13 +4,27 @@
   display: inline;
   list-style-type: none;
   padding-right: 20px;
+
 }
 .nav ul {
   margin: 0 0 0 0;
   padding: 20px 10px 15px 20px;
  background-repeat: repeat-x;
 }
+.nav a:visited {
+    color: #3c454d;
+    text-decoration: none;
+}
+.nav a:hover {
+    color: #ffc44d;
+    text-decoration: none;
+}
+.nav a:active {
+    color: #5a9bc0;
+    text-decoration: none;
+}
 /*ul*/
 ul {
   list-style: none;
 }
+
