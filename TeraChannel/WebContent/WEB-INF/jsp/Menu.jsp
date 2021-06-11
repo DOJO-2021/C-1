@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TERACO</title>
+<title>TERAKO</title>
 <link rel = "stylesheet" href="css/Menu.css">
 </head>
 <body>
