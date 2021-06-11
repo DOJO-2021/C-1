@@ -7,15 +7,21 @@
 <title>ユーザー管理</title>
 <link rel="stylesheet" href="/TeraChannel/css/ManagerUser.css">
 <link rel="stylesheet" href="/TeraChannel/css/Common.css">
-<img src="image/teraco.jpg" alt="logo">
-<h3 style="text-align:right"><a href="/TeraChannel/MenuServlet">メニューへ戻る</a></h3>
 </head>
 
 <body>
+<!-- ヘッダー -->
+<header>
+<img src="image/teraco.jpg" alt="logo">
+<h3 style="text-align:right"><a href="/TeraChannel/MenuServlet">メニューへ戻る</a></h3>
+</header>
+
+<!-- メイン -->
+<main>
 <h1>ユーザー管理</h1>
 
-
 <!-- ボタン部分 -->
+<div>
 <select name="id">
 <option value="=id">ID検索</option>
 </select>
@@ -29,7 +35,7 @@
 </select>
 
 <input type="submit" name="SUBMIT" value="更新">
-
+</div>
 
 
 <div class="menu">
@@ -41,8 +47,12 @@
 本サイトは受講生の自由な情報発信と意見の交換の促進、また、
 事務局員の受講者理解の補助の役割を担うサイトです。
 快適に活用をできるよう、以下、マニュアルに沿った運用をお願い致します。
-ーーーーーーーーーーーーーーーーーーーーーーーーー
+<br>
+ーーーーーーーーーーーーーーーーーーーー
+<br>
+<br>
 1.挑発的な言葉や誹謗中傷、言葉尻をとらえるような揚げ足取り等の書き込み
+<br><br>
 2.安全性に疑いのあるサイトのURLの記載
 上記の発言・投稿を発見した際、該当の投稿の削除、そしてそのアカウントへの警告。
 当サイトは警告のカウント（ドクロカウント）を行い、３回を目安に該当アカウントへの罰則として匿名の解除をする。
@@ -117,7 +127,11 @@ window.onload = function() {
 </script>
 </div>
 </div>
-</body>
+</main>
+<!-- メインここまで -->
+<!-- フッター -->
 <footer>
 </footer>
+
+</body>
 </html>

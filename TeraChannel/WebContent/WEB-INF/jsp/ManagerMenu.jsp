@@ -7,6 +7,10 @@
 <title>管理者メニューページ</title>
 <link rel="stylesheet" href="/TeraChannel/css/ManagerMenu.css">
 <link rel="stylesheet" href="/TeraChannel/css/Common.css">
+</head>
+<body>
+<!-- ヘッダー -->
+<header>
 <img src="image/teraco.jpg" alt="logo">
 
 <h3 style="text-align:right">
@@ -14,9 +18,10 @@
 <a href="/TeraChannel/ManagerUserServlet">ユーザー管理</a>
 <a href="/TeraChannel/LoginServlet">ログアウト</a>
 </h3>
+</header>
 
-</head>
-<body>
+<!-- メイン -->
+<main>
 <h1>管理者メニューページ</h1>
 
 <div class="menu">
@@ -30,8 +35,8 @@
 快適に活用をできるよう、以下、マニュアルに沿った運用をお願い致します。
 <br>
 ーーーーーーーーーーーーーーーーーーーー
-<br>
-1.挑発的な言葉や誹謗中傷、言葉尻をとらえるような揚げ足取り等の書き込み<br>
+<br><br>
+1.挑発的な言葉や誹謗中傷、言葉尻をとらえるような揚げ足取り等の書き込み<br><br>
 2.安全性に疑いのあるサイトのURLの記載
 上記の発言・投稿を発見した際、該当の投稿の削除、そしてそのアカウントへの警告。
 当サイトは警告のカウント（ドクロカウント）を行い、３回を目安に該当アカウントへの罰則として匿名の解除をする。
@@ -45,8 +50,11 @@
 </div>
 
 </div>
-
-</body>
+</main>
+<!-- メインここまで -->
+<!-- フッター -->
 <footer>
 </footer>
+
+</body>
 </html>
