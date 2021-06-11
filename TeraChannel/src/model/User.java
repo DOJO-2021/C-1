@@ -25,13 +25,13 @@ public class User {
 
 	public User() {
 		super();
-		this.user_id = user_id = 0;
-		this.user_name = user_name ="";
-		this.user_pw = user_pw = "";
-		this.user_type = user_type = 0;
-		this.user_mail = user_mail = "";
-		this.user_count = user_count =0;
-		this.user_nameCount = user_nameCount =0;
+		this.user_id = 0;
+		this.user_name ="";
+		this.user_pw = "";
+		this.user_type = 0;
+		this.user_mail = "";
+		this.user_count =0;
+		this.user_nameCount = 0;
 	}
 
 
