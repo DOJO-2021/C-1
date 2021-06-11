@@ -6,7 +6,7 @@ header {
 }
 
 .teraco {
-	padding-left: 130px;
+	padding-left: 150px;
 }
 
 .terachan {
@@ -60,10 +60,14 @@ footer {
 }
 
 .rule {
-	border: 2px solid;
 	width: 20em;
-	height: 565px;
+	height:565px;
 	margin-right: 15px;
+	font-family:'Comic Sans MS';
+  	background: #eee8aa;
+ 	border-left: 7px dotted rgba(255,0,0,0.2);
+ 	box-shadow: 0 0 0 5 #ffff00;
+ 	padding: 1em;
 }
 .rule p {
 	font-size: 13px;
@@ -79,14 +83,20 @@ footer {
 	border: dashed 2px white;
 }
 
+.board p {
+	font-size: 12px;
+	color: #ff6347;
+}
 .title {
 	width: 20em;
 	height: 2em;
+	background-color: #fff8dc;
 }
 
 .content {
 	width: 35em;
 	height: 15em;
+	background-color: #fff8dc;
 }
 
 .upload {
