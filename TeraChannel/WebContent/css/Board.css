@@ -6,17 +6,17 @@ header {
 }
 
 .teraco {
-	padding-left: 30px;
+	padding-left: 130px;
 }
 
 .terachan {
 	padding-top: 23px;
-	padding-left: 300px;
-	padding-right: 85px;
+	padding-left: 120px;
+	padding-right: 55px;
 }
 
 .navi {
-	padding-top: 25px;
+	padding-top: 30px;
 	padding-left: 50px;
 }
 
@@ -26,7 +26,7 @@ header {
 	background-color: #f4a460;
 	border: none;
 	border-radius: 15px;
-	margin-right: 20px;
+	margin-right: 10px;
 }
 
 .button_menu {
@@ -61,15 +61,22 @@ footer {
 
 .rule {
 	border: 2px solid;
-	width: 25em;
+	width: 20em;
+	height: 565px;
 	margin-right: 15px;
+}
+.rule p {
+	font-size: 13px;
 }
 
 .board {
 	border: 2px solid;
 	width: 50em;
 	padding-left: 6em;
-	padding-top: 3em;
+	padding-top: 1em;
+	background: #eee8aa;
+	box-shadow: 0px 0px 0px 4px #ffff00;
+	border: dashed 2px white;
 }
 
 .title {

@@ -41,12 +41,12 @@
 			<div class="board">
 				<h2>投稿</h2>
 				<p>タイトル及び内容は必須項目です。</p>
-				<form method="GET" action="">
+				<form method="POST" action="/TeraChannel/BoardServlet" onsubmit="return submit();">
 					<h3>タイトル</h3>
 					<p>タイトルは内容が推測できるものをつけてください。</p>
-					<input type="text" name="title" placeholder="タイトル" class="title">
+					<input type="text" name="title" placeholder="タイトル" class="title" id="title" value="">
 					<h3>内容</h3>
-					<textarea name="content" class="content"></textarea>
+					<textarea name="content" class="content" id="content"></textarea>
 					<br> <input type="submit" name="upload" value="投稿する"
 						class="upload">
 				</form>
@@ -55,6 +55,27 @@
 
 	</main>
 	<!-- メインここまで -->
+	<script type="text/javascript">
+	<!-- 投稿ボタン押したときに確認のconfirm表示 -->
+	function submit() {
+		if(window.confirm('投稿してもよろしいですか？')) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	<!-- タイトル及び内容は必須入力　未入力であればアラート表示-->
+	<!--
+	function submit() {
+		if (document.getElementById("title").value === "" || document.getElementById("content").value === "" ) {
+			alert("タイトルと内容は必須入力です。");
+			return false;
+		}
+	}
+	-->
+
+	</script>
 	<!-- フッターここから -->
 	<footer>
 		<p>
