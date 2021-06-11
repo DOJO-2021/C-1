@@ -5,25 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>TERAKO</title>
+<link rel="stylesheet" href="/TeraChannel/css/Login.css">
 <img src="image//teraco.jpg" alt="logo">
 </head>
 <body>
-<h1>ログイン</h1>
-	<hr>
-	<table>
-		<tr>
-			<th>メールアドレス</th><td><input type="text"></td>
-		</tr>
-		<tr>
-			<th>パスワード</th><td><input type="text"></td>
-		</tr>
-		<tr>
-			<th><input type="button"class="box" value="ログイン"></th>
-		<td>
-			<input type="button" value="パスワードを忘れた方はこちら">
-		</td>
-		</tr>
-		</table>
+	<div id="form">
+    <p class="form-title">ログイン</p>
+    <form action="post">
+        <p>メールアドレス</p>
+        <p class="mail"><input type="email" name="mail" /></p>
+        <p>パスワード</p>
+        <p class="pass"><input type="password" name="pass" /></p>
+        <p class="submit"><input type="submit" value="ログイン" /></p>
+    </form>
+</div>
+
 </body>
 
 
