@@ -59,6 +59,9 @@
 			</div>
 			<div class="page">
 				<div class="scroll">
+					<div class ="scrollbuttan" onclic="Top()"></div>
+
+ 					</div>
 					<p>タイトル トータルリアクション数： 最終更新日：</p>
 				</div>
 			</div>
@@ -78,6 +81,11 @@
 		<br>
 	</footer>
 	<!-- フッターここまで -->
+	<script type="text/javascript">
+	function Top() {
+		scrollTo(0, 0);
+	 }
 
+	</script>
 </body>
 </html>
