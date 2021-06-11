@@ -42,7 +42,7 @@
   </ul>
 <hr align="left" width="800">
 <br>
-<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
+<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; width: 800px;">
 <p>　　　お知らせ</p>
 	<hr width="80%" noshade>
   <ul>
