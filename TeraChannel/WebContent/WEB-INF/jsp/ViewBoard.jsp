@@ -58,24 +58,27 @@
 						<input class"edit" type="button" name="editButton" value="編集">
 						<input class"delete" type="button" name="deleteButton" value="削除">
 					</div>
+			<!-- リアクション表示部分 -->
 					<div class="reaction">
-						<div class="smileCount">
-							<image class="smile" onclick="reactionCount()"
+						<div>
+							<image class="smile" onclick="reactionSmileCount()"
 								src="image/smile.jpg" alt="リアクション（笑顔）"></image>
-							<p>${e.m_id}</p>
+							<p class="reactionCount" id="smile">125</p>
 						</div>
-						<div class="shockCount">
-							<image class="shock" onclick="reactionCount()"
+						<div>
+							<image class="shock" onclick="reactionShockCount()"
 								src="image/shock.jpg" alt="リアクション（驚愕）"></image>
+							<p class="reactionCount" id="shock">${e.m_id}125</p>
 						</div>
-						<div class="tearCount">
-							<image class="tear" onclick="reactionCount()"
+						<div>
+							<image class="tear" onclick="reactionTearCount()"
 								src="image/tear.jpg" alt="リアクション（感涙）"></image>
+							<p class="reactionCount" id="tear">${e.m_id}125</p>
 						</div>
 					</div>
 					<!-- ここから返信欄（forEach部分） -->
 					<!-- 矢印の部分はおそらく画像挿入の形 -->
-					<p class="updateDate">投稿日時６月１０日</p>
+					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
 					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
 					<div class="editDelete">
 						<input class"edit" type="button" name="editButton" value="編集">
@@ -85,18 +88,7 @@
 
 
 
-					<p class="updateDate">投稿日時６月１０日</p>
-					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
-					<div class="editDelete">
-						<input class"edit" type="button" name="editButton" value="編集">
-						<input class"delete" type="button" name="deleteButton" value="削除">
-					</div>
-
-
-
-
-
-					<p class="updateDate">投稿日時６月１０日</p>
+					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
 					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
 					<div class="editDelete">
 						<input class"edit" type="button" name="editButton" value="編集">
@@ -107,7 +99,18 @@
 
 
 
-					<p class="updateDate">投稿日時６月１０日</p>
+					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
+					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
+					<div class="editDelete">
+						<input class"edit" type="button" name="editButton" value="編集">
+						<input class"delete" type="button" name="deleteButton" value="削除">
+					</div>
+
+
+
+
+
+					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
 					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
 					<div class="editDelete">
 						<input class"edit" type="button" name="editButton" value="編集">
@@ -138,7 +141,22 @@
 	<!-- ここからjavaScript -->
 	<script>
 		'use strict';
-		function reactionCount() {
+		let smileTF;
+		let shockTF;
+		let tearTF;
+		let count;
+		function reactionSmileCount() {
+			count = parseInt(document.getElementById("smile"));
+			console.log(count);
+			count++;
+			document.getElementById("smile").innerHTML="<p>" + count + "</p>";
+			console.log(count);
+
+		}
+		function reactionShockCount() {
+
+		}
+		function reactionTearCount() {
 
 		}
 	</script>
