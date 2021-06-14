@@ -62,7 +62,8 @@
 					<div class ="scrollbuttan" onclic="Top()"></div>
 
  					</div>
-					<p>タイトル トータルリアクション数： 最終更新日：</p>
+					<p>${Board.board_topic} タイトル<br>
+				    トータルリアクション数：${}  最終更新日：${ }</p>
 				</div>
 			</div>
 
