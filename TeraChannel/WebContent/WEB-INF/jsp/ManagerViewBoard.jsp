@@ -11,17 +11,19 @@
 </head>
 <body>
 	<!-- ヘッダーここから -->
-	<header>
-		<a href="Menu.jsp"><img class="logo" src="image/teraco.jpg"
-			alt="TERACO風メニュー画面へ"></a>
-		<h1>
-			<a href="ViewMenu.jsp"> <img class="board_image"
-				src="image/keijiban.jpg" alt="管理者用掲示板メニューページへ"></a>
-		</h1>
-		<nav class="nav">
-			<a href="/TeraChannel/BoardServlet">投稿</a> <a
-				href="/TeraChannel/MenuServlet">メニューページに戻る</a>
-		</nav>
+		<header>
+		<div class="teraco">
+			<a href="/TeraChannel/ManagerMenuServlet"><img
+				src="/TeraChannel/image/teraco.jpg" alt="TERACO"></a>
+		</div>
+		<div class="terachan">
+			<a href="/TeraChannel/ManagerViewMenuServlet"><img
+				src="/TeraChannel/image/keijiban.jpg" alt="てらちゃんねる"></a>
+		</div>
+		<div class="navi">
+			<button onclick="location.href='/TeraChannel/ManagerMenuServlet'"
+				class="button_menu">メニューページへ戻る</button>
+		</div>
 	</header>
 	<!-- ヘッダーここまで -->
 	<!-- メインここから -->
@@ -46,30 +48,57 @@
 				<div class="board">
 					<h3>投稿タイトル(今はhタグで代用)</h3>
 					<p class="board_main">投稿内容(今はpタグで代用：今後変わる可能性あり)</p>
-					<br>
+						<div class="editDelete">
+						<input class"delete" type="button" name="deleteButton" value="削除">
+					</div>
 					<div class="reaction">
 						<div class="smileCount">
-							<image class="smile" onclick="reactionCount()"
-								src="image/smile.jpg" alt="リアクション（笑顔）"></image>
+							<image class="smile" src="image/smile.jpg" alt="リアクション（笑顔）"></image>
+							<p class="reactionCount" id="smile">125</p>
 						</div>
 						<div class="shockCount">
-							<image class="shock" onclick="reactionCount()"
-								src="image/shock.jpg" alt="リアクション（驚愕）"></image>
+							<image class="shock" src="image/shock.jpg" alt="リアクション（驚愕）"></image>
+							<p class="reactionCount" id="smile">125</p>
 						</div>
 						<div class="tearCount">
-							<image class="tear" onclick="reactionCount()"
-								src="image/tear.jpg" alt="リアクション（感涙）"></image>
+							<image class="tear" src="image/tear.jpg" alt="リアクション（感涙）"></image>
+							<p class="reactionCount" id="smile">125</p>
 						</div>
 					</div>
 					<!-- ここから返信欄（forEach部分） -->
 					<!-- 矢印の部分はおそらく画像挿入の形 -->
-					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで代用)</p>
-					<!-- 返信の最後の部分はtextareaで表示（forEach文の外） -->
+					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
+					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
+					<div class="editDelete">
+						<input class"delete" type="button" name="deleteButton" value="削除">
+					</div>
 
-					<textarea class="reply_text" name="reply"
-						placeholder="返信内容:最後の返信欄はform形式" rows="4" cols="60"></textarea>
-					<input class="reply_button" type="button" name="replyButton"
-						value="検索"> <br>
+
+
+
+					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
+					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
+					<div class="editDelete">
+						<input class"delete" type="button" name="deleteButton" value="削除">
+					</div>
+
+
+
+
+					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
+					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
+					<div class="editDelete">
+						<input class"delete" type="button" name="deleteButton" value="削除">
+					</div>
+
+
+
+
+					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
+					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
+					<div class="editDelete">
+						<input class"delete" type="button" name="deleteButton" value="削除">
+					</div>
 				</div>
 			</form>
 
@@ -86,14 +115,11 @@
 	<!--  投稿内容自体を表示した後、forEach文で各返信を出力 -->
 	<!--  例:<div>投稿内容 <form><forEach>返信内容</form></div>-->
 
-<!-- ここからjavaScript -->
+	<!-- ここからjavaScript -->
 	<script>
 		'use strict';
-		function reactionCount() {
-
-		}
 	</script>
-<!-- ここまでjavaScript -->
+	<!-- ここまでjavaScript -->
 
 </body>
 </html>

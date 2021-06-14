@@ -50,7 +50,7 @@
 			<form class="board_form">
 				<div class="board">
 
-					<p class="postDate">投稿日時６月９日</p>
+					<p class="postDate">${e.m_id}投稿日時６月９日</p>
 
 					<h3>投稿タイトル(今はhタグで代用)</h3>
 					<p class="board_main">投稿内容(今はpタグで代用：今後変わる可能性あり)</p>
@@ -63,17 +63,17 @@
 						<div>
 							<image class="smile" onclick="reactionSmileCount()"
 								src="image/smile.jpg" alt="リアクション（笑顔）"></image>
-							<p class="reactionCount" id="smile" data-smileBool="1">125</p>
+							<p class="reactionCount" id="smile">125</p>
 						</div>
 						<div>
 							<image class="shock" onclick="reactionShockCount()"
 								src="image/shock.jpg" alt="リアクション（驚愕）"></image>
-							<p class="reactionCount" id="shock" data-shockTF="1">125</p>
+							<p class="reactionCount" id="shock">125</p>
 						</div>
 						<div>
 							<image class="tear" onclick="reactionTearCount()"
 								src="image/tear.jpg" alt="リアクション（感涙）"></image>
-							<p class="reactionCount" id="tear" data-tearTF="1">125</p>
+							<p class="reactionCount" id="tear">125</p>
 						</div>
 					</div>
 					<!-- ここから返信欄（forEach部分） -->
@@ -159,8 +159,7 @@
 				countSmile++;
 				smileTF = 0;
 			}
-			document.getElementById("smile").innerHTML = "<p class=\"reactionCount\" id=\"smile\" data-smileBool=\""+smileTF+"\">"
-					+ countSmile + "</p>";
+			document.getElementById("smile").innerHTML = "<p class=\"reactionCount\" id=\"smile\">"+ countSmile + "</p>";
 			//document.getElementById("smile").innerHTML="<p class="+"reactionCount"+">" + count + "</p>";
 		}
 
@@ -175,8 +174,7 @@
 				countShock++;
 				shockTF = 0;
 			}
-			document.getElementById("shock").innerHTML = "<p class=\"reactionCount\" id=\"shock\">"
-					+ countShock + "</p>";
+			document.getElementById("shock").innerHTML = "<p class=\"reactionCount\" id=\"shock\">"+ countShock + "</p>";
 			//document.getElementById("smile").innerHTML="<p class="+"reactionCount"+">" + count + "</p>";
 		}
 		//涙アイコンの増減
