@@ -7,21 +7,44 @@
 <title>TERAKO</title>
 <link rel="stylesheet" href="/TeraChannel/css/Login.css">
 <img src="image//teraco.jpg" alt="logo">
+<hr>
 </head>
 <body>
 	<div id="form">
-    <p class="form-title">ログイン</p>
-    <form action="post">
-        <p>メールアドレス</p>
-        <p class="mail"><input type="email" name="mail" /></p>
-        <p>パスワード</p>
-        <p class="pass"><input type="password" name="pass" /></p>
-        <p class="submit"><input type="submit" value="ログイン" /></p>
-    </form>
-</div>
+		<p class="form-title">ログイン</p>
+		<hr>
+		<form action="post">
+			<table>
+				<tr>
+					<th><p class="mail">メールアドレス</th>
+					<td><input type="email" name="mail" />
+						</p></td>
+				</tr>
+				<tr>
+					<th><p class="pass">パスワード</th>
+					<td><input type="password" name="pass" />
+						</p></td>
+				</tr>
+			</table>
+			<div class="narande">
+				<p class="submit">
+					<input type="submit" class="btn" value="ログイン" />
+				</p>
+				<a href="" class="wasureta">パスワードを忘れた方はこちら</a>
+			</div>
+		</form>
+	</div>
 
 </body>
-
-
+<footer>
+	<p>
+		<b>DOJO</b>
+	</p>
+	<p>
+		Copyright(C) 2021 SEplus.Co.,Ltd. All rights reserved.<br>
+		本サイトの掲載記事、写真、イラスト、問題コンテンツの無断転載を禁じます。記載されているロゴ、システム名、製品名は各社及び商標権者の登録商標あるいは商標です。
+	</p>
+	<br>
+</footer>
 
 </html>
