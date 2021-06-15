@@ -10,11 +10,19 @@
 </head>
 
 <body>
-<!-- ヘッダー -->
-<header>
-<img src="image/teraco.jpg" alt="logo">
-<h3 style="text-align:right"><a href="/TeraChannel/MenuServlet">メニューへ戻る</a></h3>
-</header>
+
+<!-- ヘッダーここから -->
+		<header>
+		<div class="teraco">
+			<a href="/TeraChannel/ManagerMenuServlet"><img
+				src="/TeraChannel/image/teraco.jpg" alt="TERACO"></a>
+		</div>
+		<div class="navi">
+			<button onclick="location.href='/TeraChannel/ManagerMenuServlet'"
+				class="button_menu">メニューページへ戻る</button>
+		</div>
+	</header>
+	<!-- ヘッダーここまで -->
 
 <!-- メイン -->
 <main>
@@ -101,33 +109,26 @@ window.onload = function() {
      var count_value = 0;
 
      // カウントアップボタンクリック処理
-     while(count_value <= 3) {
      count_up_btn.onclick = function (){
-    	  count_value += 1;
-          count_disp.innerHTML = count_value;
+    	//3以上だったら何もしない
+    	if(count_value >= 3){
+    		return;
+    	}
+    	//+1する
+		 count_value += 1;
+         count_disp.innerHTML = count_value;
      };
-     }
-     // カウントアップボタンのマウスダウン処理
-     count_up_btn.onmousedown = function() {
-          count_up_btn.style.backgroundColor = "#00FF00";
-     }
-     // カウントアップボタンのマウスアップ処理
-     count_up_btn.onmouseup = function() {
-          count_up_btn.style.backgroundColor = "";
-     }
+
      // カウントダウンボタンクリック処理
      count_down_btn.onclick = function (){
+    	 //0だったら何もしない
+         if(count_value === 0){
+        	 return;
+         }
+    	 //-1する
           count_value -= 1;
           count_disp.innerHTML = count_value;
      };
-     // カウントダウンボタンのマウスダウン処理
-     count_down_btn.onmousedown = function() {
-          count_down_btn.style.backgroundColor = "#00FF00";
-     }
-     // カウントダウンボタンのマウスアップ処理
-     count_down_btn.onmouseup = function() {
-          count_down_btn.style.backgroundColor = "";
-     }
 };
 </script>
 
