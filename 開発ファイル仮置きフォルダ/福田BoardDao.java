@@ -24,7 +24,7 @@ public class BoardDao {
 				//SQL文を準備する	検閲機能
 				String sql = "SELECT * FROM(SELECT word FROM search) WHERE word like '%?%' or word like '%?%'";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
-				
+
 				//SQL文を完成させる
 				if (card.getBoard_topic() != null && !card.getBoard_topic().equals("")) {
 					pStmt.setString(1, card.getBoard_topic());
@@ -45,7 +45,7 @@ public class BoardDao {
 
 				if (x = 0) {
 				//insertの部分を移す(45行目から)
-				// SQL文を準備する	true	
+				// SQL文を準備する	true
 				String sql2 = "insert into board values (null,?,?,0,0,0,curent_date,?)";
 				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
@@ -69,7 +69,7 @@ public class BoardDao {
 				else {
 					pStmt.setString(3, "null");
 				}
-			
+
 				// SQL文を実行する	何件処理したかを返してくれる
 				if (pStmt.executeUpdate() == 1) {
 					result = true;
@@ -101,7 +101,7 @@ public class BoardDao {
 					result = false;
 				}
 */
-/*				// SQL文を準備する	true	
+/*				// SQL文を準備する	true
 				String sql = "insert into board values (null,?,?,0,0,0,curent_date,?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -125,7 +125,7 @@ public class BoardDao {
 				else {
 					pStmt.setString(3, "null");
 				}
-			
+
 				// SQL文を実行する	何件処理したかを返してくれる
 				if (pStmt.executeUpdate() == 1) {
 					result = true;
