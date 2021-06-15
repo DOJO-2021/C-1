@@ -62,12 +62,14 @@ BoardViewServlet　
 　　　　　データをinsertする。
 
 6-編集-1：受け取ったパラメータを用いてReplyDao.java/BoardDao.javaの
-          editメソッド（仮名）で編集を行う（データベースを更新する）
+          editReply/editBoardメソッド（仮名）で編集を行う（データベースを更新する）
 
 6-削除-1：受け取ったパラメータの返信ID/投稿IDを用いて、
-          ReplyDao.java/BoardDao.javaのdeleteメソッドで削除を行う
-          （データベースの対象行の削除）
+          ReplyDao.java/BoardDao.javaのdeleteReply/deleteBoardメソッド
+          で削除を行う（データベースの対象行の削除）
+※投稿が削除された場合に該当する返信を全て削除するかどうかは保留
 
 7-リアクション：受け取ったパラメータ（リアクションの数）を引数に
-              BoardDao.javaのeditメソッドで代用してリアクション
+              BoardDao.javaのeditReactionメソッドで代用してリアクション
               の増減を行う（データベースの更新）
+※ページを更新した際に再度リアクションを投稿できるんじゃないか問題

@@ -1,0 +1,34 @@
+投稿IDに対応した返信の検索（rs=executeQuery()）
+"select * from reply where board_id=?";
+
+検索ボタンが押された際に呼び出されるsearchReplyメソッドで使用するSQL
+"select * from reply where board_id=?　and main like '%?%'";
+
+見出し一覧画面で文字検索ボタンが押された場合
+select board_topic from board where board_main like '%検索内容%' or REPLY_MAIN from reply like '%検索内容%';
+
+
+返信を登録する際のSQL
+・検閲部分
+"SELECT * FROM(SELECT word FROM search) WHERE word like '%?%'";
+・登録部分
+"insert into reply values (null,'?',current_timestamp,'?','?' )"";
+
+編集を反映させる際のSQL(editReply/Boardメソッド)
+・検閲部分
+"SELECT * FROM(SELECT word FROM search) WHERE word like '%?%'";
+・反映部分(投稿部分)
+"update board set main='?',date=current_timestamp where id=?";
+・反映部分(返信部分)
+"update reply set main='?',date=current_timestamp where id=?";
+
+
+削除をする際のSQL(deleteメソッド)
+・返信の削除
+"delete reply where id=?";
+・投稿の削除
+"delete board where id=?";
+
+リアクションの登録に関して
+・リアクション登録があった場合(submitのvalueで場合分け)
+"update board set ?=?+1 where id=?";

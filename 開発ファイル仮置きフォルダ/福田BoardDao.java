@@ -74,11 +74,11 @@ public class BoardDao {
 				if (pStmt.executeUpdate() == 1) {
 					result = true;
 				}
-			}	else {
+				else {
 					result = false;
 				}
 			}
-			catch (SQLException e) {
+		 }catch (SQLException e) {
 				e.printStackTrace();
 			}
 			catch (ClassNotFoundException e) {
