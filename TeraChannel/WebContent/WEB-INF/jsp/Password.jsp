@@ -20,11 +20,11 @@
 		<p>新しいパスワードを入力してください
 
 
-		<form method="POST" action="/TeraChannel/LoginServlet">
+			<form  method="POST" action="/TeraChannel/PasswordServlet" onsubmit="return check();">
 			<table  align="center">
 			    <tr>
 				<th>前のパスワード</th>
-				<td><input type="password" name="password" class="form-control" ></td>
+				<td><input type="password" id="pass" name="password" class="form-control" ></td>
 				</tr>
 				<tr>
 				<th>新しいパスワード</th>
@@ -40,70 +40,33 @@
 		</form>
      </div>
 
-     <script>
-'use strict';
+<script type="text/javascript">
+  document.getElementById('pass');
+    function check(){
+
+	    //前のパスワードに値が入っているか？
+	  if(pass == null){
+			return false;
+		}
 /*
- パスワード変更
- Node.js express
- */
+		else{ // 「キャンセル」時の処理
+			window.alert('パスワードを入力してださい'); // 警告ダイアログを表示
+			return false; // 送信を中止
+		}
 
-const Router = require('express');
+   //新しいパスワードは両方一致しているか？
 
-module.export = connection => {
-  const router = Router();
+       if(new_pass !== confirm) {
+        return false;
+        window alert('パスワードが一致していません');
+     }
+*/
+  }
 
-  router.get('/', (req, res, next) => {
-    res.render('password_change/index', {
-      name: req.session.user.name,
-      type: req.session.user.type
-    });
-  });
-
-  router.post('/', (req, res, next) => {
-    const password = req.body.password;
-    const new_pass = req.body.new_pass;
-    const confirm = req.body.confirm;
-
-
-    // passwordセッション
-    if (password !== req.session.password) {
-      res.render('pass_change', {
-        title: 'パスワード変更',
-        pass: 'パスワードが間違っています'
-      });
-      return;
-    }
-    if (new_pass !== confirm) {
-      res.render('pass_change', {
-        title: 'パスワード変更',
-        pass: '新しいパスワードが新旧で異なります'
-      });
-      return;
-    }
-    // エラー差し込み箇所
-
-    // DBの書き換え
-    const query = 'UPDATE user SET password = ? WHERE id = ?';
-    connection.query(query, [pass_change, req.session.user.id], err => {
-      if (err) {
-        res.render('pass_change', {
-          title: 'パスワード変更',
-          pass: 'エラーが発生しましたので管理者にお問い合わせください'
-        });
-        return;
-      }
-      res.render('pass_change', {
-        title: 'パスワード変更',
-        pass: 'パスワードの変更が完了しました'
-      });
-    });
-  });
-
-  return router;
 }
 
 
-</script>
+  </script>
 
 </body>
 </html>
