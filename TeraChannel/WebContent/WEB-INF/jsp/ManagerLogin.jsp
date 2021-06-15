@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,8 @@
 	<div id="form">
 		<p class="form-title">ログイン</p>
 		<hr>
-		<form action="post">
+		<c:out value="${errorMessage}" />
+		<form method="POST" action="/TeraChannel/ManagerLoginServlet">
 			<table>
 				<tr>
 					<th><p class="mail">メールアドレス</th>
@@ -26,6 +28,7 @@
 						</p></td>
 				</tr>
 			</table>
+			<c:out value="${errorMessage}" />
 			<div class="narande">
 				<p class="submit">
 					<input type="submit" class="btn" value="ログイン" />
