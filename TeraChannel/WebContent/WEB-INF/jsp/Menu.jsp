@@ -20,7 +20,7 @@
 
       <li><select name="menu" id="passlog"></li>
             <option value="">マイメニュー</option>
-            <option value="password">パスワード変更</option>
+            <option value="password"><a href="/TeraChannel/Password.jsp">パスワード変更</a></option>
             <option value="logout"><a href="/TeraChannel/LogoutServlet">ログアウト</a></option>
           </select>
       <li><a href="/TeraChannel/ViewBoardServlet">掲示板</a></li>

@@ -24,14 +24,14 @@
 			<table  align="center">
 			    <tr>
 				<th>前のパスワード</th>
-				<td><input type="password" id="pass" name="password" class="form-control" ></td>
+				<td><input type="text" id="password" name="password" class="form-control" ></td>
 				</tr>
 				<tr>
 				<th>新しいパスワード</th>
-				<td><input type="newpass" name="new_pass" class="form-control"></td>
+				<td><input type="text"id="new_pass" name="new_pass" class="form-control"></td>
 				</tr>
 				<th>新しいパスワードの確認</th>
-				<td><input type="confirm" name="confirm" class="form-control"></td>
+				<td><input type="text"id="confirm"  name="confirm"  class="form-control"></td>
 				</tr>
 			</table>
 			<p>
@@ -41,32 +41,35 @@
      </div>
 
 <script type="text/javascript">
-  document.getElementById('pass');
+'use strict';
+
     function check(){
 
 	    //前のパスワードに値が入っているか？
-	  if(pass == null){
+	  if(document.getElementById('password').value == ""){
+		    alert("前のパスワードを入力してください");
 			return false;
 		}
-/*
-		else{ // 「キャンセル」時の処理
-			window.alert('パスワードを入力してださい'); // 警告ダイアログを表示
-			return false; // 送信を中止
+
+	  //新しいパスワードは両方一致しているか？
+	   const new_pass = document.getElementById('new_pass').value;
+	   const confirm = document.getElementById('confirm').value;
+	   if(new_pass !== confirm) {
+           alert("パスワードが一致していません");
+           return false;
+        }
+	   //新しいパスワードに値が入っているか？
+	   if(new_pass == ""){
+		    alert("パスワードを入力してください");
+			return false;
 		}
-
-   //新しいパスワードは両方一致しているか？
-
-       if(new_pass !== confirm) {
-        return false;
-        window alert('パスワードが一致していません');
-     }
-*/
-  }
-
-}
+	   if(confirm == ""){
+		    alert("パスワードを入力してください");
+			return false;
+       }
+    }
 
 
-  </script>
-
+</script>
 </body>
 </html>

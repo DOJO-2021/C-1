@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 /**
  * Servlet implementation class UpdateDeleteServlet
  */
@@ -30,26 +29,26 @@ public class PasswordServlet extends HttpServlet {
 		}
 		// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-
+				String user_pw = request.getParameter("user_pw");
 /*
 				// パスワードの更新を行う
 				PasswordDao PDao = new PasswordDao();
-				if (request.getParameter("SUBMIT").equals("更新")) {
-					if (PDao.update(new Bc(id ))) {	// 更新成功
+				if (request.getParameter("change").equals("変更")) {
+					if (PDao.update(new User(user_pw))) {	// 変更
 						request.setAttribute("result",
-						new Result("更新成功！", "レコードを更新しました。", "/simpleBC/MenuServlet"));
+					    ("パスワードを更新しました。", "/TeraChannel/MenuServlet"));
 					}
 					else {												// 更新失敗
 						request.setAttribute("result",
-						new Result("更新失敗。。", "レコードを更新できませんでした。", "/simpleBC/MenuServlet"));
+						("更新失敗。。", "レコードを更新できませんでした。", "/TeraChannel/MenuServlet"));
 					}
 				}
+
 */
 
 
-
 		// パスワード変更ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Password.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Menu.jsp");
 		dispatcher.forward(request, response);
 	}
 }
