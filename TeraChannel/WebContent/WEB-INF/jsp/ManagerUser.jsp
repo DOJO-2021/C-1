@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,12 +31,14 @@
 
 <!-- ボタン部分 -->
 <div>
-<select name="id">
-<option value="=id">ID検索</option>
-</select>
+
+
+ID検索<input type="text" name="text" size="5">
 
 <select name="count">
 <option value="=count">カウント検索</option>
+<option>昇順</option>
+<option>降順</option>
 </select>
 
 <select name="update">
@@ -71,6 +74,7 @@
 
 
 <!-- テーブル部分 -->
+<!-- <c:forEach var="e" items="${cardList}" > -->
 <div class="tb">
 <table class="info">
 <tr>
@@ -133,7 +137,9 @@ window.onload = function() {
 </script>
 
 </div>
+<!-- </c:forEach> -->
 </div>
+
 </main>
 <!-- メインここまで -->
 <!-- フッター -->
