@@ -1,6 +1,8 @@
 package model;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Board {
+public class Board implements Serializable {
 	private int board_id;
 	private String board_topic;
 	private String board_main;
@@ -9,6 +11,8 @@ public class Board {
 	private int board_tear;
 	private String board_update;
 	private int user_id;
+	private ArrayList<Reply> reply;
+	private int board_smileTotal;
 
 	//コンストラクタ
 	public Board(int board_id, String board_topic, String board_main, int board_smile, int board_shock, int board_tear,
@@ -35,6 +39,8 @@ public class Board {
 		this.board_tear = 0;
 		this.board_update = "";
 		this.user_id = 0;
+		this.reply = new ArrayList<Reply>();
+		this.board_smileTotal = 0;
 	}
 
 	//ゲッターとセッター
@@ -100,5 +106,21 @@ public class Board {
 
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
+	}
+
+	public ArrayList<Reply> getReply() {
+		return reply;
+	}
+
+	public void setReply(ArrayList<Reply> reply) {
+		this.reply = reply;
+	}
+
+	public int getBoard_smileTotal() {
+		return board_smileTotal;
+	}
+
+	public void setBoard_smileTotal(int board_smileTotal) {
+		this.board_smileTotal = board_smileTotal;
 	}
 }
