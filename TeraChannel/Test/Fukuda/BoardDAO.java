@@ -24,23 +24,24 @@ public class BoardDAO {
 			ResultSet rs;
 
 			//SQL文を準備する	検閲機能
-			String sql = "SELECT * FROM(SELECT word FROM search) WHERE word like '%?%' or word like '%?%'";
+			String sql = "SELECT * FROM(SELECT search_word FROM search) WHERE search_word like ? or search_word like ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
 			if (card.getBoard_topic() != null && !card.getBoard_topic().equals("")) {
-				pStmt.setString(1, card.getBoard_topic());
+				pStmt.setString(1, "%" + card.getBoard_topic() + "%");
 			} else {
-				pStmt.setString(1, "null");
+				pStmt.setString(1, "%%");
 			}
 			if (card.getBoard_main() != null && !card.getBoard_main().equals("")) {
-				pStmt.setString(2, card.getBoard_main());
+				pStmt.setString(2, "%" + card.getBoard_main() + "%");
 			} else {
-				pStmt.setString(2, "null");
+				pStmt.setString(2, "%%");
 			}
 
 			// SQL文を実行する	何件wordと一致したかを返してくれる
 			rs = pStmt.executeQuery();
+			rs.next();
 			int x = rs.getRow();
 
 			//一致した件数が0件ならinsertの処理に移る

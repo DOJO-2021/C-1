@@ -32,5 +32,14 @@ public class BoardDAOTest {
 		} else {
 			System.out.println("投稿失敗");
 		}
+
+		//insert()	投稿・topic/mainの検閲のテスト	失敗になればOK
+		System.out.println("----insert()投稿・topic/mainの検閲のテスト----");
+		Board insRec4 = new Board(0, "バカ", "あほ", 0, 0, 0, "current_timestamp", 0);
+		if (dao.insert(insRec4)) {
+			System.out.println("投稿成功");
+		} else {
+			System.out.println("投稿失敗");
+		}
 	}
 }
