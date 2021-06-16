@@ -42,19 +42,19 @@ public class ManagerLoginServlet extends HttpServlet {
 		if (iDao.isLoginOK(mail, pw)) {
 			// ログイン成功
 			//ログイン後の画面に移動する
-
+//編集中
 			// セッションスコープにメールアドレスを格納する
 			//HttpSession session = request.getSession();
 			//session.setAttribute("mail", new Manager(mail));
 
 			// メニューサーブレットにリダイレクトする
-			response.sendRedirect("/TeraChannel/MenuServlet");
+			response.sendRedirect("/TeraChannel/ManagerMenuServlet");
 		}
 		else {
 			// ログイン失敗
 			//今の画面でエラーを表示する
 			//エラーメッセージをjspに渡す
-			request.setAttribute("errorMessage", "メールアドレス・パスワードが間違っています");
+			request.setAttribute("errorMessage", "ログインに失敗しました");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerLogin.jsp");
 			dispatcher.forward(request, response);
 

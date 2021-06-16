@@ -27,7 +27,6 @@
 						</p></td>
 				</tr>
 			</table>
-			<c:out value="${errorMessage}" />
 			<div class="narande">
 				<p class="submit">
 					<input type="submit" class="btn" value="ログイン" />
@@ -35,6 +34,7 @@
 				<a href="" class="wasureta">パスワードを忘れた方はこちら</a>
 			</div>
 		</form>
+		<c:out value="${errorMessage}" />
 	</div>
 
 </body>

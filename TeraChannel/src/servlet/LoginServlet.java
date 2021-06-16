@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+//ユーザーダオにする
+import dao.ManagerDao;
+
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -30,7 +34,42 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		// リクエストパラメータを取得する
+				request.setCharacterEncoding("UTF-8");
+				String mail = request.getParameter("mail");
+				String pw = request.getParameter("pass");
+				System.out.println(mail + " / " + pw );
+
+				// ログイン処理を行う
+				ManagerDao iDao = new ManagerDao();
+				if (iDao.isLoginOK(mail, pw)) {
+					// ログイン成功
+					//ログイン後の画面に移動する
+		//編集中
+					// セッションスコープにメールアドレスを格納する
+					//HttpSession session = request.getSession();
+					//session.setAttribute("mail", new Manager(mail));
+
+					// メニューサーブレットにリダイレクトする
+					response.sendRedirect("/TeraChannel/MenuServlet");
+				}
+				else {
+					// ログイン失敗
+					//今の画面でエラーを表示する
+					//エラーメッセージをjspに渡す
+					request.setAttribute("errorMessage", "ログインに失敗しました");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
+					dispatcher.forward(request, response);
+
+					// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
+					//request.setAttribute("result",
+					//new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/simpleBC/LoginServlet"));
+
+					// 結果ページにフォワードする
+					//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+					//dispatcher.forward(request, response);
+				}
+			}
 	}
 
-}
+
