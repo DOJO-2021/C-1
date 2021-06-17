@@ -237,7 +237,7 @@ public class UserDao {
 	}
 
 // カウント検索(降順)
-		public List<User> selectByCount2(int user_count2) {
+		public List<User> selectByCount2(int key, int user_count2) {
 			Connection conn = null;
 			List<User> userList = new ArrayList<User>();
 

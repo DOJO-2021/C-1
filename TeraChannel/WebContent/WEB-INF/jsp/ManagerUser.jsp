@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,8 +32,10 @@
 <!-- ボタン部分 -->
 <div>
 
-
-ID検索<input type="text" name="text" size="5">
+<form method="POST" action="/C-1/ManagerUserServlet">
+<input type="text" name="text" size="5">
+<input type="submit" name="SEARCH" value="ID検索">
+</form>
 
 <select name="count">
 <option value="=count">カウント検索</option>
@@ -74,7 +76,7 @@ ID検索<input type="text" name="text" size="5">
 
 
 <!-- テーブル部分 -->
-<!-- <c:forEach var="e" items="${cardList}" > -->
+
 <div class="tb">
 <table class="info">
 <tr>
@@ -137,7 +139,7 @@ window.onload = function() {
 </script>
 
 </div>
-<!-- </c:forEach> -->
+
 </div>
 
 </main>
