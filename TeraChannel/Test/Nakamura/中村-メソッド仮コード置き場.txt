@@ -1,7 +1,7 @@
 両者側の詳細ページを開いた際の投稿データを返すメソッド
 ・BoardDao.java
 
-public Board showReply(int board_id) {
+public Board showBoard(int board_id) {
 		Connection conn = null;
 
 		try {
