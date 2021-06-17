@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-//ユーザーダオにする
 import dao.ManagerDao;
+//import dao.UserDao;
+import model.User;
 
 
 /**
@@ -36,19 +38,19 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				String mail = request.getParameter("mail");
-				String pw = request.getParameter("pass");
-				System.out.println(mail + " / " + pw );
+				String user_mail = request.getParameter("mail");
+				String user_pw = request.getParameter("pass");
+				System.out.println(user_mail + " / " + user_pw );
 
 				// ログイン処理を行う
 				ManagerDao iDao = new ManagerDao();
-				if (iDao.isLoginOK(mail, pw)) {
+				if (iDao.isLoginOK(user_mail, user_pw)) {
 					// ログイン成功
 					//ログイン後の画面に移動する
 		//編集中
 					// セッションスコープにメールアドレスを格納する
 					//HttpSession session = request.getSession();
-					//session.setAttribute("mail", new Manager(mail));
+					//session.setAttribute("mail", new User(mail));
 
 					// メニューサーブレットにリダイレクトする
 					response.sendRedirect("/TeraChannel/MenuServlet");
