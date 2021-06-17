@@ -14,8 +14,6 @@ public class BoardDAOTest {
 		List<Board> topListMain = dao.topList();
 		for (Board board : topListMain) {
 			System.out.println(board.getBoard_smileTotal());
-			//System.out.println(board.getBoard_shock());
-			//System.out.println(board.getBoard_tear());
 			System.out.println(board.getBoard_update());
 			System.out.println(board.getBoard_topic());
 			System.out.println();
@@ -23,7 +21,21 @@ public class BoardDAOTest {
 				System.out.println(reply.getReply_date());
 				System.out.println();
 			}
+			System.out.println("----");
+		}
+
+		//select()のテスト
+		System.out.println("--select()のテスト --");
+		List<Board> topListMain2 = dao.select("");
+		for (Board board : topListMain2) {
+			System.out.println(board.getBoard_topic());
+			System.out.println(board.getBoard_main());
 			System.out.println();
+			for (Reply reply : board.getReply()) {
+				System.out.println(reply.getReply_main());
+				System.out.println();
+			}
+			System.out.println("-----");
 		}
 	}
 }
