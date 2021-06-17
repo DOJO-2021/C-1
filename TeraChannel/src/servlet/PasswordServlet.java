@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.PasswordDao;
+import model.User;
 /**
  * Servlet implementation class UpdateDeleteServlet
  */
@@ -29,26 +31,20 @@ public class PasswordServlet extends HttpServlet {
 		}
 		// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				String user_pw = request.getParameter("user_pw");
-/*
-				// パスワードの更新を行う
-				PasswordDao PDao = new PasswordDao();
-				if (request.getParameter("change").equals("変更")) {
-					if (PDao.update(new User(user_pw))) {	// 変更
-						request.setAttribute("result",
-					    ("パスワードを更新しました。", "/TeraChannel/MenuServlet"));
-					}
-					else {												// 更新失敗
-						request.setAttribute("result",
-						("更新失敗。。", "レコードを更新できませんでした。", "/TeraChannel/MenuServlet"));
-					}
-				}
 
-*/
+				 String user_pw = request.getParameter("user_pw");
 
 
-		// パスワード変更ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Menu.jsp");
+
+	    // パスワードの更新を行う
+                 PasswordDao PDao = new PasswordDao();
+                 if (request.getParameter("change").equals("変更")) {
+                 PDao.update(new User(user_pw));
+                 }
+
+
+		// ログイン変更ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 		dispatcher.forward(request, response);
 	}
 }
