@@ -55,15 +55,15 @@ public class BoardServlet extends HttpServlet {
 		String board_main = request.getParameter("board_main");
 
 
-		//idはセッションスコープから取ってくる
+		//user_idをセッションスコープから取ってくる
 		int user_id = (int)session.getAttribute("user_id");
 
-		//投稿処理を行う
+		//投稿処理を行う	user_idはセッションスコープに格納されているものを使用する
 		BoardDAO bDao = new BoardDAO();
 		if (bDao.insert(new Board(0,board_topic,board_main,0,0,0,"current_date",user_id))) {
 
 			//投稿できた場合は投稿IDをリクエストスコープに格納
-			//request.setAttribute("board_id", new Board(board_id));
+			request.setAttribute("board_id",request.getParameter("board_id"));
 
 			//詳細ページへフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/TeraChannel/ViewBoardServlet");

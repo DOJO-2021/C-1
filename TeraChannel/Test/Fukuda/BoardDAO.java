@@ -13,6 +13,7 @@ public class BoardDAO {
 	public boolean insert(Board card) { //処理の結果をtrue,falseで返す
 		Connection conn = null;
 		boolean result = false;
+		boolean result_search = false;
 
 		try {
 			// JDBCドライバを読み込む
@@ -20,32 +21,39 @@ public class BoardDAO {
 
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
-			//ResultSet = rs;
 			ResultSet rs;
 
-			//SQL文を準備する	検閲機能
-			String sql = "SELECT * FROM(SELECT search_word FROM search) WHERE search_word like ? or search_word like ?";
+			//SQL文を準備する	検閲単語一覧
+			String sql = "select search_word from search";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			//SQL文を完成させる
-			if (card.getBoard_topic() != null && !card.getBoard_topic().equals("")) {
-				pStmt.setString(1, "%" + card.getBoard_topic() + "%");
-			} else {
-				pStmt.setString(1, "%%");
-			}
-			if (card.getBoard_main() != null && !card.getBoard_main().equals("")) {
-				pStmt.setString(2, "%" + card.getBoard_main() + "%");
-			} else {
-				pStmt.setString(2, "%%");
-			}
-
-			// SQL文を実行する	何件wordと一致したかを返してくれる
+			// SQL文を実行する
 			rs = pStmt.executeQuery();
-			rs.next();
-			int x = rs.getRow();
+			String topic = card.getBoard_topic();
+			String main = card.getBoard_main();
 
-			//一致した件数が0件ならinsertの処理に移る
-			if (x == 0) {
+			//search_wordの行がある限りwhileで検閲
+			while (rs.next()) {
+				//読みとった行のsearch_wordを変数にいれる
+				String word = rs.getString("search_word");
+				//indexOf()を使って単語が内容に入っていないか検索を行う
+				//指定した文字列が見つかった場合は、その文字列が出現する先頭の位置を返す。見つからなかった場合は-1を返す
+				int result_topic = topic.indexOf(word);
+				int result_main = main.indexOf(word);
+
+				//result_topicとresult_mainともに見つからなかった場合true
+				if (result_topic == -1 && result_main == -1) {
+					result_search = true;
+				}
+				//見つかった場合false	その時点でwhileから抜ける
+				else {
+					result_search = false;
+					break;
+				}
+			}
+
+			//result_searchがtrueならinsertに移る
+			if (result_search) {
 				// SQL文を準備する	投稿機能
 				String sql2 = "insert into board values (null,?,?,0,0,0,current_timestamp,?)";
 				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
@@ -74,6 +82,8 @@ public class BoardDAO {
 				} else {
 					result = false;
 				}
+			} else {
+				result = false;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

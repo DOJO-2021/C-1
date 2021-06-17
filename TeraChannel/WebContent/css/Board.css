@@ -87,12 +87,14 @@ footer {
 	font-size: 12px;
 	color: #ff6347;
 }
+
+/*変更の可能性あり	idで設定する？*/
 .title {
 	width: 20em;
 	height: 2em;
 	background-color: #fff8dc;
 }
-
+/*変更の可能性あり	idで設定する？*/
 .content {
 	width: 35em;
 	height: 15em;

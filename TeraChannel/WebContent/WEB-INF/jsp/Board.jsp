@@ -48,14 +48,22 @@
 				<p>タイトル及び内容は必須項目です。</p>
 				<form method="POST" action="/TeraChannel/BoardServlet"
 					onsubmit="return check();">
-					<h3>タイトル</h3>
-					<p>タイトルは内容が推測できるものをつけてください。</p>
-					<input type="text" name="title" placeholder="タイトル" class="title"
-						id="title" value="">
-					<h3>内容</h3>
-					<textarea name="content" class="content" id="content"></textarea>
-					<br> <input type="submit" name="upload" value="投稿する"
-						class="upload">
+					<div>
+						<h3>タイトル</h3>
+						<p>タイトルは内容が推測できるものをつけてください。</p>
+						<input type="text" name="board_topic" placeholder="タイトル"
+							class="regist" id="title" value=""> <span
+							class="alertarea"></span>
+					</div>
+					<div>
+						<h3>内容</h3>
+						<textarea name="board_main" class="regist" id="content"></textarea>
+						<span class="alertarea"></span>
+					</div>
+					<div>
+						<br> <input type="submit" name="upload" value="投稿する"
+							class="upload">
+					</div>
 				</form>
 			</div>
 		</div>
@@ -63,7 +71,10 @@
 	</main>
 	<!-- メインここまで -->
 	<script type="text/javascript">
-	<!-- 投稿ボタン押したときに確認のconfirm表示 -->
+	function check() {
+
+	}
+	<!-- 投稿ボタン押したときに確認のconfirm表示
 		function check() {
 			if (document.getElementById("title").value === ""
 					|| document.getElementById("content").value === "") {
@@ -75,6 +86,7 @@
 				return false;
 			}
 		}
+	-->
 	</script>
 	<!-- フッターここから -->
 	<footer>
