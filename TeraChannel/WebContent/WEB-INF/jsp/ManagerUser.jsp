@@ -39,8 +39,8 @@
 
 <select name="count">
 <option value="=count">カウント検索</option>
-<option>昇順</option>
-<option>降順</option>
+<option name="up"value="1">昇順</option>
+<option name="dn"value="2">降順</option>
 </select>
 
 <select name="update">

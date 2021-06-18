@@ -73,16 +73,10 @@ public class ManagerUserServlet extends HttpServlet {
 
 
 		//ドクロカウントの昇順降順で並べ替える
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String user_count = request.getParameter("USER_COUNT");
-
-		// 検索処理を行う
-		UserDao u3Dao = new UserDao();
-		List<User> userList3 = u3Dao.select(new User(0, "", "", 0, "", 0, 0));
-
-		// 検索結果をリクエストスコープに格納する
-		request.setAttribute("userList", userList);
+UserDao u3Dao = new UserDao();
+if (request.getParameter("up").equals("1")) {
+	request.setAttribute("key", u3Dao);
+}
 
 		// ユーザー管理ページにフォワードする
 		RequestDispatcher dispatcher3 = request.getRequestDispatcher("/WEB-INF/jsp/ManagerUser.jsp");
