@@ -55,8 +55,8 @@
 					<h3>投稿タイトル(今はhタグで代用)</h3>
 					<p class="board_main">投稿内容(今はpタグで代用：今後変わる可能性あり)</p>
 					<div class="editDelete">
-						<input class"edit" type="button" name="editButton" value="編集">
-						<input class"delete" type="button" name="deleteButton" value="削除">
+						<input class="edit" type="submit" name="SUBMIT" value="投稿:編集">
+						<input class="delete" type="submit" name="SUBMIT" value="投稿:削除">
 					</div>
 					<!-- リアクション表示部分 -->
 					<div class="reaction">
@@ -75,14 +75,17 @@
 								src="image/tear.jpg" alt="リアクション（感涙）"></image>
 							<p class="reactionCount" id="tear">125</p>
 						</div>
+						<div class="reaction">
+							<input class="reactionRegist" type=submit name="SUBMIT" value="リアクション">
+						</div>>
 					</div>
 					<!-- ここから返信欄（forEach部分） -->
 					<!-- 矢印の部分はおそらく画像挿入の形 -->
 					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
 					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
 					<div class="editDelete">
-						<input class"edit" type="button" name="editButton" value="編集">
-						<input class"delete" type="button" name="deleteButton" value="削除">
+						<input class="edit" type="submit" name="SUBMIT" value="返信:編集">
+						<input class="delete" type="submit" name="SUBMIT" value="返信:削除">
 					</div>
 
 
@@ -91,19 +94,8 @@
 					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
 					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
 					<div class="editDelete">
-						<input class"edit" type="button" name="editButton" value="編集">
-						<input class"delete" type="button" name="deleteButton" value="削除">
-					</div>
-
-
-
-
-
-					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
-					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
-					<div class="editDelete">
-						<input class"edit" type="button" name="editButton" value="編集">
-						<input class"delete" type="button" name="deleteButton" value="削除">
+						<input class="edit" type="submit" name="SUBMIT" value="編集">
+						<input class="delete" type="submit" name="SUBMIT" value="削除">
 					</div>
 
 
@@ -113,22 +105,33 @@
 					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
 					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
 					<div class="editDelete">
-						<input class"edit" type="button" name="editButton" value="編集">
-						<input class"delete" type="button" name="deleteButton" value="削除">
+						<input class="edit" type="button" name="editButton" value="編集">
+						<input class="delete" type="button" name="deleteButton" value="削除">
+					</div>
+
+
+
+
+
+					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
+					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
+					<div class="editDelete">
+						<input class="edit" type="button" name="editButton" value="編集">
+						<input class="delete" type="button" name="deleteButton" value="削除">
 					</div>
 					<!-- 返信の最後の部分はtextareaで表示（forEach文の外） -->
 
 					<textarea class="reply_text" name="reply"
 						placeholder="返信内容:最後の返信欄はform形式" rows="4" cols="60"></textarea>
-					<input class="reply_button" type="button" name="replyButton"
-						value="返信"> <br>
+					<input class="reply_button" type="submit" name="SUBMIT" value="返信">
+					<br>
 				</div>
 			</form>
 
 			<form>
 				<input class="search" type="text" name="search" placeholder="検索内容">
-				<input class="searchButton" type="button" name="searchButton"
-					value="検索"> <br>
+				<input class="searchButton" type="submit" name="SUBMIT" value="検索">
+				<br>
 			</form>
 
 		</div>
