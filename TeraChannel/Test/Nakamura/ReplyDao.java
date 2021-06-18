@@ -85,7 +85,7 @@ public class ReplyDao {
 	（検閲を目的としているので他のものは出力する必要がない）
 	・ReplyDao.java
 	 */
-	public List<Reply> showSelectedReply(String param) {
+	public List<Reply> searchReply(String param) {
 		Connection conn = null;
 		List<Reply> replyList = new ArrayList<Reply>();
 
@@ -200,7 +200,7 @@ public class ReplyDao {
 			//検閲(result_search)のtrue/falseでinsert文を実行
 			if (result_search) {
 				// SQL文を準備する	true
-				String sql2 = "insert into reply values (null, ?,current_timestamp, ?, ?)";
+				String sql2 = "insert into reply values (null, ?,current_time, ?, ?)";
 				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
 				// SQL文を完成させる		idは自動採番(元がnull)なので記述不要	？の位置に実際に挿入するための記述
@@ -251,6 +251,163 @@ public class ReplyDao {
 	}
 
 
+
+
+
+
+
+
+	/*ユーザー側の詳細ページで編集を反映させる(投稿/返信)メソッド
+	・投稿部分:BoardDao.java
+	 */
+	public boolean editReply(String reply_main,int reply_id) {	//処理の結果をtrue,falseで返す
+		Connection conn = null;
+		boolean result = false;
+		boolean result_search=false;
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+			ResultSet rs;
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
+
+			//SQL文を準備する	検閲機能
+			String sql = "SELECT search_word FROM search";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を実行する	何件処理したかを返してくれる
+			rs = pStmt.executeQuery();
+
+			//String topic=param.getBoard_topic();
+			String main=reply_main;
+
+			//rs.next()の処理で受け取ったデータを次の行に移動
+			while(rs.next()){
+				//indexOf()を使って各単語で検閲を行っていく
+				String word=rs.getString("search_word");
+
+				int result_main=main.indexOf(word);
+
+				if(result_main==-1){
+
+					result_search=true;
+
+				}else{
+					result_search=false;
+					break;
+				}
+
+			}
+			//検閲(result_search)のtrue/falseでinsert文を実行
+			if (result_search) {
+				// SQL文を準備する	true
+				String sql2 = "update reply set reply_main=?,reply_date=current_time where reply_id=?";
+				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+
+				// SQL文を完成させる		idは自動採番(元がnull)なので記述不要	？の位置に実際に挿入するための記述
+				if (main != null && !main.equals("")) {
+					pStmt2.setString(1, main);
+				}
+				else {
+					pStmt2.setString(1, "null");
+				}
+				pStmt2.setInt(2, reply_id);
+
+				// SQL文を実行する	何件処理したかを返してくれる
+				if (pStmt2.executeUpdate() == 1) {
+					result = true;
+				}
+				else {
+					result = false;
+				}
+			}
+			else {
+				result=false;
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			result = false;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			result = false;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					result=false;
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
+	}
+
+
+
+
+
+
+
+
+
+
+	//返信の削除メソッド
+	public boolean deleteReply(int reply_id) {	//処理の結果をtrue,falseで返す
+		Connection conn = null;
+		boolean result = false;
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+			ResultSet rs;
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
+
+			// SQL文を準備する	true
+			String sql = "delete reply where reply_id=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる		idは自動採番(元がnull)なので記述不要	？の位置に実際に挿入するための記述
+			pStmt.setInt(1, reply_id);
+
+			// SQL文を実行する	何件処理したかを返してくれる
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+			else {
+				result = false;
+			}
+
+		}catch (SQLException e) {
+			e.printStackTrace();
+			result = false;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			result = false;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					result=false;
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
+	}
 
 
 }

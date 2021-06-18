@@ -81,7 +81,7 @@ footer {
 
 .postDate{
 	position:relative;
-	left:75%;
+	left:50%;
 	margin-block-start: 0em;
 	margin-left:5px;
 	margin-right:5px;
@@ -90,7 +90,7 @@ footer {
 
 .updateDate{
 	position:relative;
-	left:75%;
+	left:60%;
 	margin-block-start: 0em;
 	margin-left:5px;
 	margin-right:5px;
@@ -114,6 +114,12 @@ footer {
 	display:flex;
 	text-align:center;
 }
+
+.registreaction{
+	display:flex;
+	text-align:center;
+}
+
 
 .smile{
 

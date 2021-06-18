@@ -138,7 +138,7 @@ public class BoardDao {
 			//検閲(result_search)のtrue/falseでinsert文を実行
 			if (result_search) {
 				// SQL文を準備する	true
-				String sql2 = "update board set board_main=?,board_update=current_timestamp where board_id=?";
+				String sql2 = "update board set board_main=?,board_update=current_time where board_id=?";
 				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
 				// SQL文を完成させる		idは自動採番(元がnull)なので記述不要	？の位置に実際に挿入するための記述
@@ -187,5 +187,138 @@ public class BoardDao {
 	}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 /*削除ボタンが押された時の削除メソッド
+	  ・投稿部分:BoardDao.java
+	 */
+	public boolean deleteBoard(int board_id) {	//処理の結果をtrue,falseで返す
+		Connection conn = null;
+		boolean result = false;
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+			ResultSet rs;
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
+
+			// SQL文を準備する	true
+			String sql = "delete board where board_id=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる		idは自動採番(元がnull)なので記述不要	？の位置に実際に挿入するための記述
+			pStmt.setInt(1, board_id);
+
+			// SQL文を実行する	何件処理したかを返してくれる
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+			else {
+				result = false;
+			}
+
+		}catch (SQLException e) {
+			e.printStackTrace();
+			result = false;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			result = false;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					result=false;
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
+	}
+
+
+
+
+
+
+
+
+
+
+	/*リアクションの登録メソッド(リアクションごとではなくすべてを更新
+	 * ※増えているのは一つだけであるから（javascriptで制御）)
+	 *   この際、引数として、それぞれのリアクションの値を用いる
+	 */
+
+	public boolean registReaction(int board_id,int smile,int shock,int tear) {	//処理の結果をtrue,falseで返す
+		Connection conn = null;
+		boolean result = false;
+		boolean result_search=false;
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+			ResultSet rs;
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
+
+			// SQL文を準備する	true
+			String sql = "update board set board_smile=?,board_update=current_times,board_shock=?,board_tear=? where board_id=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setInt(1, smile);
+			pStmt.setInt(2, shock);
+			pStmt.setInt(3, tear);
+			pStmt.setInt(4, board_id);
+			// SQL文を実行する	何件処理したかを返してくれる
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+			else {
+				result = false;
+			}
+
+		}catch (SQLException e) {
+			e.printStackTrace();
+			result = false;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			result = false;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					result=false;
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
+	}
 
 }

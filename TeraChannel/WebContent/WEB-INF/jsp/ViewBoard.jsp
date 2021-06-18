@@ -47,13 +47,29 @@
 			</div>
 
 			<!-- 投稿内容表示部分 -->
-			<form class="board_form">
-				<div class="board">
+			<div class="board">
+				<form class="board_form" method="POST"
+					action="/TeraChannel/ViewBoardServletTest">
 
-					<p class="postDate">${e.m_id}投稿日時６月９日</p>
+					<!-- formタグで表示しないパラメータをリクエストスコープに格納するためのhiddenタグ -->
+					<input type="hidden" name="BOARD_ID"
+						value="${requestScope.bd.board_id}">
+					<input type="hidden" name="BOARD_UPDATE"
+						value="${requestScope.bd.board_update}">
+					<p class="postDate">投稿日時:${requestScope.bd.board_update}</p>
+					<input type="hidden" name="BOARD_TOPIC"
+						value="${requestScope.bd.board_topic}">
+					<!-- リアクションまでのformでは使わない返信に関するデータは適当に仮置き -->
+					<input type="hidden" name="SEARCH_REPLY" value="やあ">
+					<input type="hidden" name="REPLY_ID" value="1">
+				    <input type="hidden" name="REPLY_MAIN" value="やあ">
+					<input type="hidden" name="REPLY_DATE" value="2021-06-18 14:55:40">
 
-					<h3>投稿タイトル(今はhタグで代用)</h3>
-					<p class="board_main">投稿内容(今はpタグで代用：今後変わる可能性あり)</p>
+					<h3>${requestScope.bd.board_topic}</h3>
+					<input type="hidden" name="BOARD_MAIN"
+						value="${requestScope.bd.board_main}">
+					<!-- 投稿の出力 -->
+					<p class="board_main">${requestScope.bd.board_main}</p>
 					<div class="editDelete">
 						<input class="edit" type="submit" name="SUBMIT" value="投稿:編集">
 						<input class="delete" type="submit" name="SUBMIT" value="投稿:削除">
@@ -61,75 +77,59 @@
 					<!-- リアクション表示部分 -->
 					<div class="reaction">
 						<div>
+						<input type="hidden" id="hidden_smile" name="SMILE" value="${requestScope.bd.board_smile}">
 							<image class="smile" onclick="reactionSmileCount()"
 								src="image/smile.jpg" alt="リアクション（笑顔）"></image>
-							<p class="reactionCount" id="smile">125</p>
+							<p class="reactionCount" id="smile" name="SMILE">${requestScope.bd.board_smile}</p>
 						</div>
 						<div>
+							<input type="hidden" id="hidden_shock" name="SHOCK" value="${requestScope.bd.board_shock}">
 							<image class="shock" onclick="reactionShockCount()"
 								src="image/shock.jpg" alt="リアクション（驚愕）"></image>
-							<p class="reactionCount" id="shock">125</p>
+							<p class="reactionCount" id="shock" name="SHOCK">${requestScope.bd.board_shock}</p>
 						</div>
 						<div>
+						<input type="hidden" id="hidden_tear" name="TEAR" value="${requestScope.bd.board_tear}">
 							<image class="tear" onclick="reactionTearCount()"
 								src="image/tear.jpg" alt="リアクション（感涙）"></image>
-							<p class="reactionCount" id="tear">125</p>
+							<p class="reactionCount" id="tear" name="TEAR">${requestScope.bd.board_tear}</p>
 						</div>
-						<div class="reaction">
-							<input class="reactionRegist" type=submit name="SUBMIT" value="リアクション">
-						</div>>
+
+					</div>
+					<div class="registreaction">
+						<input class="reactionRegist" type=submit name="SUBMIT"
+							value="リアクション">
 					</div>
 					<!-- ここから返信欄（forEach部分） -->
 					<!-- 矢印の部分はおそらく画像挿入の形 -->
-					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
-					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
-					<div class="editDelete">
-						<input class="edit" type="submit" name="SUBMIT" value="返信:編集">
-						<input class="delete" type="submit" name="SUBMIT" value="返信:削除">
-					</div>
+					<c:forEach var="e" items="${replyList}">
+						<inpit type="hidden" name="REPLY_DATE" value="${e.reply_date}">
+						<p class="updateDate">登録日:${e.reply_date}</p>
 
+						<p class="reply" name="REPLY_MAIN">${e.reply_main}</p>
 
+						<div class="editDelete">
+							<input class="edit" type="submit" name="SUBMIT" value="返信:編集">
+							<input class="delete" type="submit" name="SUBMIT" value="返信:削除">
+						</div>
+					</c:forEach>
 
-
-					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
-					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
-					<div class="editDelete">
-						<input class="edit" type="submit" name="SUBMIT" value="編集">
-						<input class="delete" type="submit" name="SUBMIT" value="削除">
-					</div>
-
-
-
-
-
-					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
-					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
-					<div class="editDelete">
-						<input class="edit" type="button" name="editButton" value="編集">
-						<input class="delete" type="button" name="deleteButton" value="削除">
-					</div>
-
-
-
-
-
-					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
-					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
-					<div class="editDelete">
-						<input class="edit" type="button" name="editButton" value="編集">
-						<input class="delete" type="button" name="deleteButton" value="削除">
-					</div>
+				</form>
+				<form class="board_form" method="POST" action="/TeraChannel/ViewBoardServletTest">
 					<!-- 返信の最後の部分はtextareaで表示（forEach文の外） -->
 
-					<textarea class="reply_text" name="reply"
-						placeholder="返信内容:最後の返信欄はform形式" rows="4" cols="60"></textarea>
+					<input type="hidden" name="BOARD_ID" value="${requestScope.bd.board_id}">
+					<input type="hidden" name="USER_ID" value="${sessionScope.USER_ID}">
+					<textarea class="reply_text" name="REPLY_MAIN"
+						placeholder="返信内容を入力してください" rows="4" cols="60"></textarea>
 					<input class="reply_button" type="submit" name="SUBMIT" value="返信">
 					<br>
-				</div>
-			</form>
+				</form>
+			</div>
+
 
 			<form>
-				<input class="search" type="text" name="search" placeholder="検索内容">
+				<input class="search" type="text" name="SEARCH_REPLY" placeholder="検索内容">
 				<input class="searchButton" type="submit" name="SUBMIT" value="検索">
 				<br>
 			</form>
@@ -163,6 +163,7 @@
 				smileTF = 0;
 			}
 			document.getElementById("smile").innerHTML = "<p class=\"reactionCount\" id=\"smile\">"+ countSmile + "</p>";
+			document.getElementById("hidde_smile").innerHTML = "<input type=\"hidden\" id=\"hidden_smile\" name=\"SHOCK\" value=\""+countSmile+"\">";
 			//document.getElementById("smile").innerHTML="<p class="+"reactionCount"+">" + count + "</p>";
 		}
 
@@ -178,8 +179,8 @@
 				shockTF = 0;
 			}
 			document.getElementById("shock").innerHTML = "<p class=\"reactionCount\" id=\"shock\">"+ countShock + "</p>";
-			//document.getElementById("smile").innerHTML="<p class="+"reactionCount"+">" + count + "</p>";
-		}
+			document.getElementById("hidde_shock").innerHTML = "<input type=\"hidden\" id=\"hidden_shock\" name=\"SHOCK\" value=\""+countShock+"\">";
+			}
 		//涙アイコンの増減
 		function reactionTearCount() {
 			countTear = parseInt(document.getElementById("tear").textContent);
@@ -193,7 +194,7 @@
 			}
 			document.getElementById("tear").innerHTML = "<p class=\"reactionCount\" id=\"tear\">"
 					+ countTear + "</p>";
-			//document.getElementById("smile").innerHTML="<p class="+"reactionCount"+">" + count + "</p>";
+			document.getElementById("hidde_tear").innerHTML = "<input type=\"hidden\" id=\"hidden_tear\" name=\"TEAR\" value=\""+countTear+"\">";
 		}
 	</script>
 	<!-- ここまでjavaScript -->
