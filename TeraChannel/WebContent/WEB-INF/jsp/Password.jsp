@@ -23,8 +23,8 @@
 			<form  method="POST" action="/TeraChannel/PasswordServlet" onsubmit="return check();">
 			<table  align="center">
 			    <tr>
-				<th>前のパスワード</th>
-				<td><input type="text" id="user_pw" name="user_pw" class="form-control" ></td>
+				<th>メールアドレス</th>
+				<td><input type="text" id="user_mail" name="user_mail" class="form-control" ></td>
 				</tr>
 				<tr>
 				<th>新しいパスワード</th>
@@ -45,9 +45,9 @@
 
     function check(){
 
-	    //前のパスワードに値が入っているか？
+	    //メールアドレスに値が入っているか？
 	  if(document.getElementById('user_pw').value == ""){
-		    alert("前のパスワードを入力してください");
+		    alert("メールアドレスを入力してください");
 			return false;
 		}
 

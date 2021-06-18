@@ -29,8 +29,8 @@ public class MenuServlet extends HttpServlet {
 		}
 
 		// メニューページにフォワードする
-        int type = (int)session.getAttribute("Type");
-        if(type == 0) {
+        int user_type = (int)session.getAttribute("user_type");
+        if(user_type == 0) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Menu.jsp");
 		dispatcher.forward(request, response);
         }else{

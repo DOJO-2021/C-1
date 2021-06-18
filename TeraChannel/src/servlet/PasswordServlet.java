@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.PasswordDao;
-import model.User;
+import model.Password;
+
 /**
  * Servlet implementation class UpdateDeleteServlet
  */
@@ -22,7 +23,8 @@ public class PasswordServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
@@ -30,18 +32,23 @@ public class PasswordServlet extends HttpServlet {
 			return;
 		}
 		// リクエストパラメータを取得する
-				request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 
-				 String user_pw = request.getParameter("user_pw");
+		//前のパスワード、新しいパスワード、新しパスワード１取得
+		String user_mail= request.getParameter("user_mail");
+		String new_pw = request.getParameter("new_pw");
 
 
 
-	    // パスワードの更新を行う
-                 PasswordDao PDao = new PasswordDao();
-                 if (request.getParameter("change").equals("変更")) {
-                 PDao.update(new User(user_pw));
-                 }
+		//　一致しなければな、エラー
 
+
+		// パスワードの更新を行う　ログインしている人のIDと新しいパスワードをDaoに渡す。
+
+		PasswordDao PDao = new PasswordDao();
+		if (request.getParameter("change").equals("変更")) {
+			PDao.update(new Password(user_mail,new_pw));
+		}
 
 		// ログイン変更ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
