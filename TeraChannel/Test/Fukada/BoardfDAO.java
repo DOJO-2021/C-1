@@ -15,7 +15,7 @@ public class BoardfDAO {
 	// reaction合計の数を格納し降順で返す
 	// update all投稿、返信合わせての更新日を格納し降順で返す
 	// 上記を含めてた上でtopic見出しを表示する
-	public List<Board> topList() {
+	public List<Board> topList(int push) {
 		Connection conn = null;
 		List<Board> topListMain = new ArrayList<Board>();
 
@@ -25,19 +25,40 @@ public class BoardfDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
 
+
 			// SQL文1を準備する Boardテーブル用
-			String sql = "SELECT "
+			//値が0だったらリアクションの多い順で返す
+			String sql = "";
+			if(push ==0) {
+				sql = "SELECT "
 					+ "(BOARD_SMILE +  BOARD_SHOCK  + BOARD_TEAR ) AS REACTION , "
 					+ "BOARD_UPDATE ,BOARD_TOPIC  "
 					+ "FROM BOARD "
 					+ "GROUP BY BOARD_TOPIC "
 					+ "ORDER BY "
 					+ "REACTION DESC";
+
+			} else if(push==1) {
+				sql = "SELECT "
+					+ "(BOARD_SMILE +  BOARD_SHOCK  + BOARD_TEAR ) AS REACTION , "
+					+ "BOARD_UPDATE ,BOARD_TOPIC  "
+					+ "FROM BOARD "
+					+ "GROUP BY BOARD_TOPIC "
+					+ "ORDER BY "
+					+ "REACTION ASC";
+			 }
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文2を準備する Replyテーブル用
-			String sql_reply = "SELECT REPLY_DATE FROM REPLY ORDER BY REPLY_DATE DESC";
-			PreparedStatement pStmt_reply = conn.prepareStatement(sql_reply);
+			//値が0だったら新着順で返す
+			String sql_reply ="";
+			if(push==0) {
+			sql_reply = "SELECT REPLY_DATE FROM REPLY ORDER BY REPLY_DATE DESC";
+
+			}else if(push==1) {
+			sql_reply = "SELECT REPLY_DATE FROM REPLY ORDER BY REPLY_DATE ASC";
+			}
+			PreparedStatement pStmt_reply= conn.prepareStatement(sql_reply);
 
 			//SQL文1を実行し結果表を取得
 			ResultSet rs = pStmt.executeQuery();

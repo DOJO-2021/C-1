@@ -11,7 +11,7 @@ public class BoardDAOTest {
 
 		//topList()のテスト
 		System.out.println("--topList()のテスト--");
-		List<Board> topListMain = dao.topList();
+		List<Board> topListMain = dao.topList(0);
 		for (Board board : topListMain) {
 			System.out.println(board.getBoard_smileTotal());
 			System.out.println(board.getBoard_update());

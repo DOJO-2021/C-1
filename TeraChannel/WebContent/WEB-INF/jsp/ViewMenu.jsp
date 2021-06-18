@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,11 +36,11 @@
 				type="submit" name="submit" value="検索">
 		</form>
 		<select name="reaction">
-			<option value="popular">リアクションの多い順</option>
-			<option value="notpopular">リアクションの少ない順</option>
+			<option name="pulldown" value="popular">リアクションの多い順</option>
+			<option name="pulldown" value="notpopular">リアクションの少ない順</option>
 		</select> <select name="refresh">
-			<option value="newevent">新着順</option>
-			<option value="oldevant">古い順</option>
+			<option name="pulldown" value="newevent">新着順</option>
+			<option name="pulldown" value="oldevant">古い順</option>
 		</select>
 	</div>
 	<!-- メイン -->
@@ -62,8 +63,10 @@
 					<div class ="scrollbuttan" onclic="Top()"></div>
 
  					</div>
-					<p>${Board.board_topic} タイトル<br>
-				    トータルリアクション数：${}  最終更新日：${ }</p>
+ 					<c:forEach var="b" items="${topListMain}">
+					<p><c:out value="${b.board_topic}" /><br>
+				    トータルリアクション数：<c:out value="${b.reaction}" /> "" 最終更新日：<c:out value="${b.reply_date }" /></p>
+				    </c:forEach>
 				</div>
 			</div>
 
