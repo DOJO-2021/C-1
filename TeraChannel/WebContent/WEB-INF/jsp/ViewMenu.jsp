@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +8,9 @@
 <title>TeraChannel ViewMenu</title>
 <link rel="stylesheet" href="/TeraChannel/css/ViewMenu.css">
 <link rel="stylesheet" href="/TeraChannel/css/Common.css">
+
+<!-- jQuery -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -48,29 +51,67 @@
 	<main>
 		<div class="mainpage">
 			<div class="rule">
-				<h4>てらちゃんねる<br>利用のルール</h4>
+				<h4>
+					てらちゃんねる<br>利用のルール
+				</h4>
 				<p>
-					皆さんが快適に過ごすために以下のルールを守って使用して下さい。<br><br>
+					皆さんが快適に過ごすために以下のルールを守って使用して下さい。<br> <br>
 					1.個人名の表記の有無に限らず特定個人を揶揄したような悪口を投稿したり誹謗中傷はしないでください。<br>
-					相手を罵るなどの挑発的な言葉や、言葉尻をとらえるような揚げ足取り等の書き込みも、トラブルの元となりますのでやめてください。<br><br>
-					2.この掲示板は皆様の善意の書き込みによって成り立っていますが、掲示板に投稿された情報は必ずしも正確であるとは限りませんので、自己の責任と判断で掲示板をご利用ください。<br><br>
-					3.安全性に疑いのあるサイトのURLの記載はお控えください。<br><br>
+					相手を罵るなどの挑発的な言葉や、言葉尻をとらえるような揚げ足取り等の書き込みも、トラブルの元となりますのでやめてください。<br>
+					<br>
+					2.この掲示板は皆様の善意の書き込みによって成り立っていますが、掲示板に投稿された情報は必ずしも正確であるとは限りませんので、自己の責任と判断で掲示板をご利用ください。<br>
+					<br> 3.安全性に疑いのあるサイトのURLの記載はお控えください。<br> <br>
 					以上のルールが守れなかった場合、該当の投稿・返信の削除及び匿名化を解除し、実名を公表させていただく場合がありますので予めご了承ください。
 				</p>
 			</div>
 			<div class="page">
+				<!--
 				<div class="scroll">
-					<div class ="scrollbuttan" onclic="Top()"></div>
+					<button id="page-top" class="scrollbuttan"></button>
+				  <div class="scrollbuttan" onclic="Top()"></div>
 
- 					</div>
- 					<c:forEach var="b" items="${topListMain}">
-					<p><c:out value="${b.board_topic}" /><br>
-				    トータルリアクション数：<c:out value="${b.reaction}" /> "" 最終更新日：<c:out value="${b.reply_date }" /></p>
-				    </c:forEach>
+				</div>
+
+				<c:forEach var="b" items="${topListMain}">
+					<p>
+						<c:out value="${b.board_topic}" />
+						<br> トータルリアクション数：
+						<c:out value="${b.reaction}" />
+						"" 最終更新日：
+						<c:out value="${b.reply_date }" />
+					</p>
+				</c:forEach>
+				-->
+
+				<div class="scroll">
+				<p>仮見出し</p><br>
+				<p>仮見出し</p><br>
+				<p>仮見出し</p><br>
+				<p>仮見出し</p><br>
+				<p>仮見出し</p><br>
+				<p>仮見出し</p><br>
+				<p>仮見出し</p><br>
+				<p>仮見出し</p><br>
+				<p>仮見出し</p><br>
+				<p>仮見出し</p><br>
+
+				<c:forEach var="b" items="${topListMain}">
+					<p>
+						<c:out value="${b.board_topic}" />
+						<br> トータルリアクション数：
+						<c:out value="${b.reaction}" />
+						"" 最終更新日：
+						<c:out value="${b.reply_date }" />
+					</p>
+				</c:forEach>
+
+					<button id="page-top" class="scrollbuttan"></button>
+					<!--  <div class="scrollbuttan" onclic="Top()"></div>	-->
+
 				</div>
 			</div>
-
 		</div>
+
 	</main>
 	<!-- メインここまで -->
 	<!-- フッターここから -->
@@ -86,10 +127,27 @@
 	</footer>
 	<!-- フッターここまで -->
 	<script type="text/javascript">
-	function Top() {
-		scrollTo(0, 0);
-	 }
+	//	function Top() {
+	//		scrollTo(0, 0);
+	//	}
 
+	//	const pagetopBtn = document.querySelector('#page-top');
+	//	function scrollToTop() {
+	//		window.scrollTo({
+	//			top: 0,
+	//			behavior:
+	//		});
+	//	};
+	//	pagetopBtn.onclick = function() {
+	//		scrollToTop();
+	//	};
+
+		//pagetopBtn.addEventListener('click',function() {
+		//	window.scrollTo({
+		//		top: 0,
+		//		behavior:"smooth"
+		//	});
+	//	});
 	</script>
 </body>
 </html>

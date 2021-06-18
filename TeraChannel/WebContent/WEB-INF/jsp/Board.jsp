@@ -52,12 +52,12 @@
 						<h3>タイトル</h3>
 						<p>タイトルは内容が推測できるものをつけてください。</p>
 						<input type="text" name="board_topic" placeholder="タイトル"
-							class="regist" id="title" value=""> <span
+							class="title" id="title" value="" maxlength="40"> <span
 							class="alertarea"></span>
 					</div>
 					<div>
 						<h3>内容</h3>
-						<textarea name="board_main" class="regist" id="content"></textarea>
+						<textarea name="board_main" class="content" id="content" maxlength="500"></textarea>
 						<span class="alertarea"></span>
 					</div>
 					<div>
@@ -71,14 +71,25 @@
 	</main>
 	<!-- メインここまで -->
 	<script type="text/javascript">
-	function check() {
 
-	}
-	<!-- 投稿ボタン押したときに確認のconfirm表示
+	<!-- 投稿ボタン押したときに確認のconfirm表示-->
 		function check() {
-			if (document.getElementById("title").value === ""
-					|| document.getElementById("content").value === "") {
+			let str = document.getElementById("title").value;
+			let str2 = document.getElementById("content").value;
+			let check_str = str.trim();
+			let check_str2 = str2.trim();
+
+			if (str === "" && str2 === "") {
 				alert("タイトルと内容は必須入力です。");
+				return false;
+			} else if (check_str.length === 0 && check_str2.length === 0) {
+				alert("タイトルと内容は必須入力です。");
+				return false;
+			} else if (str === "" || check_str.length === 0) {
+				alert("タイトルは必須入力です。");
+				return false;
+			} else if (str2 === "" || check_str2.length === 0) {
+				alert("内容は必須入力です。");
 				return false;
 			} else if (window.confirm('投稿してもよろしいですか？')) {
 				return true;
@@ -86,7 +97,7 @@
 				return false;
 			}
 		}
-	-->
+
 	</script>
 	<!-- フッターここから -->
 	<footer>
