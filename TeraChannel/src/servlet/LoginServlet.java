@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.ManagerDao;
+
 //import dao.UserDao;
+import Mita.UserDao;
 import model.User;
 
 
@@ -43,15 +44,17 @@ public class LoginServlet extends HttpServlet {
 				System.out.println(user_mail + " / " + user_pw );
 
 				// ログイン処理を行う
-				ManagerDao iDao = new ManagerDao();
+				UserDao iDao = new UserDao();
 				if (iDao.isLoginOK(user_mail, user_pw)) {
 					// ログイン成功
 					//ログイン後の画面に移動する
 		//編集中
+					//User us=new User();
 					// セッションスコープにメールアドレスを格納する
 					//HttpSession session = request.getSession();
-					//session.setAttribute("mail", new User(mail));
-
+					//session.setAttribute("id",us.getUser_id());
+					HttpSession session = request.getSession();
+					session.setAttribute("user_mail",user_mail);
 					// メニューサーブレットにリダイレクトする
 					response.sendRedirect("/TeraChannel/MenuServlet");
 				}

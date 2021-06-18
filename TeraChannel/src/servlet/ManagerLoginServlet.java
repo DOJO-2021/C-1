@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import dao.ManagerDao;
 import model.LoginUser;
 import model.User;
+import model.Manager;
 /**
  * Servlet implementation class ManagerLoginServlet
  */
@@ -33,6 +34,7 @@ public class ManagerLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		// TODO Auto-generated method stub
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
@@ -47,8 +49,8 @@ public class ManagerLoginServlet extends HttpServlet {
 			//ログイン後の画面に移動する
 //編集中
 			// セッションスコープに___を格納する
-			//HttpSession session = request.getSession();
-			//session.setAttribute("id", new LoginUser(id));
+			HttpSession session = request.getSession();
+			session.setAttribute("manager_mail",manager_mail);
 
 			// メニューサーブレットにリダイレクトする
 			response.sendRedirect("/TeraChannel/ManagerMenuServlet");
