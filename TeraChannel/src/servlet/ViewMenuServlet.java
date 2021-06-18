@@ -66,11 +66,16 @@ public class ViewMenuServlet extends HttpServlet {
 		} else if (request.getParameter("pulldown").equals("notpopular")) {
 			List<Board> topListMain = bdao.topList(1);
 		}
-		//クリックされたURLの投稿IDを元に該当の行のデータを全てリクエストスコープに格納する
+		//クリックされた見出しの投稿IDを元に該当の行のデータを全てリクエストスコープに格納する
+		//if (request.getParameter("main")) {
+			//request.getParameter("board_id");
+		//board_idだけスコープに格納ん
 
+
+		//}
 
 		//詳細ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/ TeraChannel/VIewBoardServlet");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/TeraChannel/ViewBoardServlet");
 		dispatcher.forward(request, response);
 	}
 }
