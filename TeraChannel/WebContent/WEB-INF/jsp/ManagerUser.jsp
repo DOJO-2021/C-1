@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -35,19 +36,21 @@
 <form method="POST" action="/C-1/ManagerUserServlet">
 <input type="text" name="text" size="5">
 <input type="submit" name="SEARCH" value="ID検索">
-</form>
 
 <select name="count">
 <option value="=count">カウント検索</option>
-<option name="up"value="1">昇順</option>
-<option name="dn"value="2">降順</option>
+<option value="1">昇順</option>
+<option value="2">降順</option>
 </select>
 
+</form>
+
+<!--  保留
 <select name="update">
 <option value="=update">更新順</option>
 </select>
+-->
 
-<input type="submit" name="SUBMIT" value="更新">
 </div>
 
 
@@ -80,26 +83,32 @@
 <div class="tb">
 <table class="info">
 <tr>
-  <td>ユーザーID</td>
-  <td>ユーザー氏名</td>
-  <td>パスワード</td>
-  <td>ユーザータイプ</td>
-  <td>メールアドレス</td>
-  <td>ドクロカウント</td>
-  <td>実名化カウント</td>
+<td>ユーザーID</td>
+<td>ユーザー氏名</td>
+<td>パスワード</td>
+<td>ユーザータイプ</td>
+<td>メールアドレス</td>
+<td>ドクロカウント</td>
+<td>実名化カウント</td>
 </tr>
+</table>
+
+<c:forEach var="e" items="${userList}" >
+	<form method="POST" action="/C-1/ManagerUserServlet">
+<input type="submit" name="SUBMIT" value="更新">
+<table class="info">
 <tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td>
+  <td><input type="text" name="USER_ID" value="${e.user_id}"></td>
+  <td><input type="text" name="USER_NAME" value="${e.user_name}"></td>
+  <td><input type="text" name="USER_PW" value="${e.user_pw}"></td>
+  <td><input type="text" name="USER_TYPE" value="${e.user_type}"></td>
+  <td><input type="text" name="USER_MAIL" value="${e.user_mail}"></td>
+  <td><input type="text" name="USER_COUNT" value="${e.user_count}">
     <div id="disp_count">0</div>
     <input type="button" value="↑" id="btn_count_up" />
     <input type="button" value="↓" id="btn_count_down" />
-  </td>
-  <td></td>
+    </td>
+  <td><input type="text" name="USER_NAMECOUNT" value="${e.user_nameCount}"></td>
 </tr>
 </table>
 
@@ -137,6 +146,8 @@ window.onload = function() {
      };
 };
 </script>
+</form>
+</c:forEach>
 
 </div>
 

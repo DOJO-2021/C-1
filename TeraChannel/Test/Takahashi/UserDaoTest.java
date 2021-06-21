@@ -23,33 +23,30 @@ public class UserDaoTest {
 
 
 
+	    // insert()のテスト
+			System.out.println("---------- insert()のテスト ----------");
+			User insRec = new User(0,"TEST", "TEST", 0, "TEST", 0, 0);
+			if (dao.insert(insRec)) {
+				System.out.println("登録成功！");
+			}
+			else {
+				System.out.println("登録失敗！");
+			}
+
+			//挿入したレコードのIDを取得する
+			int insId = dao.select(insRec).get(0).getUser_id();
+
+
+
 		// update()のテスト
 		System.out.println("---------- update()のテスト ----------");
-		User upRec = new User(0,"TEST", "TEST", 0, "TEST", 2, 0);
+		User upRec = new User(insId,"TEST", "TEST", 0, "TEST", 2, 0);
 			if (dao.update(upRec)) {
 				System.out.println("更新成功！");
 			}
 			else {
 				System.out.println("更新失敗！");
 			}
-
-
-
-
-
-
-
-
-
-
-
-
     	}
-
-
-
-
-
-
     }
 }
