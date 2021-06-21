@@ -27,11 +27,11 @@ public class BoardServlet extends HttpServlet {
 			throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットに移動する
 		HttpSession session = request.getSession();
-		if (session.getAttribute("user_id") == null) {
+	/*	if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/TeraChannel/LoginServlet");
 			return;
 		}
-
+	*/
 		//投稿ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Board.jsp");
 		dispatcher.forward(request, response);
@@ -44,10 +44,11 @@ public class BoardServlet extends HttpServlet {
 			throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットに移動する
 		HttpSession session = request.getSession();
-		if (session.getAttribute("user_id") == null) {
+	/*	if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/TeraChannel/LoginServlet");
 			return;
 		}
+	*/
 
 		//リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");

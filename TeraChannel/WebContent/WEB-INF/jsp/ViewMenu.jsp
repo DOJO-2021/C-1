@@ -10,7 +10,8 @@
 <link rel="stylesheet" href="/TeraChannel/css/Common.css">
 
 <!-- jQuery -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 
@@ -65,9 +66,9 @@
 				</p>
 			</div>
 			<div class="page">
-
+				<!--
 				<div class="scroll">
-					<button id="page-top" class="scrollbuttan"></button>
+					<button id="page_top" class="scrollbuttan"></button>
 				  <div class="scrollbuttan" onclic="Top()"></div>
 
 				</div>
@@ -81,31 +82,44 @@
 						<c:out value="${b.reply_date }" />
 					</p>
 				</c:forEach>
+-->
+
+				<div id="page_scroll" class="scroll">
+					<p>仮見出し</p>
+					<br>
+					<p>仮見出し</p>
+					<br>
+					<p>仮見出し</p>
+					<br>
+					<p>仮見出し</p>
+					<br>
+					<p>仮見出し</p>
+					<br>
+					<p>仮見出し</p>
+					<br>
+					<p>仮見出し</p>
+					<br>
+					<p>仮見出し</p>
+					<br>
+					<p>仮見出し</p>
+					<br>
+					<p>仮見出し</p>
+					<br>
 
 
-				<div class="scroll">
-				<p>仮見出し</p><br>
-				<p>仮見出し</p><br>
-				<p>仮見出し</p><br>
-				<p>仮見出し</p><br>
-				<p>仮見出し</p><br>
-				<p>仮見出し</p><br>
-				<p>仮見出し</p><br>
-				<p>仮見出し</p><br>
-				<p>仮見出し</p><br>
-				<p>仮見出し</p><br>
+					<c:forEach var="b" items="${topListMain}">
+						<p>
+							<input type="hidden" name="main" value="${b.board_topic}">
+							<br> トータルリアクション数：
+							<c:out value="${b.reaction}" />
+							"" 最終更新日：
+							<c:out value="${b.reply_date }" />
+						</p>
+					</c:forEach>
 
-				<c:forEach var="b" items="${topListMain}">
-					<p>
-						<c:out value="${b.board_topic}" />
-						<br> トータルリアクション数：
-						<c:out value="${b.reaction}" />
-						"" 最終更新日：
-						<c:out value="${b.reply_date }" />
-					</p>
-				</c:forEach>
-
-					<button id="page-top" class="scrollbuttan"></button>
+					<div id="page_top" class="scrollbuttan">
+						<a href="#"></a>
+					</div>
 					<!--  <div class="scrollbuttan" onclic="Top()"></div>	-->
 
 				</div>
@@ -127,27 +141,31 @@
 	</footer>
 	<!-- フッターここまで -->
 	<script type="text/javascript">
-	//	function Top() {
-	//		scrollTo(0, 0);
-	//	}
+		//	function Top() {
+		//		scrollTo(0, 0);
+		//	}
 
-	//	const pagetopBtn = document.querySelector('#page-top');
-	//	function scrollToTop() {
-	//		window.scrollTo({
-	//			top: 0,
-	//			behavior:
-	//		});
-	//	};
-	//	pagetopBtn.onclick = function() {
-	//		scrollToTop();
-	//	};
-
-		//pagetopBtn.addEventListener('click',function() {
-		//	window.scrollTo({
-		//		top: 0,
-		//		behavior:"smooth"
-		//	});
-	//	});
+		//scrollボタン
+		$(function() {
+			let pagetop = $('#page_top');
+			//ボタン非表示
+			pagetop.hide();
+			//100pxのスクロールでボタン表示
+			$('#page_scroll').scroll(function() {
+				if ($(this).scrollTop() > 100) {
+					pagetop.fadeIn();
+				} else {
+					pagetop.fadeOut();
+				}
+			});
+			//ボタンを押すとスクロールして上部に戻る
+			pagetop.click(function() {
+				$('#page_scroll').animate({
+					scrollTop : 0
+				}, 500);
+				return false;
+			});
+		});
 	</script>
 </body>
 </html>

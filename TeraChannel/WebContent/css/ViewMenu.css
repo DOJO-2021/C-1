@@ -58,7 +58,6 @@ p {
 }
 /* メインページ */
 .scroll {
-	display: flex;
 	height: 520px;
 	width: 550px;
 	overflow-y:scroll;
@@ -69,13 +68,15 @@ p {
    text-decoration: none;
    background-color: #fffacd;
    border-radius: 30px;
-   position: relative;
+   position: absolute;		/*元はrelative*/
+   bottom: -140px;
+   right: 320px;
    height: 40px;
    width: 40px;
    cursor:pointer;
 }
 
-.scrollbuttan::before {
+.scrollbuttan:before {
 	content:'';
     width: 20px;
     height: 20px;
@@ -91,6 +92,10 @@ p {
     margin:  auto;
 }
 
+.scrollbuttan:hover {
+	color: #ffa500;
+	background-color: #fffaf0;
+}
 .mainpage {
 	display: flex;
 	padding: 20px 8px;
