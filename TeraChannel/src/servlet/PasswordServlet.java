@@ -27,30 +27,52 @@ public class PasswordServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
+		if (session.getAttribute("user_mail") == null) {
 			response.sendRedirect("/Terachannel/LoginServlet");
 			return;
 		}
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 
-		//前のパスワード、新しいパスワード、新しパスワード１取得
+		//メールアドレス、新しパスワード取得
 		String user_mail= request.getParameter("user_mail");
 		String new_pw = request.getParameter("new_pw");
 
 
 
-		//　一致しなければな、エラー
-
+		//一致しなければエラー 製作途中
+		/*
+		 if (session.getAttribute("user_mail") == ) {
+			response.sendRedirect("/simpleBC/LoginServlet");
+			return;
+		}
+		*/
 
 		// パスワードの更新を行う　ログインしている人のIDと新しいパスワードをDaoに渡す。
 
 		PasswordDao PDao = new PasswordDao();
 		if (request.getParameter("change").equals("変更")) {
 			PDao.update(new Password(user_mail,new_pw));
+		}{
+		    request.setAttribute("errorMessage", "失敗しました");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Password.jsp");
+					dispatcher.forward(request, response);
+		    }
+		/*
+		 エラー処理　メモ
+		 PasswordDao PDao = new PasswordDao();
+		if (request.getParameter("change").equals("変更")) {
+			if (PDao.update(new Tc(user_mail,new_pass ))) {
+				request.setAttribute("result",
+				new Result("更新成功。", "更新しました", "/TeraChannel/LoginServlet"));
+			}else {
+				request.setAttribute("result",
+				new Result("更新失敗。", "更新できませんでした", "/TeraChannel/LoginServlet"));
+			}
 		}
+        */
 
-		// ログイン変更ページにフォワードする
+		// ログインページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 		dispatcher.forward(request, response);
 	}

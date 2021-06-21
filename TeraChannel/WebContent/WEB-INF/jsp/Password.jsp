@@ -38,6 +38,7 @@
 				<input type="submit" name="change" value="変更">
 			</p>
 		</form>
+		<c:out value="${errorMessage}" />
      </div>
 
 <script type="text/javascript">
@@ -46,7 +47,7 @@
     function check(){
 
 	    //メールアドレスに値が入っているか？
-	  if(document.getElementById('user_pw').value == ""){
+	  if(document.getElementById('user_mail').value == ""){
 		    alert("メールアドレスを入力してください");
 			return false;
 		}
@@ -54,12 +55,12 @@
 	  //新しいパスワードは両方一致しているか？
 	   const new_pw = document.getElementById('new_pw').value;
 	   const confirm = document.getElementById('confirm').value;
-	   if(new_pass !== confirm) {
+	   if(new_pw !== confirm) {
            alert("パスワードが一致していません");
            return false;
         }
 	   //新しいパスワードに値が入っているか？
-	   if(new_paw == ""){
+	   if(new_pw == ""){
 		    alert("パスワードを入力してください");
 			return false;
 		}
