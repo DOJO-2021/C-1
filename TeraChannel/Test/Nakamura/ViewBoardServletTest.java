@@ -62,20 +62,26 @@ public class ViewBoardServletTest extends HttpServlet {
 		// リクエストパラメータを取得する
 			request.setCharacterEncoding("UTF-8");
 			//投稿テーブルパラメータ
-			int    board_id = Integer.parseInt(request.getParameter("BOARD_ID"));
-			String board_main = request.getParameter("BOARD_MAIN");
-			String board_topic= request.getParameter("BOARD_TOPIC");
-			int	   board_smile=Integer.parseInt(request.getParameter("SMILE"));
-			int    board_shock = Integer.parseInt(request.getParameter("SHOCK"));
-			int    board_tear= Integer.parseInt(request.getParameter("TEAR"));
-			String board_update= request.getParameter("BOARD_UPDATE");
-			//返信テーブルパラメータ
-			int    reply_id= Integer.parseInt(request.getParameter("REPLY_ID"));
-			String reply_main= request.getParameter("REPLY_MAIN");
-			String reply_date = request.getParameter("REPLY_DATE");
+//			int    board_id = Integer.parseInt(request.getParameter("BOARD_ID"));
+//			String board_main = request.getParameter("BOARD_MAIN");
+//			String board_topic= request.getParameter("BOARD_TOPIC");
+//			int	   board_smile=Integer.parseInt(request.getParameter("SMILE"));
+//			int    board_shock = Integer.parseInt(request.getParameter("SHOCK"));
+//			int    board_tear= Integer.parseInt(request.getParameter("TEAR"));
+//			String board_update= request.getParameter("BOARD_UPDATE");
+//			//返信テーブルパラメータ
+//			int    reply_id= Integer.parseInt(request.getParameter("REPLY_ID"));
+//			String reply_main= request.getParameter("REPLY_MAIN");
+//			String reply_date = request.getParameter("REPLY_DATE");
+//
+//			//検索用パラメータ
+//			String search_reply=request.getParameter("SEARCH_REPLY");
 
-			//検索用パラメータ
-			String search_reply=request.getParameter("SEARCH_REPLY");
+
+			//変数の宣言だけを行っているのは、jsp側で全てのformタグにhidden形式でデータを置くのを省略するため
+			int board_id,board_smile,board_shock,board_tear,reply_id;
+			String board_main,board_topic,board_update,reply_main,reply_date,search_reply;
+
 
 			//共通のユーザーIDの取得(セッションスコープから)
 			//下の行はセッションスコープに格納した仮置きのユーザーID
@@ -87,61 +93,95 @@ public class ViewBoardServletTest extends HttpServlet {
 
 
 			//投稿の編集ボタンが押されていた場合
-			if (request.getParameter("SUBMIT").equals("編集:投稿")) {
+			if (request.getParameter("SUBMIT").equals("投稿:返信")) {
+
+				 board_id = Integer.parseInt(request.getParameter("BOARD_ID"));
+				 board_main = request.getParameter("BOARD_MAIN");
+
 				if (bDao.editBoard(board_main,board_id)) {// 更新成功
 
 				}
 				else {												// 更新失敗
-					//失敗したときの処理の案として、新しいjsp(失敗をお知らせする)に遷移するか
-
+					request.setAttribute("false","投稿の編集" );
 					//同じServletに再フォワードを行ってhtmlの<c:if>を使ってjavascriptでその場でエラーアラートを出すか
 					//上の場合それを識別するようのパラメータを一つ作ってあげる必要がある
 
 				}
 			}//投稿の削除ボタンが押されていた場合
-			else if(request.getParameter("SUBMIT").equals("削除:投稿")){
+			else if(request.getParameter("SUBMIT").equals("投稿:削除")){
+
+				board_id = Integer.parseInt(request.getParameter("BOARD_ID"));
+
 				if (bDao.deleteBoard(board_id)) {	// 削除成功
 
 				}
 				else {						// 削除失敗
 
+					request.setAttribute("false","投稿の削除" );
+
 				}
 			}//返信の編集ボタンが押されていた場合
-			else if(request.getParameter("SUBMIT").equals("編集:返信")) {
+			else if(request.getParameter("SUBMIT").equals("返信:編集")) {
+
+				reply_id= Integer.parseInt(request.getParameter("REPLY_ID"));
+				reply_main= request.getParameter("REPLY_MAIN");
+
 				if (rDao.editReply(reply_main,reply_id)) {	// 更新成功
 
 				}
 				else {						// 更新失敗
-
+					request.setAttribute("false","返信の編集" );
 				}
 			}//返信の削除ボタンが押されていた場合
-			else if(request.getParameter("SUBMIT").equals("削除:返信")) {
+			else if(request.getParameter("SUBMIT").equals("返信:削除")) {
+
+				reply_id= Integer.parseInt(request.getParameter("REPLY_ID"));
+
 				if (rDao.deleteReply(reply_id)) {	// 削除成功
 
 				}
 				else {						// 削除失敗
-
+					request.setAttribute("false","返信の削除" );
 				}
-			}//返信ボタンが押されていた場合
+			}
+
+			//返信ボタンが押されていた場合
 			else if(request.getParameter("SUBMIT").equals("返信")) {
-				if (rDao.insertReply(new Reply(reply_id,reply_main,reply_date,user_id,board_id))) {	// 削除成功
+
+				board_id = Integer.parseInt(request.getParameter("BOARD_ID"));
+				reply_main= request.getParameter("REPLY_MAIN");
+
+				if (rDao.insertReply(new Reply(0,reply_main,"",user_id,board_id))) {	// 返信成功
 
 				}
-				else {						// 削除失敗
-
+				else {						// 返信失敗
+					request.setAttribute("false","返信登録" );
 				}
-			}//リアクションボタンが押されていた場合
+			}
+
+			//リアクションボタンが押されていた場合
 			else if(request.getParameter("SUBMIT").equals("リアクション")) {
+
+				board_id = Integer.parseInt(request.getParameter("BOARD_ID"));
+				board_smile=Integer.parseInt(request.getParameter("SMILE"));
+				board_shock = Integer.parseInt(request.getParameter("SHOCK"));
+				board_tear= Integer.parseInt(request.getParameter("TEAR"));
+
 				if (bDao.registReaction(board_id,board_smile,board_shock,board_tear)) {// 更新成功
 
 				}
 				else {												// 更新失敗
-
+					request.setAttribute("false","リアクション登録" );
 				}
-			}//検索ボタンが押されていた場合
+			}
+
+			//検索ボタンが押されていた場合
 			//検索で得られた返信一覧が返ってくるので、リクエストスコープにBoardインスタンスと
 			//List型のReplyインスタンスを格納してjspにフォワードすればよい
 			else if(request.getParameter("SUBMIT").equals("検索")) {
+
+				search_reply=request.getParameter("SEARCH_REPLY");
+				board_id = Integer.parseInt(request.getParameter("BOARD_ID"));
 
 				//検索で得られた新しい返信配列を取得しリクエストスコープに格納
 				List<Reply> replyList = rDao.searchReply(search_reply);
@@ -156,8 +196,8 @@ public class ViewBoardServletTest extends HttpServlet {
 			}
 			//同じページ(サーブレット)にフォワード
 			//サーブレットへのフォワードでエラー発生中
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/Test/ViewBoardServletTest.java");
-			dispatcher.forward(request, response);
+			request.setAttribute("board_id",request.getParameter("BOARD_ID"));
+			doGet(request,response);
 
 	}
 

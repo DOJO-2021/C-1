@@ -280,7 +280,7 @@ public class BoardDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
 
 			// SQL文を準備する	true
-			String sql = "update board set board_smile=?,board_update=current_times,board_shock=?,board_tear=? where board_id=?";
+			String sql = "update board set board_smile=?,board_update=current_time,board_shock=?,board_tear=? where board_id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
