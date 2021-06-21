@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +45,7 @@
 				</p>
 			</div>
 			<div class="board">
-				<h2>投稿</h2>
+				<h2>投稿<c:out value="${errorMessage}" /></h2>
 				<p>タイトル及び内容は必須項目です。</p>
 				<form method="POST" action="/TeraChannel/BoardServlet"
 					onsubmit="return check();">
@@ -57,7 +58,8 @@
 					</div>
 					<div>
 						<h3>内容</h3>
-						<textarea name="board_main" class="content" id="content" maxlength="500"></textarea>
+						<textarea name="board_main" class="content" id="content"
+							maxlength="500"></textarea>
 						<span class="alertarea"></span>
 					</div>
 					<div>
@@ -71,7 +73,6 @@
 	</main>
 	<!-- メインここまで -->
 	<script type="text/javascript">
-
 	<!-- 投稿ボタン押したときに確認のconfirm表示-->
 		function check() {
 			let str = document.getElementById("title").value;
@@ -97,7 +98,6 @@
 				return false;
 			}
 		}
-
 	</script>
 	<!-- フッターここから -->
 	<footer>

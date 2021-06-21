@@ -57,22 +57,26 @@ public class BoardServlet extends HttpServlet {
 
 
 		//user_idをセッションスコープから取ってくる
-		int user_id = (int)session.getAttribute("user_id");
+		//int user_id = (int)session.getAttribute("user_id");
 
 		//投稿処理を行う	user_idはセッションスコープに格納されているものを使用する
 		BoardDAO bDao = new BoardDAO();
-		if (bDao.insert(new Board(0,board_topic,board_main,0,0,0,"current_date",user_id))) {
+		if (bDao.insert(new Board(0,board_topic,board_main,0,0,0,"current_date",6))) {	//最後user_id
 
 			//投稿できた場合は投稿IDをリクエストスコープに格納
 			request.setAttribute("board_id",request.getParameter("board_id"));
 
 			//詳細ページへフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/TeraChannel/ViewBoardServlet");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ViewBoard.jsp");
 			dispatcher.forward(request, response);
 		}
 		else {
-			//投稿できなかった場合は投稿ページへリダイレクトする
-			response.sendRedirect("/TeraChannel/BoardServlet");
+			//投稿できなかった場合はエラーメッセージ表示の上、フォワードしなおす
+			request.setAttribute("errorMessage", "に失敗しました");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Board.jsp");
+			dispatcher.forward(request, response);
+			//投稿ページへリダイレクトする
+			//response.sendRedirect("/TeraChannel/BoardServlet");
 		}
 
 
