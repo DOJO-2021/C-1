@@ -27,10 +27,10 @@ public class ViewMenuServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("user_id") == null ) {
+		/* if (session.getAttribute("user_id") == null ) {
 			response.sendRedirect("/TeraChannel/LoginServlet");
 			return;
-		}
+		} */
 
 		BoardfDAO bdao = new BoardfDAO();
 		List<Board> topListMain = bdao.topList(0);
@@ -46,14 +46,15 @@ public class ViewMenuServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("user_id") == null ) {
+		/* if (session.getAttribute("user_id") == null ) {
 			response.sendRedirect("/TeraChannel/LoginServlet");
 			return;
-		}
+		} */
 
 
 		// 新着順か古い順か表示する
 		BoardfDAO bdao = new BoardfDAO();
+
 
 		if (request.getParameter("pulldown").equals("newevent")) {
 			List<Board> topListMain = bdao.topList(0);
@@ -66,13 +67,15 @@ public class ViewMenuServlet extends HttpServlet {
 		} else if (request.getParameter("pulldown").equals("notpopular")) {
 			List<Board> topListMain = bdao.topList(1);
 		}
-		//クリックされた見出しの投稿IDを元に該当の行のデータを全てリクエストスコープに格納する
-		//if (request.getParameter("main")) {
-			//request.getParameter("board_id");
-		//board_idだけスコープに格納ん
+		//クリックされた見出しのパラメータを取得する
+//		request.setCharacterEncoding("UTF-8");
+//		String[] main = request.getParameterValues("main");
+//		if (main.equals(getParameterValues("main"))) {
+//		//if (getParameterValues("main").equals("${b.board_topic}")) {
+//
+		//見出しに適した投稿IDをリクエストスコープに格納する
+		request.setAttribute("board_id", request.getParameter("board_id"));
 
-
-		//}
 
 		//詳細ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/TeraChannel/ViewBoardServlet");

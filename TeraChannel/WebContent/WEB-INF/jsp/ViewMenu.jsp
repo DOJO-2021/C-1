@@ -109,7 +109,9 @@
 
 					<c:forEach var="b" items="${topListMain}">
 						<p>
-							<input type="hidden" name="main" value="${b.board_topic}">
+							<%--<input type="hidden" onclick="/TeraChannel/ViewBoardServlet${board_id}" value="${b.board_topic}">
+							--%>
+							 <a href="/TeraChannel/ViewBoardServlet${BOARD_ID}"> ${b.board_topic} </a>
 							<br> トータルリアクション数：
 							<c:out value="${b.reaction}" />
 							"" 最終更新日：
