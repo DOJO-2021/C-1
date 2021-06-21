@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDao {
+	public static void main(String[] args) {}
 	// ログインできるならtrueを返す
 		public boolean isLoginOK(String mail, String pw) {
 			Connection conn = null;
@@ -59,3 +60,4 @@ public class UserDao {
 			return loginResult;
 		}
 }
+

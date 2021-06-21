@@ -34,7 +34,9 @@
 				<a href="" class="wasureta">パスワードを忘れた方はこちら</a>
 			</div>
 		</form>
+		<div class="errorColor">
 		<c:out value="${errorMessage}" />
+		</div>
 	</div>
 
 </body>

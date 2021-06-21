@@ -48,13 +48,14 @@ public class LoginServlet extends HttpServlet {
 				if (iDao.isLoginOK(user_mail, user_pw)) {
 					// ログイン成功
 					//ログイン後の画面に移動する
-		//編集中
-					//User us=new User();
-					// セッションスコープにメールアドレスを格納する
+
+
+					// セッションスコープにIDを格納する
 					//HttpSession session = request.getSession();
 					//session.setAttribute("id",us.getUser_id());
+					User us=new User();
 					HttpSession session = request.getSession();
-					session.setAttribute("user_mail",user_mail);
+					session.setAttribute("user_id",us.getUser_id());
 					// メニューサーブレットにリダイレクトする
 					response.sendRedirect("/TeraChannel/MenuServlet");
 				}
@@ -62,6 +63,8 @@ public class LoginServlet extends HttpServlet {
 					// ログイン失敗
 					//今の画面でエラーを表示する
 					//エラーメッセージをjspに渡す
+					//repuest.setAttribute();
+					//RepuestDispatcher dispatcher = repuest.getRepuestDispatcher
 					request.setAttribute("errorMessage", "ログインに失敗しました");
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 					dispatcher.forward(request, response);

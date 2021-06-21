@@ -11,6 +11,7 @@ body, p, form, input {
 	border: 1px solid #555;
 	border-radius: 4px;
 	background-color: #ffffff;
+	padding: 20px;
 }
 
 form p {
@@ -38,26 +39,29 @@ input[type="email"], input[type="password"] {
 	color: white;
 	border-radius: 4px;
 	cursor: pointer;
+	transition: .3s;
 }
+
 .btn:hover {
-  box-shadow    : none;        /* カーソル時の影消去 */
-  opacity       : 0.8;         /* カーソル時透明度 */
+	box-shadow: none; /* カーソル時の影消去 */
+	opacity: 0.8; /* カーソル時透明度 */
 }
+
 .submit {
-	padding-left: 100px;
+	padding-left: 90px;
 }
 /*いい感じに横並びになります*/
 .narande {
 	display: flex;
 	justify-content: space-evenly;
 }
-
+/*パスワードを忘れた方はこちら*/
 .wasureta {
 	color: #3490dc;
 }
 
 footer {
-	background-color: #EEEEEE;
+	background-color: #dcdcdc;
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -72,4 +76,8 @@ th {
 table {
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.errorColor {
+	color: #ff0000;
 }
