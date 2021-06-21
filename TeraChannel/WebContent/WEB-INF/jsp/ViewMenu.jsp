@@ -65,7 +65,7 @@
 				</p>
 			</div>
 			<div class="page">
-				<!--
+
 				<div class="scroll">
 					<button id="page-top" class="scrollbuttan"></button>
 				  <div class="scrollbuttan" onclic="Top()"></div>
@@ -74,14 +74,14 @@
 
 				<c:forEach var="b" items="${topListMain}">
 					<p>
-						<c:out value="${b.board_topic}" />
+						<input type="hidden" name="main" value="${b.board_topic}">
 						<br> トータルリアクション数：
 						<c:out value="${b.reaction}" />
 						"" 最終更新日：
 						<c:out value="${b.reply_date }" />
 					</p>
 				</c:forEach>
-				-->
+
 
 				<div class="scroll">
 				<p>仮見出し</p><br>
