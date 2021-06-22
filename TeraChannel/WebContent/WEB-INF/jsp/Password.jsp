@@ -38,7 +38,7 @@
 				<input type="submit" name="change" value="変更">
 			</p>
 		</form>
-		<c:out value="${errorMessage}" />
+     <c:out value="${PasswordError}" />
      </div>
 
 <script type="text/javascript">

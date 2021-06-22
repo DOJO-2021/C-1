@@ -25,12 +25,14 @@ public class PasswordServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("user_mail") == null) {
-			response.sendRedirect("/Terachannel/LoginServlet");
-			return;
-		}
+//		if (session.getAttribute("user_mail") == null) {
+//		response.sendRedirect("/Terachannel/LoginServlet");
+//			return;
+//		}
+
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 
@@ -39,22 +41,21 @@ public class PasswordServlet extends HttpServlet {
 		String new_pw = request.getParameter("new_pw");
 
 
+		//一致しなければエラー
 
-		//一致しなければエラー 製作途中
-		/*
-		 if (session.getAttribute("user_mail") == ) {
-			response.sendRedirect("/simpleBC/LoginServlet");
-			return;
-		}
-		*/
+//		 if (session.getAttribute("user_mail") !=  user_mail) {
+//		   request.setAttribute("PasswordError", "失敗しました");
+//					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Password.jsp");
+//					dispatcher.forward(request, response);
+//	    }
 
 		// パスワードの更新を行う　ログインしている人のIDと新しいパスワードをDaoに渡す。
 
 		PasswordDao PDao = new PasswordDao();
 		if (request.getParameter("change").equals("変更")) {
 			PDao.update(new Password(user_mail,new_pw));
-		}{
-		    request.setAttribute("errorMessage", "失敗しました");
+		}else{
+		    request.setAttribute("PasswordError", "失敗しました");
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Password.jsp");
 					dispatcher.forward(request, response);
 		    }

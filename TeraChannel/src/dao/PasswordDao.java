@@ -23,7 +23,7 @@ public class PasswordDao {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "");
 			// SQL文を準備する
-			String sql = "update User set user_pw = ? where user_mail = '?' ";
+			String sql = "update User set user_pw = '?' where user_mail = '?' ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SQL文を完成させる
 			if (user.getNew_pw() != null) {
