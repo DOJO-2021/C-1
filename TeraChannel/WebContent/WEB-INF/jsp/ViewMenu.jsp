@@ -35,17 +35,18 @@
 	<!-- ヘッダーここまで -->
 
 	<div class=list>
-		<form action="TeraChannel/Board" method="post">
-			<input type="search" name="search" placeholder="キーワードを入力"> <input
-				type="submit" name="submit" value="検索">
+		<form id="form" action="ViewMenuServlet" method="post">
+			<input type="search" name="search" placeholder="キーワードを入力">
+			<input type="submit"  value="検索" onclick="exec()">
 		</form>
-		<select name="reaction">
-			<option name="pulldown" value="popular">リアクションの多い順</option>
-			<option name="pulldown" value="notpopular">リアクションの少ない順</option>
-		</select> <select name="refresh">
-			<option name="pulldown" value="newevent">新着順</option>
-			<option name="pulldown" value="oldevant">古い順</option>
+		<select id= "re-ch"  name="reaction">
+			<option  action="ViewMenuServlet" name="pulldown" value="popular">リアクションの多い順</option>
+			<option  action="ViewMenuServlet" name="pulldown" value="notpopular">リアクションの少ない順</option>
+		</select> <select id= "ref-ch" value="ViewMenuServlet" name="refresh">
+			<option  action="ViewMenuServlet" name="pulldown" value="newevent">新着順</option>
+			<option  action="ViewMenuServlet" name="pulldown" value="oldevant">古い順</option>
 		</select>
+
 	</div>
 	<!-- メイン -->
 
@@ -66,56 +67,25 @@
 				</p>
 			</div>
 			<div class="page">
-				<!--
+				<%--
 				<div class="scroll">
 					<button id="page_top" class="scrollbuttan"></button>
 				  <div class="scrollbuttan" onclic="Top()"></div>
-
-				</div>
-
-				<c:forEach var="b" items="${topListMain}">
-					<p>
-						<input type="hidden" name="main" value="${b.board_topic}">
-						<br> トータルリアクション数：
-						<c:out value="${b.reaction}" />
-						"" 最終更新日：
-						<c:out value="${b.reply_date }" />
-					</p>
-				</c:forEach>
--->
+--%>
 
 				<div id="page_scroll" class="scroll">
-					<p>仮見出し</p>
-					<br>
-					<p>仮見出し</p>
-					<br>
-					<p>仮見出し</p>
-					<br>
-					<p>仮見出し</p>
-					<br>
-					<p>仮見出し</p>
-					<br>
-					<p>仮見出し</p>
-					<br>
-					<p>仮見出し</p>
-					<br>
-					<p>仮見出し</p>
-					<br>
-					<p>仮見出し</p>
-					<br>
-					<p>仮見出し</p>
-					<br>
-
 
 					<c:forEach var="b" items="${topListMain}">
 						<p>
 							<%--<input type="hidden" onclick="/TeraChannel/ViewBoardServlet${board_id}" value="${b.board_topic}">
 							--%>
-							 <a href="/TeraChannel/ViewBoardServlet${BOARD_ID}"> ${b.board_topic} </a>
-							<br> トータルリアクション数：
-							<c:out value="${b.reaction}" />
-							"" 最終更新日：
-							<c:out value="${b.reply_date }" />
+							<h8> <a href="/TeraChannel/ViewBoardServlet?${board_id}">
+								${b.board_topic} </a></h8>
+							<br>
+							<h11>
+							<pre>  みんなのリアクション数：<c:out value="${b.board_smileTotal}" />   最終更新日：<c:forEach
+									var="r" items="${b.reply}">${r.reply_date}</c:forEach>
+							</pre></h11>
 						</p>
 					</c:forEach>
 
@@ -168,6 +138,22 @@
 				return false;
 			});
 		});
+
+		//検索結果表示
+		function exec() {
+			document.getElementById('form').submit();
+		}
+		//プルダウン切り替え(リアクション)
+		const selected = document.getElementById('re-ch');
+		selected.onchange = function() {
+			location.href =select.action;
+		}
+		//プルダウン切り替え(新着)
+		const selected = document.getElementById('ref-ch');
+		selected.onchange = function() {
+			location.href =select.action;
+		}
+
 	</script>
 </body>
 </html>

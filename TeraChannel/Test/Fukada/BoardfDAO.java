@@ -53,10 +53,10 @@ public class BoardfDAO {
 			//値が0だったら新着順で返す
 			String sql_reply ="";
 			if(push==0) {
-			sql_reply = "SELECT REPLY_DATE FROM REPLY ORDER BY REPLY_DATE DESC";
+			sql_reply = "SELECT REPLY_DATE FROM REPLY ORDER BY REPLY_DATE DESC LIMIT 1";
 
 			}else if(push==1) {
-			sql_reply = "SELECT REPLY_DATE FROM REPLY ORDER BY REPLY_DATE ASC";
+			sql_reply = "SELECT REPLY_DATE FROM REPLY ORDER BY REPLY_DATE ASC LIMIT 1";
 			}
 			PreparedStatement pStmt_reply= conn.prepareStatement(sql_reply);
 

@@ -32,8 +32,12 @@ public class ViewMenuServlet extends HttpServlet {
 			return;
 		} */
 
+		//リストを取得する
 		BoardfDAO bdao = new BoardfDAO();
 		List<Board> topListMain = bdao.topList(0);
+
+		//取得結果をリクエストスコープに格納する
+		request.setAttribute("topListMain", topListMain);
 
 		//見出しページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ViewMenu.jsp");
@@ -51,34 +55,48 @@ public class ViewMenuServlet extends HttpServlet {
 			return;
 		} */
 
+		//リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+	    String word = request.getParameter("search");
+
+	    BoardfDAO bdao = new BoardfDAO();
 
 		// 新着順か古い順か表示する
-		BoardfDAO bdao = new BoardfDAO();
+	    if(request.getParameter("pulldown") != null) {
+	    	//pulldownがnullじゃなない場合、新着順の処理する
+			if (request.getParameter("pulldown").equals("newevent")) {
+				List<Board> topListMain = bdao.topList(0);
+				//取得結果をリクエストスコープに格納する
+				request.setAttribute("topListMain", topListMain);
+			} else if (request.getParameter("pulldown").equals("oldevant")) {
+				List<Board> topListMain = bdao.topList(1);
+				request.setAttribute("topListMain", topListMain);
+			}
+
+			// リアクションの多い順か少ない順か表示する
+			if (request.getParameter("pulldown").equals("popular")) {
+				List<Board> topListMain = bdao.topList(0);
+				request.setAttribute("topListMain", topListMain);
+			} else if (request.getParameter("pulldown").equals("notpopular")) {
+				List<Board> topListMain = bdao.topList(1);
+				request.setAttribute("topListMain", topListMain);
+			}
+	    }
 
 
-		if (request.getParameter("pulldown").equals("newevent")) {
-			List<Board> topListMain = bdao.topList(0);
-		} else if (request.getParameter("pulldown").equals("oldevant")) {
-			List<Board> topListMain = bdao.topList(1);
+		//検索処理を行う
+		if (request.getParameter("submit").equals("検索")) {
+			List<Board> topListMain = bdao.select(word);
+			request.setAttribute("topListMain", topListMain);
 		}
-		// リアクションの多い順か少ない順か表示する
-		if (request.getParameter("pulldown").equals("popular")) {
-			List<Board> topListMain = bdao.topList(0);
-		} else if (request.getParameter("pulldown").equals("notpopular")) {
-			List<Board> topListMain = bdao.topList(1);
-		}
-		//クリックされた見出しのパラメータを取得する
-//		request.setCharacterEncoding("UTF-8");
-//		String[] main = request.getParameterValues("main");
-//		if (main.equals(getParameterValues("main"))) {
-//		//if (getParameterValues("main").equals("${b.board_topic}")) {
-//
+
 		//見出しに適した投稿IDをリクエストスコープに格納する
 		request.setAttribute("board_id", request.getParameter("board_id"));
 
+		//詳細ページにフォワードする//
 
-		//詳細ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/TeraChannel/ViewBoardServlet");
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("/TeraChannel/ViewBoardServlet");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ViewMenu.jsp");
 		dispatcher.forward(request, response);
 	}
 }
