@@ -71,7 +71,7 @@ public class BoardServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		else {
-			//投稿できなかった場合はエラーメッセージ表示の上、フォワードしなおす
+			//投稿できなかった場合はエラーメッセージ表示の上、同じページへフォワード
 			request.setAttribute("errorMessage", "に失敗しました");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Board.jsp");
 			dispatcher.forward(request, response);
