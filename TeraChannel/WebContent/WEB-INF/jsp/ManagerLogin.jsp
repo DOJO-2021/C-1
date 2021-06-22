@@ -37,6 +37,9 @@
 		<div class="errorColor">
 		<c:out value="${errorMessage}" />
 		</div>
+		<div class="taikin">
+		<c:out value="${taikinMessage }" />
+		</div>
 	</div>
 
 </body>

@@ -2,12 +2,15 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import model.User;
 
 /**
  * Servlet implementation class LogoutServlet
@@ -25,7 +28,17 @@ public class LogoutServlet extends HttpServlet {
 		session.invalidate();
 
 		// ログインページにリダイレクトする
-		response.sendRedirect("/TeraChannel/LoginServlet");
+		//三田のコード
+		//User us=new User();
+		//request.setAttribute("taikinMessage",us.getUser_name() +"さん、今日も一日お疲れ様でした。");
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
+		//dispatcher.forward(request, response);
+
+		request.setAttribute("taikinMessage","今日も一日お疲れ様でした。");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
+		dispatcher.forward(request, response);
+		//新川さんのコード
+		//response.sendRedirect("/TeraChannel/LoginServlet");
 	}
 
 }

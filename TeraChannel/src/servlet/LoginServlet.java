@@ -58,6 +58,7 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("user_id",us.getUser_id());
 					// メニューサーブレットにリダイレクトする
 					response.sendRedirect("/TeraChannel/MenuServlet");
+					//response.sendRedirect("/TeraChannel/LogoutServlet");
 				}
 				else {
 					// ログイン失敗
@@ -65,7 +66,7 @@ public class LoginServlet extends HttpServlet {
 					//エラーメッセージをjspに渡す
 					//repuest.setAttribute();
 					//RepuestDispatcher dispatcher = repuest.getRepuestDispatcher
-					request.setAttribute("errorMessage", "ログインに失敗しました");
+					request.setAttribute("errorMessage", "ログインに失敗しました.");
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 					dispatcher.forward(request, response);
 
