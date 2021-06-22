@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <!-- 各配置はcssファイル上でabsoluteで場所を指定すればよいのでタグの
 順番はある程度配慮するものの確定ではない -->
@@ -8,10 +9,20 @@
 <meta charset="UTF-8">
 <title>てらちゃんねる</title>
 <link rel="stylesheet" href="/TeraChannel/css/ViewBoard.css">
+
+
+
 </head>
+
 <body>
+	<!-- 失敗処理だった場合のアラート処理 -->
+		<c:if  test="${not empty fail}">
+		 <script type="text/javascript">
+		 window.alert("${fail}");
+		 </script>
+		</c:if>
 	<!-- ヘッダーここから -->
-		<header>
+	<header>
 		<div class="teraco">
 			<a href="/TeraChannel/ManagerMenuServlet"><img
 				src="/TeraChannel/image/teraco.jpg" alt="TERACO"></a>
@@ -26,12 +37,13 @@
 		</div>
 	</header>
 	<!-- ヘッダーここまで -->
+
 	<!-- メインここから -->
 	<main>
 
 		<div class="yokonarabi">
 			<!-- マニュアル表示部分 -->
-			<div class="manual">
+			<div class="rule">
 				<h2>ルール</h2>
 				<p>
 					皆さんが快適に過ごすために以下のルールを守って使用して下さい。<br>
@@ -44,82 +56,79 @@
 			</div>
 
 			<!-- 投稿内容表示部分 -->
-			<form>
-				<div class="board">
-					<h3>投稿タイトル(今はhタグで代用)</h3>
-					<p class="board_main">投稿内容(今はpタグで代用：今後変わる可能性あり)</p>
-						<div class="editDelete">
-						<input class"delete" type="button" name="deleteButton" value="削除">
-					</div>
+			<c:set var="checkID" value="${user_id}"/>
+			<div class="board">
+				<form class="board_form" method="POST" action="/TeraChannel/ManagerViewBoardServletTest">
+
+					<!-- formタグで表示しないパラメータをリクエストスコープに格納するためのhiddenタグ -->
+					<input type="hidden" name="board_id" value="${bd.board_id}">
+					<input type="hidden" name="board_update"value="${bd.board_update}">
+					<input type="hidden" name="board_topic" value="${bd.board_topic}">
+
+					<p class="postDate">投稿日時:${bd.board_update}</p>
+
+					<h3>${bd.board_topic} ${user_id}</h3>
+
+					<!-- 投稿の出力 -->
+						<p class="board_main">${bd.board_main}</p>
+						<input class="delete" type="submit" name="submit" value="投稿:削除">
+					<!-- リアクション表示部分 -->
 					<div class="reaction">
-						<div class="smileCount">
+						<div>
+						 <input type="hidden" id="hidden_smile" name="smile" value="${bd.board_smile}">
 							<image class="smile" src="image/smile.jpg" alt="リアクション（笑顔）"></image>
-							<p class="reactionCount" id="smile">125</p>
+							<p class="reactionCount" id="smile" name="smile">${bd.board_smile}</p>
 						</div>
-						<div class="shockCount">
+						<div>
+							<input type="hidden" id="hidden_shock" name="shock" value="${bd.board_shock}">
 							<image class="shock" src="image/shock.jpg" alt="リアクション（驚愕）"></image>
-							<p class="reactionCount" id="smile">125</p>
+							<p class="reactionCount" id="shock" name="shock">${bd.board_shock}</p>
 						</div>
-						<div class="tearCount">
+						<div>
+						<input type="hidden" id="hidden_tear" name="tear" value="${bd.board_tear}">
 							<image class="tear" src="image/tear.jpg" alt="リアクション（感涙）"></image>
-							<p class="reactionCount" id="smile">125</p>
+							<p class="reactionCount" id="tear" name="tear">${bd.board_tear}</p>
 						</div>
+
 					</div>
+					</form>
+
+
 					<!-- ここから返信欄（forEach部分） -->
 					<!-- 矢印の部分はおそらく画像挿入の形 -->
-					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
-					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
-					<div class="editDelete">
-						<input class"delete" type="button" name="deleteButton" value="削除">
-					</div>
+					<c:forEach var="e" items="${replyList}">
+						<form class="board_form" method="POST" action="/TeraChannel/ManagerViewBoardServletTest">
+						<input type="hidden" name="reply_id" value="${e.reply_id}">
+						<input type="hidden" name="reply_date" value="${e.reply_date}">
+
+							<div class="flex1">
+							👆匿名${e.user_id}さん&nbsp;返信ID:${e.reply_id}
+							<p class="updateDate">登録日:${e.reply_date}</p>
+							</div>
+							<p class="reply" name="reply_main">${e.reply_main}</p>
+							<div class="editDelete">
+							<input class="delete" type="submit" name="submit" value="返信:削除">
+							</div>
+						</form>
+					</c:forEach>
+
+			</div>
 
 
+			<form class="board_form" method="POST" action="/TeraChannel/ManagerViewBoardServletTest">
 
-
-					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
-					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
-					<div class="editDelete">
-						<input class"delete" type="button" name="deleteButton" value="削除">
-					</div>
-
-
-
-
-					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
-					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
-					<div class="editDelete">
-						<input class"delete" type="button" name="deleteButton" value="削除">
-					</div>
-
-
-
-
-					<p class="updateDate">${e.m_id}投稿日時６月１０日</p>
-					<p class="reply">返信欄(この部分はforEach文で記載、現在はpタグで仮表現)</p>
-					<div class="editDelete">
-						<input class"delete" type="button" name="deleteButton" value="削除">
-					</div>
+				<input type="hidden" name="board_id"value="${bd.board_id}">
+				<div class="search">
+				<input class="search_input" type="text" name="search_reply" placeholder="検索内容">
 				</div>
-			</form>
-
-			<form>
-				<input class="search" type="text" name="search" placeholder="検索内容">
-				<input class="searchButton" type="button" name="searchButton"
-					value="検索"> <br>
+				<div class="editDelete">
+				<input class="searchButton" type="submit" name="submit" value="検索">
+				</div>
+				<br>
 			</form>
 
 		</div>
 	</main>
 	<!-- メインここまで -->
-
-	<!--  投稿内容自体を表示した後、forEach文で各返信を出力 -->
-	<!--  例:<div>投稿内容 <form><forEach>返信内容</form></div>-->
-
-	<!-- ここからjavaScript -->
-	<script>
-		'use strict';
-	</script>
-	<!-- ここまでjavaScript -->
-
 </body>
 </html>

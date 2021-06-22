@@ -14,8 +14,8 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class ViewBoardServlet
  */
-@WebServlet("/ViewBoardServletTest")
-public class ViewBoardServletTest extends HttpServlet {
+@WebServlet("/ManagerViewBoardServletTest")
+public class ManagerViewBoardServletTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -43,7 +43,7 @@ public class ViewBoardServletTest extends HttpServlet {
 		request.setAttribute("replyList",replyList);
 
 		//それぞれのデータを格納できた段階で詳細ページjspにフォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ViewBoard.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerViewBoard.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -95,23 +95,8 @@ public class ViewBoardServletTest extends HttpServlet {
 			ReplyDao rDao=new ReplyDao();
 
 
-			//投稿の編集ボタンが押されていた場合
-			if (request.getParameter("submit").equals("投稿:編集")) {
-
-				 board_id = Integer.parseInt(request.getParameter("board_id"));
-				 board_main = request.getParameter("board_main");
-
-				if (bDao.editBoard(board_main,board_id)) {// 更新成功
-
-				}
-				else {												// 更新失敗
-					request.setAttribute("fail","投稿の編集" );
-					//同じServletに再フォワードを行ってhtmlの<c:if>を使ってjavascriptでその場でエラーアラートを出すか
-					//上の場合それを識別するようのパラメータを一つ作ってあげる必要がある
-
-				}
-			}//投稿の削除ボタンが押されていた場合
-			else if(request.getParameter("submit").equals("投稿:削除")){
+			//投稿の削除ボタンが押されていた場合
+			if(request.getParameter("submit").equals("投稿:削除")){
 
 				board_id = Integer.parseInt(request.getParameter("board_id"));
 
@@ -122,18 +107,6 @@ public class ViewBoardServletTest extends HttpServlet {
 
 					request.setAttribute("fail","投稿の削除" );
 
-				}
-			}//返信の編集ボタンが押されていた場合
-			else if(request.getParameter("submit").equals("返信:編集")) {
-
-				reply_id= Integer.parseInt(request.getParameter("reply_id"));
-				reply_main= request.getParameter("reply_main");
-
-				if (rDao.editReply(reply_main,reply_id)) {	// 更新成功
-
-				}
-				else {						// 更新失敗
-					request.setAttribute("fail","返信の編集" );
 				}
 			}//返信の削除ボタンが押されていた場合
 			else if(request.getParameter("submit").equals("返信:削除")) {
@@ -147,37 +120,6 @@ public class ViewBoardServletTest extends HttpServlet {
 					request.setAttribute("fail","返信の削除" );
 				}
 			}
-
-			//返信ボタンが押されていた場合
-			else if(request.getParameter("submit").equals("返信")) {
-
-				board_id = Integer.parseInt(request.getParameter("board_id"));
-				reply_main= request.getParameter("reply_main");
-
-				if (rDao.insertReply(new Reply(0,reply_main,"",user_id,board_id))) {	// 返信成功
-
-				}
-				else {						// 返信失敗
-					request.setAttribute("fail","返信登録" );
-				}
-			}
-
-			//リアクションボタンが押されていた場合
-			else if(request.getParameter("submit").equals("リアクション")) {
-
-				board_id = Integer.parseInt(request.getParameter("board_id"));
-				board_smile=Integer.parseInt(request.getParameter("smile"));
-				board_shock = Integer.parseInt(request.getParameter("shock"));
-				board_tear= Integer.parseInt(request.getParameter("tear"));
-
-				if (bDao.registReaction(board_id,board_smile,board_shock,board_tear)) {// 更新成功
-					request.setAttribute("fail","リアクション登録に成功！" );
-				}
-				else {												// 更新失敗
-					request.setAttribute("fail","リアクション登録" );
-				}
-			}
-
 			//検索ボタンが押されていた場合
 			//検索で得られた返信一覧が返ってくるので、リクエストスコープにBoardインスタンスと
 			//List型のReplyインスタンスを格納してjspにフォワードすればよい
@@ -194,7 +136,7 @@ public class ViewBoardServletTest extends HttpServlet {
 				request.setAttribute("bd",bd);
 
 				//検索で得られた新しい返信Listと対応する投稿データをリクエストスコープに格納しjspに再フォワードを行う
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ViewBoard.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerViewBoard.jsp");
 				dispatcher.forward(request, response);
 			}
 			//同じページ(サーブレット)にフォワード

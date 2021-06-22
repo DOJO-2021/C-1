@@ -1,22 +1,25 @@
 @charset "UTF-8";
 
 header {
-	display: flex;
+	display:flex;
+	position:relative;
+	text-align:center;
+	margin:0 auto;
 	border-bottom: 2px solid #d3d3d3;
 }
 
 .teraco {
-	padding-left: 30px;
+	padding-left: 150px;
 }
 
 .terachan {
 	padding-top: 23px;
-	padding-left: 300px;
-	padding-right: 85px;
+	padding-left: 120px;
+	padding-right: 55px;
 }
 
 .navi {
-	padding-top: 25px;
+	padding-top: 30px;
 	padding-left: 50px;
 }
 
@@ -26,7 +29,7 @@ header {
 	background-color: #f4a460;
 	border: none;
 	border-radius: 15px;
-	margin-right: 20px;
+	margin-right: 10px;
 }
 
 .button_menu {
@@ -35,7 +38,6 @@ header {
 	background-color: #f4a460;
 	border: none;
 	border-radius: 15px;
-	margin-right: 20px;
 }
 
 button:hover {
@@ -51,7 +53,12 @@ footer {
 	padding-right: 180px;
 }
 
-
+main{
+	display: flex;
+	padding: 20px 8px;
+	margin: 0 auto 0 auto;
+	max-width: 1200px;
+}
 
 .yokonarabi{
 	display:flex;
@@ -59,14 +66,21 @@ footer {
 	position:relative;
 	padding:15px;
 	box-sizing:border-box;
+
 }
 
-.manual{
-	width:300px;
-	border: 2px solid;
-	padding:10px;
-	margin:5px
-
+.rule{
+	width: 20em;
+	margin-right: 15px;
+	font-family:'Comic Sans MS';
+  	background: #eee8aa;
+ 	border-left: 7px dotted rgba(255,0,0,0.2);
+ 	box-shadow: 0 0 0 5 #ffff00;
+ 	padding: 1em;
+	max-width: 225px;
+}
+.rule p {
+	font-size: 13px;
 }
 /*
 .board_form{
@@ -74,9 +88,16 @@ footer {
 }
 */
 .board{
+	/*padding:0px;*/
+	margin:5px,auto;
 	border: 2px solid;
-	padding:0px;
-	margin:5px
+	max-width: 38em;
+	padding-left: 0.5em;
+	padding-top: 1em;
+	background: #eee8aa;
+	box-shadow: 0px 0px 0px 4px #ffff00;
+	border: dashed 2px white;
+
 }
 
 .postDate{
@@ -97,6 +118,13 @@ footer {
 	margin-block-end: 0em;
 }
 
+h3{
+	width: 20em;
+	height: 2em;
+	background-color: #fff8dc;
+}
+
+
 .board_main{
 	border: 2px solid;
 	margin-block-start: 0em;
@@ -106,8 +134,23 @@ footer {
 	height:150px;
 }
 
+
+
+.board_main_input{
+	font-size:14pt;
+	border: 2px solid;
+	margin-block-start: 0em;
+	margin-left:5px;
+	margin-right:5px;
+	margin-block-end: 0em;
+	height:150px;
+	width:95.5%;
+	resize:none;
+}
+
 .editDelete{
 	text-align:right;
+	margin-right:5px;
 }
 
 .reaction{
@@ -118,6 +161,12 @@ footer {
 .registreaction{
 	display:flex;
 	text-align:center;
+	position:relative;
+	left:28%;
+}
+
+.reactionRegist{
+	width:45%;
 }
 
 
@@ -147,6 +196,13 @@ footer {
 	margin-block-end: 0em;
 }
 
+
+.flex1{
+	display:inline-flex;
+}
+
+
+
 .reply{
 	border: 2px solid;
 	margin-block-start: 0em;
@@ -155,18 +211,55 @@ footer {
 	margin-block-end: 0em;
 }
 
+.reply_input{
+	font-size:12pt;
+	border: 2px solid;
+	margin-block-start: 0em;
+	margin-left:5px;
+	margin-right:5px;
+	margin-block-end: 0em;
+	width:97.2%;
+}
+
+
 .reply_text{
 	/*resizeでサイズを固定できる none:全て固定
 	vertical:縦のみ可動可 horizontal:横のみ可動可*/
 	resize: vertical;
-	width:250;
+	width:97.5%;
 	margin-left:5px;
 }
 
+.reply_button{
+	text-align:right;
+}
+
 .search{
+	display:flex;
+    margin: 0 auto 0 auto;
+	position:relative;
+	padding:15px 15px 0px 15px;
+
 
 }
 .searchbutton{
 	padding-top:10px;
 	marigin-top:5px;
 }
+
+
+footer{
+	background-color: #c0c0c0
+}
+
+
+
+
+
+
+
+
+
+
+
+

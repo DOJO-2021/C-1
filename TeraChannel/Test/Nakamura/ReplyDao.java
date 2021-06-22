@@ -85,7 +85,7 @@ public class ReplyDao {
 	（検閲を目的としているので他のものは出力する必要がない）
 	・ReplyDao.java
 	 */
-	public List<Reply> searchReply(String param) {
+	public List<Reply> searchReply(String search_reply,String board_id) {
 		Connection conn = null;
 		List<Reply> replyList = new ArrayList<Reply>();
 
@@ -99,17 +99,19 @@ public class ReplyDao {
 			ResultSet rs;
 
 			//SQL文を準備する
-			String sql = "select * from reply where reply_main like ?";
+			String sql = "select * from reply where reply_main like ? and board_id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 
 			//SQL文を完成させる
-			if (param != null && !param.equals("")) {
-				pStmt.setString(1, "%" + param + "%");
+			if (search_reply != null && !search_reply.equals("")) {
+				pStmt.setString(1, "%" + search_reply + "%");
 			}
 			else {
 				pStmt.setString(1, "");
 			}
+
+			pStmt.setInt(2, Integer.parseInt(board_id));
 			//SQL文の実行
 			rs = pStmt.executeQuery();
 
