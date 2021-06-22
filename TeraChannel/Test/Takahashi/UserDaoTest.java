@@ -5,7 +5,7 @@ import model.User;
 
 public class UserDaoTest {
     public static void main(String[] args) {
-    	UserDao2 dao = new UserDao2();
+    	UserDao dao = new UserDao();
 
     	// select()のテスト
     	System.out.println("---------- select()のテスト ----------");

@@ -33,17 +33,17 @@
 <!-- ボタン部分 -->
 <div>
 
-<form method="POST" action="/C-1/ManagerUserServlet">
+<form method="POST" action="/TeraChannel/ManagerUserServlet">
 <input type="text" name="text" size="5">
 <input type="submit" name="SEARCH" value="ID検索">
-
-<select name="count">
-<option value="=count">カウント検索</option>
-<option value="1">昇順</option>
-<option value="2">降順</option>
-</select>
-
 </form>
+
+<!--  保留
+<form method="POST" action="/TeraChannel/ManagerUserServlet">
+<input type="submit" name="1" value="昇順">
+<input type="submit" name="2" value="降順">
+</form>
+-->
 
 <!--  保留
 <select name="update">
@@ -52,7 +52,6 @@
 -->
 
 </div>
-
 
 <div class="menu">
 
@@ -94,7 +93,7 @@
 </table>
 
 <c:forEach var="e" items="${userList}" >
-	<form method="POST" action="/C-1/ManagerUserServlet">
+	<form method="POST" action="/TeraChannel/ManagerUserServlet">
 <input type="submit" name="SUBMIT" value="更新">
 <table class="info">
 <tr>
@@ -103,8 +102,8 @@
   <td><input type="text" name="USER_PW" value="${e.user_pw}"></td>
   <td><input type="text" name="USER_TYPE" value="${e.user_type}"></td>
   <td><input type="text" name="USER_MAIL" value="${e.user_mail}"></td>
-  <td><input type="text" name="USER_COUNT" value="${e.user_count}">
-    <div id="disp_count">0</div>
+  <td><!-- <input type="text" name="USER_COUNT" value="${e.user_count}"> -->
+    <div id="disp_count">${e.user_count}</div>
     <input type="button" value="↑" id="btn_count_up" />
     <input type="button" value="↓" id="btn_count_down" />
     </td>

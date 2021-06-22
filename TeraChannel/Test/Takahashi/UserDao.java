@@ -10,7 +10,7 @@ import java.util.List;
 
 import model.User;
 
-public class UserDao2 {
+public class UserDao {
 //userテーブルをすべて表示
 //引数paramで検索項目を指定し、検索結果のリストを返す
 	public List<User> select(User param) {
@@ -27,8 +27,6 @@ public class UserDao2 {
 			// SQL文を準備する
 			String sql = "select * from user";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-
-
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
