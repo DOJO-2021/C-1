@@ -23,8 +23,8 @@ public class MenuServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("user_mail") == null) {
-			response.sendRedirect("/simpleBC/LoginServlet");
+		if (session.getAttribute("user_id") == null) {
+			response.sendRedirect("/TeraChannel/LoginServlet");
 			return;
 		}
 

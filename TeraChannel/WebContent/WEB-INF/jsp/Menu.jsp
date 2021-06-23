@@ -9,7 +9,9 @@
 </head>
 <body>
 
- <nav class = "nav" >
+<div class = "outer">
+  <div class = "inner">
+   <nav class = "nav" >
    <ul>
       <li><img src="image/teraco.jpg"></li>
       <li>HOME</li>
@@ -18,16 +20,17 @@
       <li>講義生配信</li>
       <li>チートシート</li>
 
-      <li><select name="menu" id="passlog"></li>
+      <li><select onChange = "location.href=value;"></li>
             <option value="">マイメニュー</option>
-            <option value="password"><a href="/TeraChannel/Password.jsp">パスワード変更</a></option>
+            <option value="password"><a href="/WEB-INF/jsp/Password.jsp">パスワード変更</a></option>
             <option value="logout"><a href="/TeraChannel/LogoutServlet">ログアウト</a></option>
           </select>
-      <li><a href="/TeraChannel/ViewBoardServlet">掲示板</a></li>
+      <li><a href="/TeraChannel/ViewBoad.jsp">掲示板</a></li>
    </ul>
 
  </nav>
-
+</div>
+ </div>
  <hr>
 
 <h3>　　　現在のあなたの段位:段位なし</h3>
@@ -66,4 +69,5 @@
       本サイトの掲載記事、写真、イラスト、問題コンテンツの無断転載を禁じます。記載されているロゴ、システム名、製品名は各社及び商標権者の登録商標あるいは商標です。
    </p>
   </footer>
+
 </html>

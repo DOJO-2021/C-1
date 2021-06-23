@@ -13,6 +13,7 @@ public class PasswordDao {
 
 	// 引数userで指定されたレコードを更新し、成功したらtrueを返す
 	public boolean update(Password user) {
+
 		Connection conn = null;
 		boolean result = false;
 
@@ -21,9 +22,9 @@ public class PasswordDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
 			// SQL文を準備する
-			String sql = "update User set user_pw = '?' where user_mail = '?' ";
+			String sql = "update User set user_pw = ? where user_mail = ? ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SQL文を完成させる
 			if (user.getNew_pw() != null) {

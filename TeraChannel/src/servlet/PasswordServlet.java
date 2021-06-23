@@ -41,23 +41,19 @@ public class PasswordServlet extends HttpServlet {
 		String new_pw = request.getParameter("new_pw");
 
 
-		//一致しなければエラー
+		//一致しなければエラー(スコープとの一致)
 
-//		 if (session.getAttribute("user_mail") !=  user_mail) {
-//		   request.setAttribute("PasswordError", "失敗しました");
-//					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Password.jsp");
-//					dispatcher.forward(request, response);
-//	    }
+		 if (session.getAttribute("user_mail") !=  user_mail) {
+		   request.setAttribute("PasswordError", "メールが間違っています");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Password.jsp");
+					dispatcher.forward(request, response);
+	    }
 
 		// パスワードの更新を行う　ログインしている人のIDと新しいパスワードをDaoに渡す。
 
 		PasswordDao PDao = new PasswordDao();
 		if (request.getParameter("change").equals("変更")) {
 			PDao.update(new Password(user_mail,new_pw));
-		}else{
-		    request.setAttribute("PasswordError", "失敗しました");
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Password.jsp");
-					dispatcher.forward(request, response);
 		    }
 		/*
 		 エラー処理　メモ

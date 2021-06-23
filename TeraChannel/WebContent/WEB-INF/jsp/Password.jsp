@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -34,12 +35,22 @@
 				<td><input type="text"id="confirm"  name="confirm"  class="form-control"></td>
 				</tr>
 			</table>
+<br>
+			<div class = error>
+			<c:out value="${PasswordError}" />
+			</div>
+
 			<p>
 				<input type="submit" name="change" value="変更">
 			</p>
-		</form>
-     <c:out value="${PasswordError}" />
+			</form>
+
+
+			<nav class="nav">
+               <a href="/TeraChannel/MenuServlet">←メニューへ戻る </a>
+            </nav>
      </div>
+
 
 <script type="text/javascript">
 'use strict';
@@ -69,6 +80,7 @@
 			return false;
        }
     }
+
 
 
 </script>
