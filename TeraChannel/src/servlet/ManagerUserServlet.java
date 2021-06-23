@@ -34,7 +34,7 @@ public class ManagerUserServlet extends HttpServlet {
 
 		// 検索処理を行う
 		UserDao uDao = new UserDao();
-		List<User> userList = uDao.select(new User(0, "", "", 0, "", 0, 0));
+		List<User> userList = uDao.select(new User(0, "", "", 0, "", 0, 0,更新日時));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("userList", userList);
@@ -55,11 +55,12 @@ public class ManagerUserServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		UserDao uDao = new UserDao();
 
-		if(request.getParameter("SEARCH") != null) {
+
+		if(request.getParameter("search") != null) {
 			String user_id = request.getParameter("text");
 			// 検索処理を行う
 
-			if (request.getParameter("SEARCH").equals("ID検索")) {
+			if (request.getParameter("search").equals("ID検索")) {
 				List<User> userList = uDao.selectById(Integer.parseInt(user_id));
 
 				// 検索結果をリクエストスコープに格納する
@@ -74,31 +75,75 @@ public class ManagerUserServlet extends HttpServlet {
 		}
 
 
-		/*ドクロカウント昇順降順メソッド
+
+		//ドクロカウント昇順降順メソッド
 		if(request.getParameter("pulldown") != null) {
 	    	//pulldownがnullじゃなない場合、新着順の処理する
 			if (request.getParameter("pulldown").equals("newevent")) {
-				List<User> userList = uDao.selectByCount(1,0);
+				List<User> userList = uDao.selectByCount(1);
 				//取得結果をリクエストスコープに格納する
 				request.setAttribute("userList", userList);
 			} else if (request.getParameter("pulldown").equals("oldevent")) {
-				List<User> userList = uDao.selectByCount(0,1);
+				List<User> userList = uDao.selectByCount(0);
 				request.setAttribute("userList", userList);
 			}
 
-		}*/
 
-		// 更新を行う
-		if (request.getParameter("SUBMIT") != null) {
-		  if (request.getParameter("SUBMIT").equals("更新")) {
-			uDao.update(new User(0, "", "", 0, "", 0, 0));
-			request.setAttribute("result", "/TeraChannel/ManagerUserServlet");
+			// ユーザー管理ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerUser.jsp");
+			dispatcher.forward(request, response);
 
-			// 結果ページにフォワードする
-			RequestDispatcher dispatcher4 = request.getRequestDispatcher("/WEB-INF/jsp/ManagerUser.jsp");
-			dispatcher4.forward(request, response);
-		  }
-		  return;
 		}
-	}
+
+
+
+
+
+		//更新日時昇順降順メソッド
+		if(request.getParameter("pulldown") != null) {
+	    	//pulldownがnullじゃなない場合、新着順の処理する
+			if (request.getParameter("pulldown").equals("newdate")) {
+				List<User> userList = uDao.selectByCount(1);
+				//取得結果をリクエストスコープに格納する
+				request.setAttribute("userList", userList);
+			} else if (request.getParameter("pulldown").equals("olddate")) {
+				List<User> userList = uDao.selectByCount(0);
+				request.setAttribute("userList", userList);
+			}
+
+			// ユーザー管理ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerUser.jsp");
+			dispatcher.forward(request, response);
+		}
+
+
+
+
+
+
+
+
+
+
+
+		//ドクロカウントを反映させるメソッド
+		if (request.getParameter("user_count") != null) {
+			  if (request.getParameter("submit").equals("更新")) {
+
+				 //実名化カウントの値を持ってきて、更新に反映
+				int user_id=Integer.parseInt(request.getParameter("user_id"));
+				int user_count=Integer.parseInt(request.getParameter("user_countHidden"));
+				int user_nameCount=Integer.parseInt(request.getParameter("user_nameCountHidden"));
+
+				if(uDao.update(new User(user_id, "", "", 0, "", user_count, 実名化カウント,更新日時))) {
+					//成功
+				}else {
+					//失敗
+				}
+
+				// 結果ページにフォワードする
+				doGet(request,response);
+			  }
+			}
+		}
 }
