@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Takahashi.UserDao;
+import model.User;
+
 /**
  * Servlet implementation class ViewBoardServlet
  */
@@ -35,6 +38,10 @@ public class ManagerViewBoardServletTest extends HttpServlet {
 
 		BoardDao bDao=new BoardDao();
 		ReplyDao rDao=new ReplyDao();
+		UserDao uDao = new UserDao();
+		//全ユーザーデータの取得
+		List<User> userList = uDao.select(new User(0, "", "", 0, "", 0, 0,""));
+		request.setAttribute("userList",userList);
 		//投稿データ（Board型のインスタンス）の取得/リクエストスコープへの格納
 		Board bd=bDao.showBoard(board_id);
 		request.setAttribute("bd",bd);

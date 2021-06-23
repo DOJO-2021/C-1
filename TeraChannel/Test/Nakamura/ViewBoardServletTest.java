@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Takahashi.UserDao;
+import model.User;
+
 /**
  * Servlet implementation class ViewBoardServlet
  */
@@ -35,12 +38,18 @@ public class ViewBoardServletTest extends HttpServlet {
 
 		BoardDao bDao=new BoardDao();
 		ReplyDao rDao=new ReplyDao();
+		UserDao uDao = new UserDao();
+		//全ユーザーデータの取得
+		List<User> userList = uDao.select(new User(0, "", "", 0, "", 0, 0,""));
+		request.setAttribute("userList",userList);
 		//投稿データ（Board型のインスタンス）の取得/リクエストスコープへの格納
 		Board bd=bDao.showBoard(board_id);
 		request.setAttribute("bd",bd);
 		//返信データ（Reply型のインスタンス）の取得/リクエストスコープへの格納
 		List<Reply> replyList = rDao.showReply(board_id);
 		request.setAttribute("replyList",replyList);
+
+
 
 		//それぞれのデータを格納できた段階で詳細ページjspにフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ViewBoard.jsp");
@@ -116,7 +125,8 @@ public class ViewBoardServletTest extends HttpServlet {
 				board_id = Integer.parseInt(request.getParameter("board_id"));
 
 				if (bDao.deleteBoard(board_id)) {	// 削除成功
-
+						//投稿自体の削除に成功した場合は、メニューページにリダイレクトを行う
+						response.sendRedirect("/TeraChannel/ViewMenuServlet");
 				}
 				else {						// 削除失敗
 
