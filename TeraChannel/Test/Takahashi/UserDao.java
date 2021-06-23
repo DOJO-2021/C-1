@@ -133,7 +133,7 @@ public class UserDao {
 
 
 // カウント検索(昇順降順)
-		public List<User> selectByCount(int key, int user_count) {
+		public List<User> selectByCount(int key) {
 			Connection conn = null;
 			List<User> userList = new ArrayList<User>();
 
@@ -146,10 +146,8 @@ public class UserDao {
 
 				// SQL文を準備する
 				if(key == 1) {  //昇順
-				    String sql = "select * from user where user_count order by asc = ?";
+				    String sql = "select * from user where user_count order by user_count asc ";
 				    PreparedStatement pStmt = conn.prepareStatement(sql);
-				 // SQL文を完成させる
-					pStmt.setInt(1, user_count);
 				// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
 					while (rs.next()) {
@@ -165,10 +163,9 @@ public class UserDao {
 						userList.add(user);
 					}
 				}else {         //降順
-					String sql = "select * from user where user_count order by desc = ?";
+					String sql = "select * from user where user_count order by user_count desc ";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 				// SQL文を完成させる
-					pStmt.setInt(1, user_count);
 				// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
 					while (rs.next()) {

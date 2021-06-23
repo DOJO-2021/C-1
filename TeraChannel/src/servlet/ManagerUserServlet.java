@@ -53,14 +53,14 @@ public class ManagerUserServlet extends HttpServlet {
 		//入力されたIDを検索
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
+		UserDao uDao = new UserDao();
 
 		if(request.getParameter("SEARCH") != null) {
 			String user_id = request.getParameter("text");
-
 			// 検索処理を行う
-			UserDao u2Dao = new UserDao();
+
 			if (request.getParameter("SEARCH").equals("ID検索")) {
-				List<User> userList = u2Dao.selectById(Integer.parseInt(user_id));
+				List<User> userList = uDao.selectById(Integer.parseInt(user_id));
 
 				// 検索結果をリクエストスコープに格納する
 				request.setAttribute("userList", userList);
@@ -73,11 +73,25 @@ public class ManagerUserServlet extends HttpServlet {
 			return;
 		}
 
+
+		/*ドクロカウント昇順降順メソッド
+		if(request.getParameter("pulldown") != null) {
+	    	//pulldownがnullじゃなない場合、新着順の処理する
+			if (request.getParameter("pulldown").equals("newevent")) {
+				List<User> userList = uDao.selectByCount(1,0);
+				//取得結果をリクエストスコープに格納する
+				request.setAttribute("userList", userList);
+			} else if (request.getParameter("pulldown").equals("oldevent")) {
+				List<User> userList = uDao.selectByCount(0,1);
+				request.setAttribute("userList", userList);
+			}
+
+		}*/
+
 		// 更新を行う
-		UserDao u4Dao = new UserDao();
 		if (request.getParameter("SUBMIT") != null) {
 		  if (request.getParameter("SUBMIT").equals("更新")) {
-			u4Dao.update(new User(0, "", "", 0, "", 0, 0));
+			uDao.update(new User(0, "", "", 0, "", 0, 0));
 			request.setAttribute("result", "/TeraChannel/ManagerUserServlet");
 
 			// 結果ページにフォワードする

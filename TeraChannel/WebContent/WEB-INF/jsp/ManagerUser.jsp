@@ -37,7 +37,15 @@
 <input type="text" name="text" size="5">
 <input type="submit" name="SEARCH" value="ID検索">
 </form>
-
+<!--  <select id= "re-ch"  name="reaction">
+	<option  action="ManagerUserServlet" name="pulldown" value="newdokuro">ドクロカウント：昇順</option>
+	<option  action="ManagerUserServlet" name="pulldown" value="olddokuro">ドクロカウント：降順</option>
+</select>
+<select id= "re-ch"  name="reaction">
+	<option  action="ManagerUserServlet" name="pulldown" value="newevent">最終更新日時：昇順</option>
+	<option  action="ManagerUserServlet" name="pulldown" value="oldevent">最終更新日時：昇順</option>
+</select>
+-->
 <!--  保留
 <form method="POST" action="/TeraChannel/ManagerUserServlet">
 <input type="submit" name="1" value="昇順">
