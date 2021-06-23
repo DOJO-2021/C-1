@@ -8,10 +8,10 @@ public class User {
 	private String user_mail;
 	private int user_count;
 	private int user_nameCount;
-
-
+	private String user_update;
+	//コンストラクタ
 	public User(int user_id, String user_name, String user_pw, int user_type, String user_mail, int user_count,
-			int user_nameCount) {
+			int user_nameCount, String user_update) {
 		super();
 		this.user_id = user_id;
 		this.user_name = user_name;
@@ -20,93 +20,66 @@ public class User {
 		this.user_mail = user_mail;
 		this.user_count = user_count;
 		this.user_nameCount = user_nameCount;
+		this.user_update = user_update;
 	}
-
-
+	//引数なしのコンストラクタ
 	public User() {
 		super();
 		this.user_id = 0;
-		this.user_name ="";
+		this.user_name = "";
 		this.user_pw = "";
 		this.user_type = 0;
 		this.user_mail = "";
-		this.user_count =0;
+		this.user_count = 0;
 		this.user_nameCount = 0;
-	}
-
-
+		this.user_update = "";
+}
 	public int getUser_id() {
 		return user_id;
 	}
-
-
 	public String getUser_name() {
 		return user_name;
 	}
-
-
 	public String getUser_pw() {
 		return user_pw;
 	}
-
-
 	public int getUser_type() {
 		return user_type;
 	}
-
-
 	public String getUser_mail() {
 		return user_mail;
 	}
-
-
 	public int getUser_count() {
 		return user_count;
 	}
-
-
 	public int getUser_nameCount() {
 		return user_nameCount;
 	}
-
-
+	public String getUser_update() {
+		return user_update;
+	}
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
-
-
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-
-
 	public void setUser_pw(String user_pw) {
 		this.user_pw = user_pw;
 	}
-
-
 	public void setUser_type(int user_type) {
 		this.user_type = user_type;
 	}
-
-
 	public void setUser_mail(String user_mail) {
 		this.user_mail = user_mail;
 	}
-
-
 	public void setUser_count(int user_count) {
 		this.user_count = user_count;
 	}
-
-
 	public void setUser_nameCount(int user_nameCount) {
 		this.user_nameCount = user_nameCount;
 	}
-
+	public void setUser_update(String user_update) {
+		this.user_update = user_update;
+	}
 }
-
-
-
-
-

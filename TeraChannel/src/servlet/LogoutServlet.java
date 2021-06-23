@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.User;
+import Mita.LogoutDao;
 
 /**
  * Servlet implementation class LogoutServlet
