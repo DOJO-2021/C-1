@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 //import dao.UserDao;
 import Mita.UserDao;
+import model.LoginUser;
 import model.User;
 
 
@@ -53,9 +54,17 @@ public class LoginServlet extends HttpServlet {
 					// セッションスコープにIDを格納する
 					//HttpSession session = request.getSession();
 					//session.setAttribute("id",us.getUser_id());
-					User us=new User();
+
+					LoginUser us=new LoginUser();
 					HttpSession session = request.getSession();
+					//IDを格納
 					session.setAttribute("user_id",us.getUser_id());
+					//typeを格納
+					session.setAttribute("user_type",us.getUser_type());
+					//nameを格納
+					session.setAttribute("user_name",us.getUser_name());
+					//mailを格納
+					session.setAttribute("user_mail",us.getUser_mail());
 					// メニューサーブレットにリダイレクトする
 					response.sendRedirect("/TeraChannel/MenuServlet");
 					//response.sendRedirect("/TeraChannel/LogoutServlet");

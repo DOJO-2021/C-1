@@ -49,9 +49,9 @@ public class ManagerLoginServlet extends HttpServlet {
 			//ログイン後の画面に移動する
 //編集中
 			// セッションスコープにIDを格納する
-			Manager manager = new Manager();
+			//Manager manager = new Manager();
 			HttpSession session = request.getSession();
-			session.setAttribute("manager_id",manager.getManager_id());
+			session.setAttribute("manager_mail",manager_mail);
 
 			// メニューサーブレットにリダイレクトする
 			response.sendRedirect("/TeraChannel/ManagerMenuServlet");

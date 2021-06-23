@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.LoginUser;
 import model.User;
-import Mita.LogoutDao;
+import Mita.UserDao;
 
 /**
  * Servlet implementation class LogoutServlet
@@ -30,8 +31,10 @@ public class LogoutServlet extends HttpServlet {
 
 		// ログインページにリダイレクトする
 		//三田のコード
-		//User us=new User();
+		//LoginUser us=new LoginUser();
+
 		//request.setAttribute("taikinMessage",us.getUser_name() +"さん、今日も一日お疲れ様でした。");
+
 		//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 		//dispatcher.forward(request, response);
 
