@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,18 +36,22 @@
 	<!-- ヘッダーここまで -->
 
 	<div class=list>
-		<form id="form" action="ViewMenuServlet" method="post">
+		<form  action="ViewMenuServlet" method="post" >
 			<input type="search" name="search" placeholder="キーワードを入力">
-			<input type="submit"  value="検索" onclick="exec()">
+			<input type="submit" name="submit"  value="検索" >
 		</form>
-		<select id= "re-ch"  name="reaction">
-			<option  action="ViewMenuServlet" name="pulldown" value="popular">リアクションの多い順</option>
-			<option  action="ViewMenuServlet" name="pulldown" value="notpopular">リアクションの少ない順</option>
-		</select> <select id= "ref-ch" value="ViewMenuServlet" name="refresh">
-			<option  action="ViewMenuServlet" name="pulldown" value="newevent">新着順</option>
-			<option  action="ViewMenuServlet" name="pulldown" value="oldevant">古い順</option>
+		<form method=" post" action="ViewMenuServlet">
+		<select  onchange="submit(this.form)" name="reaction" >
+			<option name="pulldown" value="notpopular">リアクションの少ない順</option>
+			<option name="pulldown" value="popular">リアクションの多い順</option>
 		</select>
-
+		</form>
+		<form method=" post" action="ViewMenuServlet">
+		 <select  name="refresh"  onchange="this.form.submit()">
+			<option name="pulldown" value="newevent">新着順</option>
+			<option name="pulldown" value="oldevant">古い順</option>
+		</select>
+		</form>
 	</div>
 	<!-- メイン -->
 
@@ -79,7 +84,7 @@
 						<p>
 							<%--<input type="hidden" onclick="/TeraChannel/ViewBoardServlet${board_id}" value="${b.board_topic}">
 							--%>
-							<h8> <a href="/TeraChannel/ViewBoardServlet?${board_id}">
+							<h8> <a href="/TeraChannel/ViewBoardServletTest?board_id=${b.board_id}">
 								${b.board_topic} </a></h8>
 							<br>
 							<h11>
@@ -139,20 +144,21 @@
 			});
 		});
 
-		//検索結果表示
-		function exec() {
-			document.getElementById('form').submit();
+
+
+	<%--	//プルダウン切り替え(リアクション)
+		const rech = document.getElementById('re-ch');
+		rech.onchange = function() {
+			console.log("re-ch");
+		    location.href =rech.action;
 		}
-		//プルダウン切り替え(リアクション)
-		const selected = document.getElementById('re-ch');
-		selected.onchange = function() {
-			location.href =select.action;
-		}
+
 		//プルダウン切り替え(新着)
-		const selected = document.getElementById('ref-ch');
-		selected.onchange = function() {
-			location.href =select.action;
-		}
+		const refch = document.getElementById('ref-ch');
+		refch.onchange = function() {
+			console.log("ref-ch");
+			location.href =refch.action;
+		} --%>
 
 	</script>
 </body>

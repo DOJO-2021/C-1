@@ -57,7 +57,6 @@ public class ViewMenuServlet extends HttpServlet {
 
 		//リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-	    String word = request.getParameter("search");
 
 	    BoardfDAO bdao = new BoardfDAO();
 
@@ -65,6 +64,7 @@ public class ViewMenuServlet extends HttpServlet {
 	    if(request.getParameter("pulldown") != null) {
 	    	//pulldownがnullじゃなない場合、新着順の処理する
 			if (request.getParameter("pulldown").equals("newevent")) {
+				//メソッド呼び出し
 				List<Board> topListMain = bdao.topList(0);
 				//取得結果をリクエストスコープに格納する
 				request.setAttribute("topListMain", topListMain);
@@ -72,8 +72,11 @@ public class ViewMenuServlet extends HttpServlet {
 				List<Board> topListMain = bdao.topList(1);
 				request.setAttribute("topListMain", topListMain);
 			}
+	    }
 
-			// リアクションの多い順か少ない順か表示する
+		// リアクションの多い順か少ない順か表示する
+		if(request.getParameter("pulldown") != null) {
+		    //pulldownがnullじゃなない場合、新着順の処理する
 			if (request.getParameter("pulldown").equals("popular")) {
 				List<Board> topListMain = bdao.topList(0);
 				request.setAttribute("topListMain", topListMain);
@@ -85,10 +88,38 @@ public class ViewMenuServlet extends HttpServlet {
 
 
 		//検索処理を行う
-		if (request.getParameter("submit").equals("検索")) {
-			List<Board> topListMain = bdao.select(word);
-			request.setAttribute("topListMain", topListMain);
+	    /*	    if(request.getParameter("submit") != null) {
+	    	if (request.getParameter("submit").equals("検索")) {
+	    		List<Board> topListMain = bdao.select("word");
+
+	    		request.setAttribute("topListMain", topListMain);
+	    	}
 		}
+		*/
+
+    	String error = "";
+	    if(request.getParameter("submit") != null) {
+	    	if (request.getParameter("submit").equals("検索")) {
+	    		try {
+	    			//パラメータを取得
+	    			String word = request.getParameter("search");
+	    			request.getParameter("board_topic");
+	    			request.getParameter("board_main");
+	    			request.getParameter("reply_main");
+	    			//メソッド呼び出し
+	    			List<Board> topListMain = bdao.select(word);
+	    			//取得結果をリクエストスコープに格納する
+	    			request.setAttribute("topListMain", topListMain);
+	    		} catch (Exception e) {
+	    			error ="相当する値が見つかりませんでした";
+	    		} finally {
+	    			request.setAttribute("error", error);
+	    			request.getRequestDispatcher("/WEB-INF/jsp/ViewMenu.jsp");
+	    		}
+	    	}
+
+	    }
+
 
 		//見出しに適した投稿IDをリクエストスコープに格納する
 		request.setAttribute("board_id", request.getParameter("board_id"));

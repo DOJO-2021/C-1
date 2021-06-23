@@ -105,8 +105,7 @@ public class BoardfDAO {
 	//見出し、投稿内容、返信の文字検索
 	public List<Board> select(String word) {
 		Connection conn = null;
-		List<Board> topListMain = new ArrayList<Board>();
-
+		List<Board> topListMain= new ArrayList<Board>();
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
@@ -114,7 +113,10 @@ public class BoardfDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
 
 			// SQL文1を準備する Boardテーブル用
-			String sql = "SELECT BOARD_TOPIC , BOARD_MAIN FROM BOARD WHERE BOARD_TOPIC LIKE ?  AND BOARD_MAIN  LIKE ? ";
+			String sql = " SELECT "
+					+ "BOARD_TOPIC , BOARD_MAIN ,(BOARD_SMILE +  BOARD_SHOCK  + BOARD_TEAR ) AS REACTION , BOARD_UPDATE "
+					+ "FROM BOARD WHERE BOARD_TOPIC LIKE ? AND BOARD_MAIN  LIKE ? GROUP BY BOARD_TOPIC "
+					+ "ORDER BY REACTION DESC";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -122,7 +124,7 @@ public class BoardfDAO {
 			pStmt.setString(2, "%" + word + "%");
 
 			//SQL文2を準備する Replyテーブル用
-			String sql_reply = "SELECT REPLY_MAIN FROM REPLY WHERE REPLY_MAIN LIKE ?";
+			String sql_reply = "SELECT REPLY_DATE REPLY_MAIN FROM REPLY WHERE REPLY_MAIN LIKE ? ORDER BY REPLY_DATE DESC LIMIT 1";
 			PreparedStatement pStmt_reply = conn.prepareStatement(sql_reply);
 
 			//SQL文を完成させる
@@ -136,6 +138,9 @@ public class BoardfDAO {
 				Board page1 = new Board();
 				page1.setBoard_topic(rs.getString("board_topic"));
 				page1.setBoard_main(rs.getString("board_main"));
+				page1.setBoard_smileTotal(rs.getInt("reaction"));
+				page1.setBoard_update(rs.getString("board_update"));
+				page1.setBoard_topic(rs.getString("board_topic"));
 
 				//SQL文2を実行し、結果表を取得する
 				ResultSet rsr = pStmt_reply.executeQuery();
@@ -143,6 +148,7 @@ public class BoardfDAO {
 				while (rsr.next()) {
 					Reply page2 = new Reply();
 					page2.setReply_main(rsr.getString("reply_main"));
+					page2.setReply_date(rsr.getString("reply_date"));
 
 					page1.getReply().add(page2);
 				}

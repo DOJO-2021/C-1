@@ -30,6 +30,7 @@ public class BoardDAOTest {
 		for (Board board : topListMain2) {
 			System.out.println(board.getBoard_topic());
 			System.out.println(board.getBoard_main());
+			System.out.println(board.getBoard_smileTotal());
 			System.out.println();
 			for (Reply reply : board.getReply()) {
 				System.out.println(reply.getReply_main());
