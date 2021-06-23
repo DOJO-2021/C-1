@@ -34,18 +34,35 @@
 		<div>
 
 			<form method="POST" action="/TeraChannel/ManagerUserServlet">
-				<input type="text" name="text" size="5"> <input
-					type="submit" name="SEARCH" value="ID検索">
+				<input type="text" name="text" size="5">
+				<input type="submit" name="search" value="ID検索">
 			</form>
-			<!--  <select id= "re-ch"  name="reaction">
+
+
+<select id= "re-ch"  name="reaction" onchange="submit(this.form)">
 	<option  action="ManagerUserServlet" name="pulldown" value="newdokuro">ドクロカウント：昇順</option>
 	<option  action="ManagerUserServlet" name="pulldown" value="olddokuro">ドクロカウント：降順</option>
 </select>
-<select id= "re-ch"  name="reaction">
+<select id= "re-ch"  name="reaction" onchange="submit(this.form)">
 	<option  action="ManagerUserServlet" name="pulldown" value="newdatet">最終更新日時：昇順</option>
-	<option  action="ManagerUserServlet" name="pulldown" value="olddate">最終更新日時：昇順</option>
+	<option  action="ManagerUserServlet" name="pulldown" value="olddate">最終更新日時：降順</option>
 </select>
--->
+
+
+
+<script type="text/javascript">
+$(function(){
+	$("#submit_select").change(function(){
+		$("#submit_form").submit();
+	})
+});
+</script>
+
+
+
+
+
+
 			<!--  保留
 <form method="POST" action="/TeraChannel/ManagerUserServlet">
 <input type="submit" name="1" value="昇順">

@@ -34,7 +34,7 @@ public class ManagerUserServlet extends HttpServlet {
 
 		// 検索処理を行う
 		UserDao uDao = new UserDao();
-		List<User> userList = uDao.select(new User(0, "", "", 0, "", 0, 0,更新日時));
+		List<User> userList = uDao.select(new User(0, "", "", 0, "", 0, 0,""));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("userList", userList);
@@ -127,7 +127,6 @@ public class ManagerUserServlet extends HttpServlet {
 
 
 		//ドクロカウントを反映させるメソッド
-		if (request.getParameter("user_count") != null) {
 			  if (request.getParameter("submit").equals("更新")) {
 
 				 //実名化カウントの値を持ってきて、更新に反映
@@ -135,8 +134,9 @@ public class ManagerUserServlet extends HttpServlet {
 				int user_count=Integer.parseInt(request.getParameter("user_countHidden"));
 				int user_nameCount=Integer.parseInt(request.getParameter("user_nameCountHidden"));
 
-				if(uDao.update(new User(user_id, "", "", 0, "", user_count, 実名化カウント,更新日時))) {
+				if(uDao.update(new User(user_id, "", "", 0, "", user_count, user_nameCount,""))) {
 					//成功
+					//request.setAttribute("userList",);
 				}else {
 					//失敗
 				}
@@ -144,6 +144,6 @@ public class ManagerUserServlet extends HttpServlet {
 				// 結果ページにフォワードする
 				doGet(request,response);
 			  }
-			}
+
 		}
 }
