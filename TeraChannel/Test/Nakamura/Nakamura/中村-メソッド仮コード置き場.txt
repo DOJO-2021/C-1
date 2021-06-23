@@ -1,0 +1,787 @@
+両者側の詳細ページを開いた際の投稿データを返すメソッド
+・BoardDao.java
+
+public Board showBoard(int board_id) {
+		Connection conn = null;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:\pleiades\workspace\C-1\databace", "sa", "123");
+
+      ResultSet rs;
+
+      //SQL文を準備する
+      String sql = "select * from board where board_id=?";
+      PreparedStatement pStmt = conn.prepareStatement(sql);
+
+
+      //SQL文を完成させる
+      if (param.getBoard_id() != null && !param.getBoard_id().equals("")) {
+        pStmt.setInt(1, param.getBoard_id());
+      }
+      else {
+        pStmt.setInt(1, 0);
+      }
+      //SQL文の実行
+      rs = pStmt.executeQuery();
+
+      rs.next();
+ 			Board bd = new bd(
+			rs.getInt("BOARD_ID"),
+			rs.getString("BOARD_TOPIC"),
+			rs.getString("BOARD_MAIN"),
+			rs.getInt("BOARD_SMILE"),
+			rs.getInt("BOARD_SHOCK"),
+			rs.getInt("BOARD_TEAR"),
+			rs.getString("BOARD_UPDATE"),
+			rs.getInt("USER_ID")
+			);
+
+
+    }catch (SQLException e) {
+      e.printStackTrace();
+      replyList = null;
+    }
+    catch (ClassNotFoundException e) {
+      e.printStackTrace();
+      replyList = null;
+    }
+    finally {
+      // データベースを切断
+      if (conn != null) {
+        try {
+          conn.close();
+        }
+        catch (SQLException e) {
+          e.printStackTrace();
+          replyList = null;
+        }
+      }
+    }
+
+    // 結果を返す
+    return bd;
+  }
+
+
+
+両者側の詳細ページを開いた際の返信データを返すメソッド
+・ReplyDao.java
+
+public List<Reply> showReply(Board param) {
+		Connection conn = null;
+		List<Rp> replyList = new ArrayList<Rp>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:\pleiades\workspace\C-1\databace", "sa", "123");
+
+      ResultSet rs;
+
+      //SQL文を準備する
+      String sql = "select * from reply where board_id=?";
+      PreparedStatement pStmt = conn.prepareStatement(sql);
+
+
+      //SQL文を完成させる
+      if (param.getBoard_id() != null && !param.getBoard_id().equals("")) {
+        pStmt.setInt(1, param.getBoard_id());
+      }
+      else {
+        pStmt.setInt(1, 0);
+      }
+      //SQL文の実行
+      rs = pStmt.executeQuery();
+
+      while (rs.next()) {
+				Rp rep = new Rp(
+				rs.getInt("REPLY_ID"),
+				rs.getString("REPLY_MAIN"),
+				rs.getString("REPLY_DATE"),
+				rs.getInt("USER_ID"),
+				rs.getInt("BOARD_ID"),
+				);
+				replyList.add(rep);
+			}
+    }catch (SQLException e) {
+      e.printStackTrace();
+      replyList = null;
+    }
+    catch (ClassNotFoundException e) {
+      e.printStackTrace();
+      replyList = null;
+    }
+    finally {
+      // データベースを切断
+      if (conn != null) {
+        try {
+          conn.close();
+        }
+        catch (SQLException e) {
+          e.printStackTrace();
+          replyList = null;
+        }
+      }
+    }
+
+    // 結果を返す
+    return replyList;
+  }
+
+
+
+
+
+
+
+管理者用の詳細ページにおける検索機能を行うメソッド（仮で返信に関してのみとする）
+jspでの出力は得られた返信のみを出力する
+（検閲を目的としているので他のものは出力する必要がない）
+・ReplyDao.java
+
+public List<Reply> showSelectedReply(String param) {
+		Connection conn = null;
+		List<Rp> replyList = new ArrayList<Rp>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:\pleiades\workspace\C-1\databace", "sa", "123");
+
+      ResultSet　rs;
+
+      //SQL文を準備する
+      String sql = "select * from reply where reply_main like '%?%'";
+      PreparedStatement pStmt = conn.prepareStatement(sql);
+
+
+      //SQL文を完成させる
+      if (param != null && !param.equals("")) {
+        pStmt.setString(1, param);
+      }
+      else {
+        pStmt.setString(1, "null");
+      }
+      //SQL文の実行
+      rs = pStmt.executeQuery();
+
+      while (rs.next()) {
+				Rp rep = new Rp(
+				rs.getInt("REPLY_ID"),
+				rs.getString("REPLY_MAIN"),
+				rs.getString("REPLY_DATE"),
+				rs.getInt("USER_ID"),
+				rs.getInt("BOARD_ID"),
+				);
+				replyList.add(rep);
+			}
+    }catch (SQLException e) {
+      e.printStackTrace();
+      replyList = null;
+    }
+    catch (ClassNotFoundException e) {
+      e.printStackTrace();
+      replyList = null;
+    }
+    finally {
+      // データベースを切断
+      if (conn != null) {
+        try {
+          conn.close();
+        }
+        catch (SQLException e) {
+          e.printStackTrace();
+          replyList = null;
+        }
+      }
+    }
+
+    // 結果を返す
+    return replyList;
+  }
+
+
+
+
+
+
+
+ユーザー側の返信ボタンが押された時の登録処理
+・ReplyDao.java
+
+public boolean insertReply(Reply param) {	//処理の結果をtrue,falseで返す
+  Connection conn = null;
+  boolean result = false;
+
+  try {
+    // JDBCドライバを読み込む
+    Class.forName("org.h2.Driver");
+
+    // データベースに接続する
+    conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
+    ResultSet = rs;
+    //SQL文を準備する	検閲機能
+    String sql = "SELECT * FROM(SELECT word FROM search) WHERE word like '%?%'";
+    PreparedStatement pStmt = conn.prepareStatement(sql);
+
+    //SQL文を完成させる
+    if (param.getReply_main() != null && !param.getReply_main().equals("")) {
+      pStmt.setString(1, param.getReply_main());
+    }
+    else {
+      pStmt.setString(1, "null");
+    }
+
+    // SQL文を実行する	何件処理したかを返してくれる
+    rs = pStmt.executeQuery();
+    int x=rs.getRow();
+
+    if (x = 0) {
+    // SQL文を準備する	true
+    String sql2 = "insert into board values (null,?,current_timestamp,?,?)";
+    PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+
+    // SQL文を完成させる		idは自動採番(元がnull)なので記述不要	？の位置に実際に挿入するための記述
+    if (param.getReply_main() != null && !param.getReply_main().equals("")) {
+      pStmt.setString(1, param.getReply_main());
+    }
+    else {
+      pStmt.setString(1, "null");
+    }
+    if (param.getUser_id() != null && !param.getUser_id()=0) {
+      pStmt.setString(2, param.getUser_id());
+    }
+    else {
+      pStmt.setString(2, 0);
+    }
+    //userテーブルからuser_idを参照？	セッションスコープから？
+    if (param.getBoard_id() != null) {
+      pStmt.setInt(3, param.getBoard_id());
+    }
+    else {
+      pStmt.setInt(3, 0);
+    }
+
+    // SQL文を実行する	何件処理したかを返してくれる
+    if (pStmt.executeUpdate() == 1) {
+      result = true;
+    }
+    else {
+      result = false;
+    }
+  }
+ }catch (SQLException e) {
+    e.printStackTrace();
+    result = false;
+  }
+  catch (ClassNotFoundException e) {
+    e.printStackTrace();
+    result = false;
+  }
+  finally {
+    // データベースを切断
+    if (conn != null) {
+      try {
+        conn.close();
+      }
+      catch (SQLException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+    // 結果を返す
+    return result;
+  }
+
+
+
+
+
+
+
+ユーザー側の詳細ページで編集を反映させる(投稿/返信)メソッド
+・投稿部分:BoardDao.java
+
+public boolean editBoard(Board param) {	//処理の結果をtrue,falseで返す
+  Connection conn = null;
+  boolean result = false;
+
+  try {
+    // JDBCドライバを読み込む
+    Class.forName("org.h2.Driver");
+
+    // データベースに接続する
+    conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
+    ResultSet = rs;
+    //SQL文を準備する	検閲機能
+    String sql = "SELECT * FROM(SELECT word FROM search) WHERE word like '%?%'";
+    PreparedStatement pStmt = conn.prepareStatement(sql);
+
+    //SQL文を完成させる
+    if (param.getBoard_main() != null && !param.getBoard_main().equals("")) {
+      pStmt.setString(1, param.getBoard_main());
+    }
+    else {
+      pStmt.setString(1, "null");
+    }
+
+    // SQL文を実行する	何件処理したかを返してくれる
+    rs = pStmt.executeQuery();
+    int x=rs.getRow();
+
+    if (x = 0) {
+    // SQL文を準備する	true
+    String sql2 = "update board set main=?,date=current_timestamp where id=?";
+    PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+
+    // SQL文を完成させる		idは自動採番(元がnull)なので記述不要	？の位置に実際に挿入するための記述
+    if (param.getBoard_main() != null && !param.getBoard_main().equals("")) {
+      pStmt.setString(1, param.getBoard_main());
+    }
+    else {
+      pStmt.setString(1, "null");
+    }
+    if (param.getBoard_id() != null && !param.getBoard_id()=0) {
+      pStmt.setString(2, param.getBoard_id());
+    }
+    else {
+      pStmt.setInt(2, 0);
+    }
+
+    // SQL文を実行する	何件処理したかを返してくれる
+    if (pStmt.executeUpdate() == 1) {
+      result = true;
+    }
+    else {
+      result = false;
+    }
+  }
+ }catch (SQLException e) {
+    e.printStackTrace();
+    result = false;
+  }
+  catch (ClassNotFoundException e) {
+    e.printStackTrace();
+    result = false;
+  }
+  finally {
+    // データベースを切断
+    if (conn != null) {
+      try {
+        conn.close();
+      }
+      catch (SQLException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+    // 結果を返す
+    return result;
+  }
+
+
+
+・返信部分:ReplyDao.java
+public boolean editReply(Reply param) {	//処理の結果をtrue,falseで返す
+  Connection conn = null;
+  boolean result = false;
+
+  try {
+    // JDBCドライバを読み込む
+    Class.forName("org.h2.Driver");
+
+    // データベースに接続する
+    conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
+    ResultSet = rs;
+    //SQL文を準備する	検閲機能
+    String sql = "SELECT * FROM(SELECT word FROM search) WHERE word like '%?%'";
+    PreparedStatement pStmt = conn.prepareStatement(sql);
+
+    //SQL文を完成させる
+    if (param.getReply_main() != null && !param.getReply_main().equals("")) {
+      pStmt.setString(1, param.getReply_main());
+    }
+    else {
+      pStmt.setString(1, "null");
+    }
+
+    // SQL文を実行する	何件処理したかを返してくれる
+    rs = pStmt.executeQuery();
+    int x=rs.getRow();
+
+    if (x = 0) {
+    // SQL文を準備する	true
+    String sql2 = "update reply set main=?,date=current_timestamp where id=?";
+
+    PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+
+    // SQL文を完成させる		idは自動採番(元がnull)なので記述不要	？の位置に実際に挿入するための記述
+    if (param.getReply_main() != null && !param.getReply_main().equals("")) {
+      pStmt.setString(1, param.getReply_main());
+    }
+    else {
+      pStmt.setString(1, "null");
+    }
+    if (param.getReply_id() != null && !param.getReply_id()=0) {
+      pStmt.setString(2, param.getReply_id());
+    }
+    else {
+      pStmt.setInt(2, 0);
+    }
+
+    // SQL文を実行する	何件処理したかを返してくれる
+    if (pStmt.executeUpdate() == 1) {
+      result = true;
+    }
+    else {
+      result = false;
+    }
+  }
+ }catch (SQLException e) {
+    e.printStackTrace();
+    result = false;
+  }
+  catch (ClassNotFoundException e) {
+    e.printStackTrace();
+    result = false;
+  }
+  finally {
+    // データベースを切断
+    if (conn != null) {
+      try {
+        conn.close();
+      }
+      catch (SQLException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+    // 結果を返す
+    return result;
+  }
+
+
+
+
+
+
+
+両社共に削除ボタンが押された時の削除メソッド
+・投稿部分:BoardDao.java
+
+public boolean deleteBoard(Board param) {	//処理の結果をtrue,falseで返す
+  Connection conn = null;
+  boolean result = false;
+
+  try {
+    // JDBCドライバを読み込む
+    Class.forName("org.h2.Driver");
+
+    // データベースに接続する
+    conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
+    ResultSet = rs;
+
+    // SQL文を準備する
+    String sql = "delete board where board_id=?";
+    PreparedStatement pStmt = conn.prepareStatement(sql);
+
+    // SQL文を完成させる		idは自動採番(元がnull)なので記述不要	？の位置に実際に挿入するための記述
+    if (param.getBoard_id() != null && !param.getBoard_id=0) {
+      pStmt.setString(1, param.getBoard_id());
+    }
+    else {
+      pStmt.setInt(1, 0);
+    }
+
+    // SQL文を実行する	何件処理したかを返してくれる
+    if (pStmt.executeUpdate() == 1) {
+      result = true;
+    }
+    else {
+      result = false;
+    }
+  }
+ }catch (SQLException e) {
+    e.printStackTrace();
+    result = false;
+  }
+  catch (ClassNotFoundException e) {
+    e.printStackTrace();
+    result = false;
+  }
+  finally {
+    // データベースを切断
+    if (conn != null) {
+      try {
+        conn.close();
+      }
+      catch (SQLException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+    // 結果を返す
+    return result;
+  }
+
+
+・返信部分:ReplyDao.java
+
+public boolean deleteReply(Reply param) {	//処理の結果をtrue,falseで返す
+  Connection conn = null;
+  boolean result = false;
+
+  try {
+    // JDBCドライバを読み込む
+    Class.forName("org.h2.Driver");
+
+    // データベースに接続する
+    conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
+    ResultSet = rs;
+
+    // SQL文を準備する
+    String sql = "delete reply where reply_id=?";
+    PreparedStatement pStmt = conn.prepareStatement(sql);
+
+    // SQL文を完成させる		idは自動採番(元がnull)なので記述不要	？の位置に実際に挿入するための記述
+    if (param.getReply_id() != null && !param.getReply_id=0) {
+      pStmt.setString(1, param.getReply_id());
+    }
+    else {
+      pStmt.setInt(1, 0);
+    }
+
+    // SQL文を実行する	何件処理したかを返してくれる
+    if (pStmt.executeUpdate() == 1) {
+      result = true;
+    }
+    else {
+      result = false;
+    }
+  }
+ }catch (SQLException e) {
+    e.printStackTrace();
+    result = false;
+  }
+  catch (ClassNotFoundException e) {
+    e.printStackTrace();
+    result = false;
+  }
+  finally {
+    // データベースを切断
+    if (conn != null) {
+      try {
+        conn.close();
+      }
+      catch (SQLException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+    // 結果を返す
+    return result;
+  }
+
+
+
+
+
+
+
+リアクションの登録メソッド
+・BoardDao.java
+
+・smile登録
+public boolean registSmile(Board param) {	//処理の結果をtrue,falseで返す
+  Connection conn = null;
+  boolean result = false;
+
+  try {
+	    // JDBCドライバを読み込む
+	    Class.forName("org.h2.Driver");
+
+	    // データベースに接続する
+	    conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
+	    ResultSet = rs;
+	    //SQL文を準備する	検閲機能
+	    String sql = "update board set smile=smile+1 where id=?";
+	    PreparedStatement pStmt = conn.prepareStatement(sql);
+
+	    //SQL文を完成させる
+	    if (param.getBoard_smile() != null) {
+	      pStmt.setInt(1, param.getBoard_smile());
+	    }
+	    else {
+			/*この行は何もせずにエラーをはかせた方がリアクションの更新ミスを防げる
+			※setIntの保険で0にするとこれまでのリアクション総数がリセットされてしまう
+				pStmt.setInt(1, 0);
+			*/
+		  }
+
+	    // SQL文を実行する	何件処理したかを返してくれる
+	    if (pStmt.executeUpdate() == 1) {
+	      result = true;
+	    }
+	    else {
+	      result = false;
+	    }
+
+	 }catch (SQLException e) {
+	    e.printStackTrace();
+	    result = false;
+	  }
+	  catch (ClassNotFoundException e) {
+	    e.printStackTrace();
+	    result = false;
+	  }
+	  finally {
+	    // データベースを切断
+	    if (conn != null) {
+	      try {
+	        conn.close();
+	      }
+	      catch (SQLException e) {
+	        e.printStackTrace();
+	      }
+	    }
+	  }
+
+	    // 結果を返す
+	    return result;
+	}
+
+
+
+・shock登録
+	public boolean registShock(Board param) {	//処理の結果をtrue,falseで返す
+	  Connection conn = null;
+	  boolean result = false;
+
+	  try {
+		    // JDBCドライバを読み込む
+		    Class.forName("org.h2.Driver");
+
+		    // データベースに接続する
+		    conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
+		    ResultSet = rs;
+		    //SQL文を準備する	検閲機能
+		    String sql = "update board set shock=shock+1 where id=?";
+		    PreparedStatement pStmt = conn.prepareStatement(sql);
+
+		    //SQL文を完成させる
+		    if (param.getBoard_shock() != null) {
+		      pStmt.setInt(1, param.getBoard_shock());
+		    }
+		    else {
+				/*この行は何もせずにエラーをはかせた方がリアクションの更新ミスを防げる
+				※setIntの保険で0にするとこれまでのリアクション総数がリセットされてしまう
+					pStmt.setInt(1, 0);
+				*/
+			  }
+
+		    // SQL文を実行する	何件処理したかを返してくれる
+		    if (pStmt.executeUpdate() == 1) {
+		      result = true;
+		    }
+		    else {
+		      result = false;
+		    }
+
+		 }catch (SQLException e) {
+		    e.printStackTrace();
+		    result = false;
+		  }
+		  catch (ClassNotFoundException e) {
+		    e.printStackTrace();
+		    result = false;
+		  }
+		  finally {
+		    // データベースを切断
+		    if (conn != null) {
+		      try {
+		        conn.close();
+		      }
+		      catch (SQLException e) {
+		        e.printStackTrace();
+		      }
+		    }
+		  }
+
+		    // 結果を返す
+		    return result;
+		}
+
+
+
+
+		・tear登録
+		public boolean registTear(Board param) {	//処理の結果をtrue,falseで返す
+		  Connection conn = null;
+		  boolean result = false;
+
+		  try {
+			    // JDBCドライバを読み込む
+			    Class.forName("org.h2.Driver");
+
+			    // データベースに接続する
+			    conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
+			    ResultSet = rs;
+			    //SQL文を準備する	検閲機能
+			    String sql = "update board set tear=tear+1 where id=?";
+			    PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			    //SQL文を完成させる
+			    if (param.getBoard_tear() != null) {
+			      pStmt.setInt(1, param.getBoard_tear());
+			    }
+			    else {
+					/*この行は何もせずにエラーをはかせた方がリアクションの更新ミスを防げる
+					※setIntの保険で0にするとこれまでのリアクション総数がリセットされてしまう
+						pStmt.setInt(1, 0);
+					*/
+				  }
+
+			    // SQL文を実行する	何件処理したかを返してくれる
+			    if (pStmt.executeUpdate() == 1) {
+			      result = true;
+			    }
+			    else {
+			      result = false;
+			    }
+
+			 }catch (SQLException e) {
+			    e.printStackTrace();
+			    result = false;
+			  }
+			  catch (ClassNotFoundException e) {
+			    e.printStackTrace();
+			    result = false;
+			  }
+			  finally {
+			    // データベースを切断
+			    if (conn != null) {
+			      try {
+			        conn.close();
+			      }
+			      catch (SQLException e) {
+			        e.printStackTrace();
+			      }
+			    }
+			  }
+
+			    // 結果を返す
+			    return result;
+			}

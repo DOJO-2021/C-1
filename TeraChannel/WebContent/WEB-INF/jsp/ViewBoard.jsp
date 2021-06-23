@@ -69,25 +69,66 @@
 
 					<p class="postDate">投稿日時:${bd.board_update}</p>
 
-					<h3>${bd.board_topic} ${user_id}</h3>
-
 					<!-- 投稿の出力 -->
 
-					<!-- 利用しているユーザーと投稿者が一致していたら -->
-					<c:if test="${user_id == bd.user_id}">
-						<textarea class="board_main_input" name="board_main" rows="8" cols="60">${bd.board_main}</textarea>
-						<div class="editDelete">
-							<input class="edit" type="submit" name="submit" value="投稿:編集">
-							<input class="delete" type="submit" name="submit" value="投稿:削除">
-						</div>
-					</c:if>
+					<c:forEach var="f" items="${userList}">
 
-					<!-- 反対の場合 -->
+						<!-- 投稿者のIDとユーザーIDが一致していた場合 -->
+						<c:if test="${f.user_id == bd.user_id}">
 
-					<c:if test="${user_id != bd.user_id}">
-						<p class="board_main">${bd.board_main}</p>
-						<input type="hidden" name="board_main" value="${bd.board_main}">
-					</c:if>
+							<!-- その上で実名化カウントが１以上だった場合 -->
+							<c:if test="${f.user_nameCount >=1}">
+							<h3>${bd.board_topic} &nbsp;&nbsp; 投稿者:${f.user_name}さん</h3>
+								<!-- 利用しているユーザーと投稿者が一致していたら -->
+								<c:if test="${user_id == bd.user_id}">
+
+									<textarea class="board_main_input" name="board_main" rows="8"
+										cols="60">${bd.board_main}</textarea>
+									<div class="editDelete">
+										<input class="edit" type="submit" name="submit" value="投稿:編集">
+										<input class="delete" type="submit" name="submit"
+											value="投稿:削除">
+									</div>
+
+								</c:if>
+
+								<!-- 反対の場合 -->
+								<c:if test="${user_id != bd.user_id}">
+									<p class="board_main">${bd.board_main}</p>
+									<input type="hidden" name="board_main" value="${bd.board_main}">
+								</c:if>
+
+							</c:if>
+
+							<!-- その上で実名化カウントが0だった場合、通常の出力を行う -->
+							<c:if test="${f.user_nameCount == 0}">
+							<h3>${bd.board_topic} &nbsp;&nbsp; 投稿者:匿名${bd.user_id}さん</h3>
+								<!-- 利用しているユーザーと投稿者が一致していたら -->
+								<c:if test="${user_id == bd.user_id}">
+
+									<textarea class="board_main_input" name="board_main" rows="8"
+										cols="60">${bd.board_main}</textarea>
+									<div class="editDelete">
+										<input class="edit" type="submit" name="submit" value="投稿:編集">
+										<input class="delete" type="submit" name="submit"
+											value="投稿:削除">
+									</div>
+
+								</c:if>
+
+								<!-- 反対の場合 -->
+								<c:if test="${user_id != bd.user_id}">
+
+									<p class="board_main">${bd.board_main}</p>
+									<input type="hidden" name="board_main" value="${bd.board_main}">
+
+								</c:if>
+
+							</c:if>
+
+						</c:if>
+
+					</c:forEach>
 
 					<!-- リアクション表示部分 -->
 					<div class="reaction">
@@ -125,30 +166,76 @@
 						<input type="hidden" name="reply_id" value="${e.reply_id}">
 						<input type="hidden" name="reply_date" value="${e.reply_date}">
 
-						<!-- 利用者と返信者が同じだった場合 -->
-						<c:if test="${user_id == e.user_id}">
-							<div class="flex1">
-							👆匿名${e.user_id}さん&nbsp;返信ID:${e.reply_id}
-							<p class="updateDate">登録日:${e.reply_date}</p>
-							</div>
-							<input class="reply_input" type="text" name="reply_main" value="${e.reply_main}">
-							<div class="editDelete">
-							<input class="edit" type="submit" name="submit" value="返信:編集">
-							<input class="delete" type="submit" name="submit" value="返信:削除">
-						</div>
-						</c:if>
 
-						<!--  反対の場合 -->
-						<c:if test="${user_id != e.user_id}">
-							<div class="flex1">
-							👆匿名${e.user_id}さん&nbsp;返信ID:${e.reply_id}
-							<p class="updateDate" style="text-align:right">登録日:${e.reply_date}</p>
-							</div>
-							<p class="reply" name="reply_main">${e.reply_main}</p>
 
-							<input type="hidden" name="reply_main" value="${e.reply_main}">
-						</c:if>
 
+						<c:forEach var="f" items="${userList}">
+
+							<!-- 投稿者のIDとユーザーIDが一致していた場合 -->
+							<c:if test="${f.user_id == e.user_id}">
+
+								<!-- その上で実名化カウントが１以上だった場合 -->
+								<c:if test="${f.user_nameCount >=1}">
+
+									<!-- 利用者と返信者が同じだった場合 -->
+									<c:if test="${user_id == e.user_id}">
+										<div class="flex1">
+										👆${f.user_name}さん&nbsp;返信ID:${e.reply_id}
+										<p class="updateDate">登録日:${e.reply_date}</p>
+										</div>
+										<input class="reply_input" type="text" name="reply_main" value="${e.reply_main}">
+										<div class="editDelete">
+										<input class="edit" type="submit" name="submit" value="返信:編集">
+										<input class="delete" type="submit" name="submit" value="返信:削除">
+									</div>
+									</c:if>
+
+									<!--  反対の場合 -->
+									<c:if test="${user_id != e.user_id}">
+										<div class="flex1">
+										👆${f.user_name}さん&nbsp;返信ID:${e.reply_id}
+										<p class="updateDate" style="text-align:right">登録日:${e.reply_date}</p>
+										</div>
+										<p class="reply" name="reply_main">${e.reply_main}</p>
+
+										<input type="hidden" name="reply_main" value="${e.reply_main}">
+									</c:if>
+
+								</c:if>
+
+								<!-- その上で実名化カウントが0だった場合、通常の出力を行う -->
+								<c:if test="${f.user_nameCount == 0}">
+
+
+									<!-- 利用者と返信者が同じだった場合 -->
+									<c:if test="${user_id == e.user_id}">
+										<div class="flex1">
+										👆${f.user_name}さん&nbsp;返信ID:${e.reply_id}
+										<p class="updateDate">登録日:${e.reply_date}</p>
+										</div>
+										<input class="reply_input" type="text" name="reply_main" value="${e.reply_main}">
+										<div class="editDelete">
+										<input class="edit" type="submit" name="submit" value="返信:編集">
+										<input class="delete" type="submit" name="submit" value="返信:削除">
+									</div>
+									</c:if>
+
+									<!--  反対の場合 -->
+									<c:if test="${user_id != e.user_id}">
+										<div class="flex1">
+										👆匿名${e.user_id}さん&nbsp;返信ID:${e.reply_id}
+										<p class="updateDate" style="text-align:right">登録日:${e.reply_date}</p>
+										</div>
+										<p class="reply" name="reply_main">${e.reply_main}</p>
+
+										<input type="hidden" name="reply_main" value="${e.reply_main}">
+									</c:if>
+
+								</c:if>
+
+							</c:if>
+
+						</c:forEach>
 
 						</form>
 					</c:forEach>

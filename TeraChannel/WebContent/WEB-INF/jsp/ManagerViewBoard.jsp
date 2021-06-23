@@ -67,11 +67,24 @@
 
 					<p class="postDate">投稿日時:${bd.board_update}</p>
 
-					<h3>${bd.board_topic} ${user_id}</h3>
+					<c:forEach var="f" items="${userList}">
 
-					<!-- 投稿の出力 -->
-						<p class="board_main">${bd.board_main}</p>
-						<input class="delete" type="submit" name="submit" value="投稿:削除">
+						<!-- 投稿者のIDとユーザーIDが一致していた場合 -->
+						<c:if test="${f.user_id == bd.user_id}">
+
+							<h3>${bd.board_topic} &nbsp;&nbsp; 投稿者:${f.user_name}さん</h3>
+
+							<textarea class="board_main_input" name="board_main" rows="8"
+								cols="60">${bd.board_main}</textarea>
+							<div class="editDelete">
+								<input class="delete" type="submit" name="submit" value="投稿:削除">
+							</div>
+
+						</c:if>
+
+					</c:forEach>
+
+
 					<!-- リアクション表示部分 -->
 					<div class="reaction">
 						<div>
@@ -98,17 +111,24 @@
 					<!-- 矢印の部分はおそらく画像挿入の形 -->
 					<c:forEach var="e" items="${replyList}">
 						<form class="board_form" method="POST" action="/TeraChannel/ManagerViewBoardServletTest">
-						<input type="hidden" name="reply_id" value="${e.reply_id}">
-						<input type="hidden" name="reply_date" value="${e.reply_date}">
+							<input type="hidden" name="reply_id" value="${e.reply_id}">
+							<input type="hidden" name="reply_date" value="${e.reply_date}">
 
-							<div class="flex1">
-							👆匿名${e.user_id}さん&nbsp;返信ID:${e.reply_id}
-							<p class="updateDate">登録日:${e.reply_date}</p>
-							</div>
-							<p class="reply" name="reply_main">${e.reply_main}</p>
-							<div class="editDelete">
-							<input class="delete" type="submit" name="submit" value="返信:削除">
-							</div>
+							<c:forEach var="f" items="${userList}">
+
+								<!-- 投稿者のIDとユーザーIDが一致していた場合 -->
+								<c:if test="${f.user_id == e.user_id}">
+										<div class="flex1">
+											👆${f.user_name}さん&nbsp;返信ID:${e.reply_id}
+											<p class="updateDate">登録日:${e.reply_date}</p>
+										</div>
+											<input class="reply_input" type="text" name="reply_main" value="${e.reply_main}">
+										<div class="editDelete">
+											<input class="delete" type="submit" name="submit" value="返信:削除">
+										</div>
+								</c:if>
+							</c:forEach>
+
 						</form>
 					</c:forEach>
 
