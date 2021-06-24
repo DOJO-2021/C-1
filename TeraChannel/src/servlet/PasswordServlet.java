@@ -57,14 +57,13 @@ public class PasswordServlet extends HttpServlet {
 		String mail= request.getParameter("mail");
 		String new_pw = request.getParameter("new_pw");
 
-
-       //一致しなければエラー(スコープとの一致)
+//一致しなければエラー(スコープとの一致)
 		String user_mail = (String)session.getAttribute("user_mail");
-		 if (user_mail !=  mail) {
-			 request.setAttribute("PasswordError", "メールが間違っています");
-    	 	response.sendRedirect("/TeraChannel/PasswordServlet");
-				return;
-		 }
+		 if (!user_mail.equals(mail)) {
+    	 request.setAttribute("PasswordError", "メールが間違っています");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Password.jsp");
+				dispatcher.forward(request, response);
+	    }
 
 		// パスワードの更新を行う　ログインしている人のIDと新しいパスワードをDaoに渡す。
 
@@ -76,19 +75,5 @@ public class PasswordServlet extends HttpServlet {
 // ログインページにフォワードする
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 		dispatcher.forward(request, response);
-
-		/*
-		 エラー処理　メモ
-		 PasswordDao PDao = new PasswordDao();
-		if (request.getParameter("change").equals("変更")) {
-			if (PDao.update(new Tc(user_mail,new_pass ))) {
-				request.setAttribute("result",
-				new Result("更新成功。", "更新しました", "/TeraChannel/LoginServlet"));
-			}else {
-				request.setAttribute("result",
-				new Result("更新失敗。", "更新できませんでした", "/TeraChannel/LoginServlet"));
-			}
-		}
-        */
-	}
-}
+	    }
+	    }
