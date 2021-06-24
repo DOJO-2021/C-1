@@ -203,6 +203,11 @@ public class ViewBoardServletTest extends HttpServlet {
 				Board bd=bDao.showBoard(board_id);
 				request.setAttribute("bd",bd);
 
+				UserDao uDao = new UserDao();
+				//全ユーザーデータの取得
+				List<User> userList = uDao.select(new User(0, "", "", 0, "", 0, 0,""));
+				request.setAttribute("userList",userList);
+
 				//検索で得られた新しい返信Listと対応する投稿データをリクエストスコープに格納しjspに再フォワードを行う
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ViewBoard.jsp");
 				dispatcher.forward(request, response);

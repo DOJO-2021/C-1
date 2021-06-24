@@ -60,7 +60,7 @@
 			<!-- 投稿内容表示部分 -->
 			<c:set var="checkID" value="${user_id}"/>
 			<div class="board">
-				<form class="board_form" method="POST" action="/TeraChannel/ViewBoardServletTest">
+				<form class="board_form" method="POST" action="/TeraChannel/ViewBoardServlet">
 
 					<!-- formタグで表示しないパラメータをリクエストスコープに格納するためのhiddenタグ -->
 					<input type="hidden" name="board_id" value="${bd.board_id}">
@@ -162,7 +162,7 @@
 					<!-- ここから返信欄（forEach部分） -->
 					<!-- 矢印の部分はおそらく画像挿入の形 -->
 					<c:forEach var="e" items="${replyList}">
-						<form class="board_form" method="POST" action="/TeraChannel/ViewBoardServletTest">
+						<form class="board_form" method="POST" action="/TeraChannel/ViewBoardServlet">
 						<input type="hidden" name="reply_id" value="${e.reply_id}">
 						<input type="hidden" name="reply_date" value="${e.reply_date}">
 
@@ -241,7 +241,7 @@
 					</c:forEach>
 
 
-				<form class="board_form" method="POST" action="/TeraChannel/ViewBoardServletTest">
+				<form class="board_form" method="POST" action="/TeraChannel/ViewBoardServlet">
 					<!-- 返信の最後の部分はtextareaで表示（forEach文の外） -->
 
 					<input type="hidden" name="board_id" value="${bd.board_id}">
@@ -256,7 +256,7 @@
 			</div>
 
 
-			<form class="board_form" method="POST" action="/TeraChannel/ViewBoardServletTest">
+			<form class="board_form" method="POST" action="/TeraChannel/ViewBoardServlet">
 
 				<input type="hidden" name="board_id"value="${bd.board_id}">
 				<div class="search">
