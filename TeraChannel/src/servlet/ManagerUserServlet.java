@@ -76,45 +76,124 @@ public class ManagerUserServlet extends HttpServlet {
 
 
 
-		//ドクロカウント昇順降順メソッド
-		if(request.getParameter("pulldown") != null) {
-	    	//pulldownがnullじゃなない場合、新着順の処理する
-			if (request.getParameter("pulldown").equals("newevent")) {
+//		//ドクロカウント昇順降順メソッド
+//		if(request.getParameter("pulldown") != null) {
+//	    	//pulldownがnullじゃなない場合、新着順の処理する
+//			if (request.getParameter("pulldown").equals("newevent")) {
+//				List<User> userList = uDao.selectByCount(1);
+//				//取得結果をリクエストスコープに格納する
+//				request.setAttribute("userList", userList);
+//			} else if (request.getParameter("pulldown").equals("oldevent")) {
+//				List<User> userList = uDao.selectByCount(0);
+//				request.setAttribute("userList", userList);
+//			}
+//
+//
+//			// ユーザー管理ページにフォワードする
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerUser.jsp");
+//			dispatcher.forward(request, response);
+//
+//		}
+
+
+
+
+
+
+
+
+		// ドクロカウント昇順降順か表示する
+	    if(request.getParameter("reaction") != null) {
+	    	request.getParameter("reaction");
+	    	//reactionがnullじゃなない場合、新着順の処理する
+			if (request.getParameter("reaction").equals("newevent")) {
+				//メソッド呼び出し
 				List<User> userList = uDao.selectByCount(1);
 				//取得結果をリクエストスコープに格納する
 				request.setAttribute("userList", userList);
-			} else if (request.getParameter("pulldown").equals("oldevent")) {
+				//JSPのoptionタグのselectedを使用して選択されたもの、されていないものをリクエストスコープに格納する
+				request.setAttribute("reaction1", "selected");
+				request.setAttribute("reaction2", "");
+			} else if (request.getParameter("reaction").equals("oldevant")) {
 				List<User> userList = uDao.selectByCount(0);
 				request.setAttribute("userList", userList);
+				request.setAttribute("reaction1", "");
+				request.setAttribute("reaction2", "selected");
 			}
-
 
 			// ユーザー管理ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerUser.jsp");
 			dispatcher.forward(request, response);
 
-		}
+			return;
+
+	    }
 
 
 
 
 
-		//更新日時昇順降順メソッド
-		if(request.getParameter("pulldown") != null) {
-	    	//pulldownがnullじゃなない場合、新着順の処理する
-			if (request.getParameter("pulldown").equals("newdate")) {
+
+
+
+
+
+//		//更新日時昇順降順メソッド
+//		if(request.getParameter("pulldown") != null) {
+//	    	//pulldownがnullじゃなない場合、新着順の処理する
+//			if (request.getParameter("pulldown").equals("newdate")) {
+//				List<User> userList = uDao.selectByCount(1);
+//				//取得結果をリクエストスコープに格納する
+//				request.setAttribute("userList", userList);
+//			} else if (request.getParameter("pulldown").equals("olddate")) {
+//				List<User> userList = uDao.selectByCount(0);
+//				request.setAttribute("userList", userList);
+//			}
+//
+//			// ユーザー管理ページにフォワードする
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerUser.jsp");
+//			dispatcher.forward(request, response);
+//		}
+
+
+
+
+
+
+
+	  //更新日時昇順降順メソッド
+	    if(request.getParameter("refresh") != null) {
+	    	request.getParameter("refresh");
+	    	//refreshがnullじゃなない場合、新着順の処理する
+			if (request.getParameter("refresh").equals("newdate")) {
+				//メソッド呼び出し
 				List<User> userList = uDao.selectByCount(1);
 				//取得結果をリクエストスコープに格納する
 				request.setAttribute("userList", userList);
-			} else if (request.getParameter("pulldown").equals("olddate")) {
+				//JSPのoptionタグのselectedを使用して選択されたもの、されていないものをリクエストスコープに格納する
+				request.setAttribute("refresh1", "selected");
+				request.setAttribute("refresh2", "");
+			} else if (request.getParameter("refresh").equals("olddate")) {
 				List<User> userList = uDao.selectByCount(0);
 				request.setAttribute("userList", userList);
+				request.setAttribute("refresh1", "");
+				request.setAttribute("refresh2", "selected");
 			}
 
 			// ユーザー管理ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerUser.jsp");
 			dispatcher.forward(request, response);
-		}
+
+			return;
+
+	    }
+
+
+
+
+
+
+
 
 
 

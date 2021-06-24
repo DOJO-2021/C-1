@@ -10,6 +10,12 @@ header {
 	padding-left: 150px;
 }
 
+.terachan {
+	padding-top: 23px;
+	padding-left: 120px;
+	padding-right: 55px;
+}
+
 .navi {
 	padding-top: 30px;
 	padding-left: 50px;
@@ -51,6 +57,27 @@ footer {
 p {
 	font-size:12px;
 }
+
+
+
+/*　ボタン部分　*/
+.btn{
+	width: 5em;
+	height: 2em;
+	background-color: #f4a460;
+	border: none;
+	border-radius: 15px;
+	margin-right: 20px;
+}
+
+btn:hover {
+	background-color: #ff8c00;
+}
+
+btn:active {
+	background-color: #ffd700;
+}
+
 
 /* テーブルの枠の部分 */
 

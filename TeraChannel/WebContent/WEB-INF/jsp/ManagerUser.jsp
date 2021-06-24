@@ -19,6 +19,10 @@
 			<a href="/TeraChannel/ManagerMenuServlet"><img
 				src="/TeraChannel/image/teraco.jpg" alt="TERACO"></a>
 		</div>
+		<div class="terachan">
+			<a href="/TeraChannel/ManagerViewMenuServlet"><img
+				src="/TeraChannel/image/keijiban.jpg" alt="てらちゃんねる"></a>
+		</div>
 		<div class="navi">
 			<button onclick="location.href='/TeraChannel/ManagerMenuServlet'"
 				class="button_menu">メニューページへ戻る</button>
@@ -34,32 +38,45 @@
 		<div>
 
 			<form method="POST" action="/TeraChannel/ManagerUserServlet">
-				<input type="text" name="text" size="5">
-				<input type="submit" name="search" value="ID検索">
+				<input type="text" name="text" size="5"> <input class="btn"
+					type="submit" name="search" value="ID検索">
 			</form>
 
 
-<select id= "re-ch"  name="reaction" onchange="submit(this.form)">
-	<option  action="ManagerUserServlet" name="pulldown" value="newdokuro">ドクロカウント：昇順</option>
-	<option  action="ManagerUserServlet" name="pulldown" value="olddokuro">ドクロカウント：降順</option>
+
+			<!--
+<form id="submit_form1" method="post" action="#">
+<select id= "submit_select1"  name="reaction">
+	<option   value="newdokuro">ドクロカウント：昇順</option>
+	<option   value="olddokuro">ドクロカウント：降順</option>
 </select>
-<select id= "re-ch"  name="reaction" onchange="submit(this.form)">
-	<option  action="ManagerUserServlet" name="pulldown" value="newdatet">最終更新日時：昇順</option>
-	<option  action="ManagerUserServlet" name="pulldown" value="olddate">最終更新日時：降順</option>
+</form>
+
+<form id="submit_form2" method="post" action="#">
+<select id= "submit_select2"  name="reaction">
+	<option   value="newdatet">最終更新日時：昇順</option>
+	<option   value="olddate">最終更新日時：降順</option>
 </select>
+</form>
+-->
 
 
 
-<script type="text/javascript">
-$(function(){
-	$("#submit_select").change(function(){
-		$("#submit_form").submit();
-	})
-});
-</script>
 
 
+			<form action="ManagerUserServlet" method="post" id="docro">
+				<select id="reaction" name="reaction" onchange="submit(this.form)">
+					<option value="newevent" ${reaction1}>ドクロカウント：昇順</option>
+					<option value="oldevant" ${reaction2}>ドクロカウント：降順</option>
+				</select>
+			</form>
 
+			<form action="ManagerUserServlet" method="post" id="update">
+				<select id="refresh" name="refresh" onchange="submit(this.form)">
+					<option value="newdate" ${refresh1}>最終更新日時：昇順</option>
+					<option value="olddate" ${refresh2}>最終更新日時：降順</option>
+				</select>
+			</form>
 
 
 
@@ -107,37 +124,39 @@ $(function(){
 						<td>メールアドレス</td>
 						<td>ドクロカウント</td>
 						<td>実名化カウント</td>
+						<td>最終更新日時</td>
+						<td>更新ボタン</td>
 					</tr>
-				</table>
 
-				<c:forEach  var="e" items="${userList}">
+
+				<c:forEach var="e" items="${userList}">
 					<form method="POST" action="/TeraChannel/ManagerUserServlet">
-						<input type="submit" name="submit" value="更新">
-						<table class="info">
+
+
 							<tr>
-								<td><input type="text" name="user_id" value="${e.user_id}"></td>
-								<td><input type="text" name="user_name"
-									value="${e.user_name}"></td>
-								<td><input type="text" name="user_pw" value="${e.user_pw}"></td>
-								<td><input type="text" name="user_type"
-									value="${e.user_type}"></td>
-								<td><input type="text" name="user_mail"
-									value="${e.user_mail}"></td>
+								<td><p>${e.user_id}</p><input type="hidden" name="user_id" value="${e.user_id}"></td>
+								<td><p>${e.user_name}</p></td>
+								<td><p>${e.user_pw}</p></td>
+								<td><p>${e.user_type}</p></td>
+								<td><p>${e.user_mail}</p></td>
 								<td>
-
-									<div id="${e.user_id}"  name="user_countDiv">${e.user_count}</div>
-									<input id="hidden${e.user_id}" type="hidden" name="user_countHidden" value="${e.user_count}">
-									<input type="hidden" name="user_nameCountHidden" value="${e.user_nameCount}">
-
-									<input type="button" value="↑" id="btn_count_up" onclick="countPlus(${e.user_id})" />
-									<input type="button" value="↓" id="btn_count_down" onclick="countMinus(${e.user_id})"/>
+									<div id="${e.user_id}" name="user_countDiv">${e.user_count}</div>
+									<input id="hidden${e.user_id}" type="hidden"
+									name="user_countHidden" value="${e.user_count}"> <input
+									type="hidden" name="user_nameCountHidden"
+									value="${e.user_nameCount}"> <input type="button"
+									value="↑" id="btn_count_up" onclick="countPlus(${e.user_id})" />
+									<input type="button" value="↓" id="btn_count_down"
+									onclick="countMinus(${e.user_id})" />
 								</td>
-								<td><input type="text" name="user_namecount" value="${e.user_nameCount}"></td>
+								<td><p>${e.user_nameCount}</p><input type="hidden" name="user_namecount" value="${e.user_nameCount}"></td>
+								<td><p>${e.user_update}</p><input type="hidden" name="user_update" value="${e.user_update}"></td>
+							    <td><input class="btn" type="submit" name="submit" value="更新"></td>
 							</tr>
-						</table>
+
 					</form>
 				</c:forEach>
-
+                </table>
 
 			</div>
 
@@ -193,9 +212,26 @@ $(function(){
 		}
 
 
-	</script>
 
-	<!-- メインここまで -->
+
+
+
+
+		//ドクロカウント昇順降順
+		const docro = document.getElementById('docro');
+		function exec() {
+		location.href =docro.action;
+		}
+
+		//更新順
+		const update = document.getElementById('update');
+		function exec() {
+		location.href =update.action;
+		}
+
+
+		</script>
+		<!-- メインここまで -->
 	<!-- フッター -->
 	<footer> </footer>
 

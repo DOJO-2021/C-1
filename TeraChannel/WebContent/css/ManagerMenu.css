@@ -1,5 +1,67 @@
 @charset "UTF-8";
 
+/*ユーザー共通部分*/
+header {
+	display: flex;
+	border-bottom: 2px solid #d3d3d3;
+}
+
+.teraco {
+	padding-left: 150px;
+}
+
+.terachan {
+	padding-top: 23px;
+	padding-left: 120px;
+	padding-right: 55px;
+}
+
+.navi {
+	padding-top: 30px;
+	padding-left: 50px;
+}
+
+.button_board {
+	width: 7em;
+	height: 3em;
+	background-color: #f4a460;
+	border: none;
+	border-radius: 15px;
+	margin-right: 20px;
+}
+
+.button_menu {
+	width: 15em;
+	height: 3em;
+	background-color: #f4a460;
+	border: none;
+	border-radius: 15px;
+	margin-right: 20px;
+}
+
+button:hover {
+	background-color: #ff8c00;
+}
+
+button:active {
+	background-color: #ffd700;
+}
+
+footer {
+	background-color: #dcdcdc;
+	font-size: 14px;
+	padding-left: 180px;
+	padding-right: 180px;
+}
+
+p {
+	font-size:12px;
+}
+
+
+
+/* メイン部分 */
+
 .menu {
 	display: flex;
 }

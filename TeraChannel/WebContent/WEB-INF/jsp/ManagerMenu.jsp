@@ -9,20 +9,38 @@
 <link rel="stylesheet" href="/TeraChannel/css/Common.css">
 </head>
 <body>
-<!-- ヘッダー -->
-<header>
-<img src="image/teraco.jpg" alt="logo">
+	<!-- ヘッダーここから -->
+	<header>
+		<div class="teraco">
+			<a href="/TeraChannel/ManagerMenuServlet"><img
+				src="/TeraChannel/image/teraco.jpg" alt="TERACO"></a>
+		</div>
+		<div class="terachan">
+		    <a href="/TeraChannel/ManagerViewMenuServlet"><img
+				src="/TeraChannel/image/keijiban.jpg" alt="てらちゃんねる"></a>
+		</div>
+		<div class="navi">
+			<button onclick="location.href='/TeraChannel/ManagerMenuServlet'"
+				class="button_menu">メニューページへ戻る</button>
+		</div>
+	</header>
+	<!-- ヘッダーここまで -->
+
+
+
+
+<!-- メイン -->
+<main>
+<h1>管理者メニューページ</h1>
+
 
 <h3 style="text-align:right">
 <a href="/TeraChannel/BoardServlet">掲示板</a>
 <a href="/TeraChannel/ManagerUserServlet">ユーザー管理</a>
 <a href="/TeraChannel/LoginServlet">ログアウト</a>
 </h3>
-</header>
 
-<!-- メイン -->
-<main>
-<h1>管理者メニューページ</h1>
+
 
 <div class="menu">
 
