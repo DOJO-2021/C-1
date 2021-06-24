@@ -23,7 +23,7 @@ public class UserDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:\\pleiades\\workspace\\C-1\\database", "sa", "123");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
 
 			// SQL文を準備する
 			String sql = "select * from user";
