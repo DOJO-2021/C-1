@@ -61,6 +61,7 @@ p {
 	height: 520px;
 	width: 550px;
 	overflow-y:scroll;
+	color: #8b008b;
 }
 .scrollbuttan {
    display:  inline-block;
@@ -125,7 +126,7 @@ p {
  	border-left: 7px dotted rgba(255,0,0,0.2);
  	box-shadow: 0 0 0 5 #ffff00;
  	padding: 1em;
-
+	flex: 0 0 240px;
 }
 
 .rule p{
@@ -137,6 +138,6 @@ p {
 .list {
 	display: flex;
 	text-align: right;
-	margin: 30px 80px 180px 645px;
+	margin: 10px 30px 180px 645px;
 	margin-bottom: 0px;
 }

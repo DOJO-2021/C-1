@@ -32,7 +32,7 @@ public class BoardfDAO {
 			if(push ==0) {
 				sql = "SELECT "
 					+ "(BOARD_SMILE +  BOARD_SHOCK  + BOARD_TEAR ) AS REACTION , "
-					+ "BOARD_UPDATE ,BOARD_TOPIC  "
+					+ "BOARD_UPDATE ,BOARD_TOPIC  ,BOARD_ID "
 					+ "FROM BOARD "
 					+ "GROUP BY BOARD_TOPIC "
 					+ "ORDER BY "
@@ -41,7 +41,7 @@ public class BoardfDAO {
 			} else if(push==1) {
 				sql = "SELECT "
 					+ "(BOARD_SMILE +  BOARD_SHOCK  + BOARD_TEAR ) AS REACTION , "
-					+ "BOARD_UPDATE ,BOARD_TOPIC  "
+					+ "BOARD_UPDATE ,BOARD_TOPIC  ,BOARD_ID "
 					+ "FROM BOARD "
 					+ "GROUP BY BOARD_TOPIC "
 					+ "ORDER BY "
@@ -69,6 +69,8 @@ public class BoardfDAO {
 				page1.setBoard_smileTotal(rs.getInt("reaction"));
 				page1.setBoard_update(rs.getString("board_update"));
 				page1.setBoard_topic(rs.getString("board_topic"));
+				page1.setBoard_id(rs.getInt("board_id"));
+				int board_id=rs.getInt("board_id");
 
 				//SQL文2を実行し結果表を取得
 				ResultSet rsr = pStmt_reply.executeQuery();
@@ -114,7 +116,7 @@ public class BoardfDAO {
 
 			// SQL文1を準備する Boardテーブル用
 			String sql = " SELECT "
-					+ "BOARD_TOPIC , BOARD_MAIN ,(BOARD_SMILE +  BOARD_SHOCK  + BOARD_TEAR ) AS REACTION , BOARD_UPDATE "
+					+ "BOARD_TOPIC , BOARD_MAIN ,(BOARD_SMILE +  BOARD_SHOCK  + BOARD_TEAR ) AS REACTION , BOARD_UPDATE ,BOARD_ID "
 					+ "FROM BOARD WHERE BOARD_TOPIC LIKE ? AND BOARD_MAIN  LIKE ? GROUP BY BOARD_TOPIC "
 					+ "ORDER BY REACTION DESC";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -141,6 +143,8 @@ public class BoardfDAO {
 				page1.setBoard_smileTotal(rs.getInt("reaction"));
 				page1.setBoard_update(rs.getString("board_update"));
 				page1.setBoard_topic(rs.getString("board_topic"));
+				page1.setBoard_id(rs.getInt("board_id"));
+				int board_id=rs.getInt("board_id");
 
 				//SQL文2を実行し、結果表を取得する
 				ResultSet rsr = pStmt_reply.executeQuery();

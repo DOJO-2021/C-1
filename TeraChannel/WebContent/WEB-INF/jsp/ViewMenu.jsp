@@ -40,17 +40,18 @@
 			<input type="search" name="search" placeholder="キーワードを入力">
 			<input type="submit" name="submit"  value="検索" >
 		</form>
-		<form method=" post" action="ViewMenuServlet">
-		<select  onchange="submit(this.form)" name="reaction" >
-			<option name="pulldown" value="notpopular">リアクションの少ない順</option>
-			<option name="pulldown" value="popular">リアクションの多い順</option>
-		</select>
+
+		<form  action="ViewMenuServlet" method="post" id="re-ch" >
+			<select id="reaction" name="reaction" onchange="submit(this.form)" >
+				<option value="popular" ${reaction1}>リアクションの多い順</option>
+				<option value="notpopular" ${reaction2}>リアクションの少ない順</option>
+			</select>
 		</form>
-		<form method=" post" action="ViewMenuServlet">
-		 <select  name="refresh"  onchange="this.form.submit()">
-			<option name="pulldown" value="newevent">新着順</option>
-			<option name="pulldown" value="oldevant">古い順</option>
-		</select>
+		<form  action="ViewMenuServlet" method="post" id="ref-ch" >
+		 	<select id="refresh" name="refresh"  onchange="submit(this.form)">
+				<option value="newevent" ${refresh1}>新着順</option>
+				<option value="oldevant" ${refresh2}>古い順</option>
+			</select>
 		</form>
 	</div>
 	<!-- メイン -->
@@ -72,25 +73,22 @@
 				</p>
 			</div>
 			<div class="page">
-				<%--
-				<div class="scroll">
-					<button id="page_top" class="scrollbuttan"></button>
-				  <div class="scrollbuttan" onclic="Top()"></div>
---%>
 
 				<div id="page_scroll" class="scroll">
+					<p>${error}</p>
 
 					<c:forEach var="b" items="${topListMain}">
 						<p>
-							<%--<input type="hidden" onclick="/TeraChannel/ViewBoardServlet${board_id}" value="${b.board_topic}">
+
+							<%--<input type="hidden" onclick="/TeraChannel/ViewMeneServlet${board_id}"> ${b.board_topic}"
 							--%>
-							<h8> <a href="/TeraChannel/ViewBoardServletTest?board_id=${b.board_id}">
-								${b.board_topic} </a></h8>
-							<br>
-							<h11>
-							<pre>  みんなのリアクション数：<c:out value="${b.board_smileTotal}" />   最終更新日：<c:forEach
-									var="r" items="${b.reply}">${r.reply_date}</c:forEach>
-							</pre></h11>
+						<form action="ViewMenuServlet" method="post" >
+						<h10> <a href="/TeraChannel/ViewBoardServlet?board_id=${b.board_id}">${b.board_topic}</a></h10>
+						</form>
+						<br>
+						<h11><pre> みんなのリアクション数：<c:out value="${b.board_smileTotal}" />   最終更新日：<c:forEach
+						var="r" items="${b.reply}">${r.reply_date}</c:forEach>
+						</pre></h11>
 						</p>
 					</c:forEach>
 
@@ -146,19 +144,17 @@
 
 
 
-	<%--	//プルダウン切り替え(リアクション)
-		const rech = document.getElementById('re-ch');
-		rech.onchange = function() {
-			console.log("re-ch");
+		//プルダウン切り替え(リアクション)
+		 /* const rech = document.getElementById('re-ch');
+			function exe() {
 		    location.href =rech.action;
 		}
 
 		//プルダウン切り替え(新着)
 		const refch = document.getElementById('ref-ch');
-		refch.onchange = function() {
-			console.log("ref-ch");
+			function exec() {
 			location.href =refch.action;
-		} --%>
+		} */
 
 	</script>
 </body>
