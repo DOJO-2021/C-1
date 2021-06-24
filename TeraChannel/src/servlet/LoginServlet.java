@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -55,16 +56,30 @@ public class LoginServlet extends HttpServlet {
 					//HttpSession session = request.getSession();
 					//session.setAttribute("id",us.getUser_id());
 
-					LoginUser us=new LoginUser();
+					//LoginUser us=new LoginUser(user_id,user_type,user_name.user_mail);
+					//LoginUser us=new LoginUser();
+
+					UserDao uDao = new UserDao();
+
+					List<LoginUser> UserList = uDao.User(user_mail, user_pw);
+
+
 					HttpSession session = request.getSession();
-					//IDを格納
-					session.setAttribute("user_id",us.getUser_id());
-					//typeを格納
-					session.setAttribute("user_type",us.getUser_type());
-					//nameを格納
-					session.setAttribute("user_name",us.getUser_name());
-					//mailを格納
-					session.setAttribute("user_mail",us.getUser_mail());
+
+					for(LoginUser i:UserList) {
+						//IDを格納
+						session.setAttribute("user_id", i.getUser_id());
+					int sampleid=i.getUser_id();
+						int sampletype=i.getUser_type();
+						String samplename=i.getUser_name();
+						//typeを格納
+						session.setAttribute("user_type",i.getUser_type());
+						//nameを格納
+						session.setAttribute("user_name",i.getUser_name());
+
+					}
+						//mailを格納
+					session.setAttribute("user_mail",user_mail);
 					// メニューサーブレットにリダイレクトする
 					response.sendRedirect("/TeraChannel/MenuServlet");
 					//response.sendRedirect("/TeraChannel/LogoutServlet");

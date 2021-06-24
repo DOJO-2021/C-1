@@ -13,7 +13,7 @@ import model.LoginUser;
 public class UserDao {
 
 	// ログインできるならtrueを返す
-	public boolean isLoginOK(String mail, String pw) {
+	public boolean isLoginOK(String user_mail, String user_pw) {
 			Connection conn = null;
 			boolean loginResult = false;
 
@@ -27,8 +27,8 @@ public class UserDao {
 				// SELECT文を準備する
 				String sql = "select count(*) from user where user_mail = ? and user_pw = ?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
-				pStmt.setString(1, mail);
-				pStmt.setString(2, pw);
+				pStmt.setString(1, user_mail);
+				pStmt.setString(2, user_pw);
 
 				// SELECT文を実行し、結果表を取得する
 				ResultSet rs = pStmt.executeQuery();
@@ -64,8 +64,8 @@ public class UserDao {
 			return loginResult;
 		}
 
-	//ユーザータイプを保存
-	public List<LoginUser> User(String mail, String pw) {
+	//スコープにid type name mailを保存
+	public List<LoginUser> User(String user_mail, String user_pw) {
 			Connection conn = null;
 			List<LoginUser> UserList = new ArrayList<LoginUser>();
 
@@ -79,10 +79,10 @@ public class UserDao {
 				ResultSet rs;
 
 				//SQL文を準備する
-				String sql = "select user_id,user_name,user_type,user_mail from user where user_mail = ? and user_pw = ?";
+				String sql = "select user_id,user_type,user_name,user_mail from user where user_mail = ? and user_pw = ?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
-				pStmt.setString(1, mail);
-				pStmt.setString(2, pw);
+				pStmt.setString(1, user_mail);
+				pStmt.setString(2, user_pw);
 				//SQL文の実行
 				rs = pStmt.executeQuery();
 

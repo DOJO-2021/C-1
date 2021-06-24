@@ -5,6 +5,11 @@ public class LoginUser {
 	private int user_type;
 	private String user_name;
 	private String user_mail;
+
+
+
+
+
 	public LoginUser(int user_id, int user_type, String user_name, String user_mail) {
 		super();
 		this.user_id = user_id;
@@ -12,13 +17,20 @@ public class LoginUser {
 		this.user_name = user_name;
 		this.user_mail = user_mail;
 	}
+
 	public LoginUser() {
 		super();
 		this.user_id = 0;
 		this.user_type = 0;
 		this.user_name = "";
 		this.user_mail = "";
-}
+	}
+
+
+
+
+
+
 	public int getUser_id() {
 		return user_id;
 	}
