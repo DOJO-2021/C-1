@@ -10,10 +10,13 @@ import model.Board;
 
 public class BoardDao {
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
-	public boolean insert(Board card) { //処理の結果をtrue,falseで返す
+	public int insert(Board card) { //処理の結果をtrue,falseで返す
 		Connection conn = null;
-		boolean result = false;
+		//boolean result = false;
 		boolean result_search = false;
+
+		//auto_incrementを入れる変数
+		int ai = 0;
 
 		try {
 			// JDBCドライバを読み込む
@@ -56,7 +59,7 @@ public class BoardDao {
 			if (result_search) {
 				// SQL文を準備する	投稿機能
 				String sql2 = "insert into board values (null,?,?,0,0,0,current_timestamp,?)";
-				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+				PreparedStatement pStmt2 = conn.prepareStatement(sql2,java.sql.Statement.RETURN_GENERATED_KEYS);
 
 				// SQL文を完成させる		idは自動採番(元がnull)なので記述不要	？の位置に実際に挿入するための記述
 				if (card.getBoard_topic() != null && !card.getBoard_topic().equals("")) {
@@ -78,12 +81,20 @@ public class BoardDao {
 
 				// SQL文を実行する	何件処理したかを返してくれる
 				if (pStmt2.executeUpdate() == 1) {
-					result = true;
+					//result = true;
+					//Auto_Incrementされたidを取得
+					rs = pStmt2.getGeneratedKeys();
+					 if(rs.next()){
+						 //1列め(board_idの列)を取得するのでgetInt(1)
+			             ai = rs.getInt(1);
+			         }
 				} else {
-					result = false;
+					//result = false;
+					ai = 0;
 				}
 			} else {
-				result = false;
+				//result = false;
+				ai = 0;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -100,7 +111,9 @@ public class BoardDao {
 			}
 		}
 		// 結果を返す
-		return result;
+		//return result;
+		//auto_incrementの値を返す
+		return ai;
 	}
 
 

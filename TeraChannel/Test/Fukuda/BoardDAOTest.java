@@ -8,13 +8,17 @@ public class BoardDAOTest {
 
 		//insert()	投稿のテスト	成功になればOK
 		System.out.println("----insert()のテスト----");
-		Board insRec = new Board(0, "test", "test", 0, 0, 0, "current_timestamp", 0);
-		if (dao.insert(insRec)) {
+		Board insRec = new Board(0, "ばか", "test", 0, 0, 0, "current_timestamp", 0);
+		int test = dao.insert1(insRec);
+		if (test != 0 ) {
 			System.out.println("投稿成功");
+			System.out.println(test);
 		} else {
 			System.out.println("投稿失敗");
+			System.out.println(test);
 		}
 
+		/*
 		//insert()	投稿・topicの検閲のテスト	失敗になればOK
 		System.out.println("----insert()投稿・topicの検閲のテスト----");
 		Board insRec2 = new Board(0, "バカやろう", "test", 0, 0, 0, "current_timestamp", 0);
@@ -41,5 +45,6 @@ public class BoardDAOTest {
 		} else {
 			System.out.println("投稿失敗");
 		}
+		*/
 	}
 }

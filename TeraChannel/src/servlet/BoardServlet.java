@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Fukuda.BoardDAO;
+import dao.BoardDao;
 import model.Board;
 
 /**
@@ -60,15 +60,24 @@ public class BoardServlet extends HttpServlet {
 		//int user_id = (int)session.getAttribute("user_id");
 
 		//投稿処理を行う	user_idはセッションスコープに格納されているものを使用する
-		BoardDAO bDao = new BoardDAO();
-		if (bDao.insert(new Board(0,board_topic,board_main,0,0,0,"current_date",6))) {	//最後user_id
-
+		BoardDao bDao = new BoardDao();
+		//if文はtrue/falseで判定するのでinsert結果(board_idの値)を変数に格納
+		int board_id = bDao.insert(new Board(0,board_topic,board_main,0,0,0,"current_date",6));//最後user_id
+		if (board_id != 0) {
+			//board_idをinsertしたデータからもってくる必要がある
+			//int board_id=bDao.select(new Board(0,board_topic,board_main,0,0,0,"current_date",user_id));
 			//投稿できた場合は投稿IDをリクエストスコープに格納
-			request.setAttribute("board_id",request.getParameter("board_id"));
+			request.setAttribute("board_id",board_id);
+			//int board_id = Integer.parseInt(request.getParameter("board_id"));
+
+			//仮でuser_id(値は1)をセッションスコープに入れておく
+			//session.setAttribute("user_id",1 );
 
 			//詳細ページへフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ViewBoard.jsp");
-			dispatcher.forward(request, response);
+			//RequestDispatcher dispatcher = request.getRequestDispatcher("/ViewBoardServlet");
+			//dispatcher.forward(request, response);
+			//詳細ページへboard_idを保持させてリダイレクトする（フォワードだとdoPostに飛んでしまうので）
+			response.sendRedirect("/TeraChannel/ViewBoardServlet?board_id=" + board_id);
 		}
 		else {
 			//投稿できなかった場合はエラーメッセージ表示の上、同じページへフォワード
