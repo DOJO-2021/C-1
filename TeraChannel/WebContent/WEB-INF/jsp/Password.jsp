@@ -25,7 +25,7 @@
 			<table  align="center">
 			    <tr>
 				<th>メールアドレス</th>
-				<td><input type="text" id="user_mail" name="user_mail" class="form-control" ></td>
+				<td><input type="text" id="mail" name="mail" class="form-control" ></td>
 				</tr>
 				<tr>
 				<th>新しいパスワード</th>
@@ -58,7 +58,7 @@
     function check(){
 
 	    //メールアドレスに値が入っているか？
-	  if(document.getElementById('user_mail').value == ""){
+	  if(document.getElementById('mail').value == ""){
 		    alert("メールアドレスを入力してください");
 			return false;
 		}

@@ -22,10 +22,10 @@
 
       <li><select onChange = "location.href=value;"></li>
             <option value="">マイメニュー</option>
-            <option value="password"><a href="/WEB-INF/jsp/Password.jsp">パスワード変更</a></option>
-            <option value="logout"><a href="/TeraChannel/LogoutServlet">ログアウト</a></option>
+            <option value="/TeraChannel/PasswordServlet">パスワード変更</a></option>
+            <option value="/TeraChannel/LogoutServlet">ログアウト</a></option>
           </select>
-      <li><a href="/TeraChannel/ViewBoad.jsp">掲示板</a></li>
+      <li><a href="/TeraChannel/ViewMenuServlet">掲示板</a></li>
    </ul>
 
  </nav>

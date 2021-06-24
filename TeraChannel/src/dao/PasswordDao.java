@@ -32,8 +32,8 @@ public class PasswordDao {
 			} else {
 				pStmt.setString(1, "null");
 			}
-			if (user.getUser_mail() != null) {
-				pStmt.setString(2, user.getUser_mail());
+			if (user.getMail() != null) {
+				pStmt.setString(2, user.getMail());
 			} else {
 				pStmt.setString(2, "null");
 			}

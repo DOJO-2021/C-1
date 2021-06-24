@@ -23,38 +23,60 @@ public class PasswordServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
 
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
+		if (session.getAttribute("user_mail") == null) {
+			response.sendRedirect("/TeraChannel/LoginServlet");
+			return;
+		}
+
+		// パスワード変更ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Password.jsp");
+		dispatcher.forward(request, response);
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+        HttpSession session = request.getSession();
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+
 //		if (session.getAttribute("user_mail") == null) {
 //		response.sendRedirect("/Terachannel/LoginServlet");
-//			return;
+//		return;
 //		}
+
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 
 		//メールアドレス、新しパスワード取得
-		String user_mail= request.getParameter("user_mail");
+		String mail= request.getParameter("mail");
 		String new_pw = request.getParameter("new_pw");
 
 
-		//一致しなければエラー(スコープとの一致)
-
-		 if (session.getAttribute("user_mail") !=  user_mail) {
-		   request.setAttribute("PasswordError", "メールが間違っています");
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Password.jsp");
-					dispatcher.forward(request, response);
-	    }
+       //一致しなければエラー(スコープとの一致)
+		String user_mail = (String)session.getAttribute("user_mail");
+		 if (user_mail !=  mail) {
+			 request.setAttribute("PasswordError", "メールが間違っています");
+    	 	response.sendRedirect("/TeraChannel/PasswordServlet");
+				return;
+		 }
 
 		// パスワードの更新を行う　ログインしている人のIDと新しいパスワードをDaoに渡す。
 
 		PasswordDao PDao = new PasswordDao();
 		if (request.getParameter("change").equals("変更")) {
-			PDao.update(new Password(user_mail,new_pw));
+			PDao.update(new Password(mail,new_pw));
 		    }
+
+// ログインページにフォワードする
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
+		dispatcher.forward(request, response);
+
 		/*
 		 エラー処理　メモ
 		 PasswordDao PDao = new PasswordDao();
@@ -68,9 +90,5 @@ public class PasswordServlet extends HttpServlet {
 			}
 		}
         */
-
-		// ログインページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
-		dispatcher.forward(request, response);
 	}
 }
