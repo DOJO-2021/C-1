@@ -27,10 +27,10 @@ public class ViewMenuServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		/* if (session.getAttribute("user_id") == null ) {
+		 if (session.getAttribute("user_id") == null ) {
 			response.sendRedirect("/TeraChannel/LoginServlet");
 			return;
-		} */
+		}
 
 		//リストを取得する
 		BoardfDAO bdao = new BoardfDAO();
@@ -50,10 +50,10 @@ public class ViewMenuServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		/* if (session.getAttribute("user_id") == null ) {
+		 if (session.getAttribute("user_id") == null ) {
 			response.sendRedirect("/TeraChannel/LoginServlet");
 			return;
-		} */
+		}
 
 		//リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");

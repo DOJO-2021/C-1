@@ -39,7 +39,7 @@ public class ManagerViewBoardServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 
-		int board_id = Integer.parseInt(request.getParameter("BOARD_ID"));
+		int board_id = Integer.parseInt(request.getParameter("board_id"));
 
 		BoardDao bDao=new BoardDao();
 		ReplyDao rDao=new ReplyDao();

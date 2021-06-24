@@ -27,11 +27,11 @@ public class BoardServlet extends HttpServlet {
 			throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットに移動する
 		HttpSession session = request.getSession();
-	/*	if (session.getAttribute("user_id") == null) {
+		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/TeraChannel/LoginServlet");
 			return;
 		}
-	*/
+
 		//投稿ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Board.jsp");
 		dispatcher.forward(request, response);
@@ -44,11 +44,11 @@ public class BoardServlet extends HttpServlet {
 			throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットに移動する
 		HttpSession session = request.getSession();
-	/*	if (session.getAttribute("user_id") == null) {
+		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/TeraChannel/LoginServlet");
 			return;
 		}
-	*/
+
 
 		//リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
@@ -57,18 +57,16 @@ public class BoardServlet extends HttpServlet {
 
 
 		//user_idをセッションスコープから取ってくる
-		//int user_id = (int)session.getAttribute("user_id");
+		int user_id = (int)session.getAttribute("user_id");
 
 		//投稿処理を行う	user_idはセッションスコープに格納されているものを使用する
 		BoardDao bDao = new BoardDao();
 		//if文はtrue/falseで判定するのでinsert結果(board_idの値)を変数に格納
-		int board_id = bDao.insert(new Board(0,board_topic,board_main,0,0,0,"current_date",6));//最後user_id
+		int board_id = bDao.insert(new Board(0,board_topic,board_main,0,0,0,"current_date",user_id));//最後user_id
 		if (board_id != 0) {
 			//board_idをinsertしたデータからもってくる必要がある
-			//int board_id=bDao.select(new Board(0,board_topic,board_main,0,0,0,"current_date",user_id));
 			//投稿できた場合は投稿IDをリクエストスコープに格納
 			request.setAttribute("board_id",board_id);
-			//int board_id = Integer.parseInt(request.getParameter("board_id"));
 
 			//仮でuser_id(値は1)をセッションスコープに入れておく
 			//session.setAttribute("user_id",1 );
