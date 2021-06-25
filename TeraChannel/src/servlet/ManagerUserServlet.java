@@ -32,8 +32,8 @@ public class ManagerUserServlet extends HttpServlet {
 
 
 		HttpSession session = request.getSession();
-		if (session.getAttribute("user_id") == null) {
-			response.sendRedirect("/Terachannel/src/LoginServlet");
+		if (session.getAttribute("manager_mail") == null) {
+			response.sendRedirect("/Terachannel/src/ManagerLoginServlet");
 			return;
 		}
 
@@ -62,8 +62,8 @@ public class ManagerUserServlet extends HttpServlet {
 
 
 		HttpSession session = request.getSession();
-		if (session.getAttribute("user_id") == null) {
-			response.sendRedirect("/Terachannel/src/LoginServlet");
+		if (session.getAttribute("manager_mail") == null) {
+			response.sendRedirect("/Terachannel/src/ManagerLoginServlet");
 			return;
 		}
 
