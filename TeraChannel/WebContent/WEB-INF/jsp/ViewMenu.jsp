@@ -37,8 +37,13 @@
 
 	<div class=list>
 		<form  action="ViewMenuServlet" method="post" >
-			<input type="search" name="search" placeholder="キーワードを入力">
-			<input type="submit" name="submit"  value="検索" >&nbsp;
+		<div class="search">
+			<input class="search_input" type="search" name="search" placeholder="キーワードを入力">
+		</div>
+
+		<div class="editDelete">
+			<input class="searchButton" type="submit" name="submit"  value="検索" >&nbsp;
+		</div>
 		</form>
 
 		<form  action="ViewMenuServlet" method="post" id="re-ch" >
@@ -52,7 +57,6 @@
 		<form  action="ViewMenuServlet" method="post" id="ref-ch" >
 		<div class = ref>
 		 	<select id="refresh" name="refresh"  onchange="submit(this.form)">
-		 		<option hidden>選択してください</option>
 				<option value="newevent" ${refresh1}>新着順</option>
 				<option value="oldevant" ${refresh2}>古い順</option>
 			</select>
