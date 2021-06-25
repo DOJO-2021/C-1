@@ -27,17 +27,25 @@ header {
 	width: 7em;
 	height: 3em;
 	background-color: #f4a460;
+	color: #ffffff;
 	border: none;
 	border-radius: 15px;
 	margin-right: 10px;
+	font-weight: bold;
+	box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 2px 2px 3px rgba(0, 0, 0, 0.19);
+
 }
 
 .button_menu {
 	width: 15em;
 	height: 3em;
 	background-color: #f4a460;
+	color: #ffffff;
 	border: none;
 	border-radius: 15px;
+	font-weight: bold;
+	box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 2px 2px 3px rgba(0, 0, 0, 0.19);
+
 }
 
 button:hover {
@@ -102,31 +110,33 @@ main{
 
 .postDate{
 	position:relative;
-	left:50%;
+	position:relative;
+	text-align: right;
 	margin-block-start: 0em;
-	margin-left:5px;
-	margin-right:5px;
+	margin-right:25px;
 	margin-block-end: 0em;
 }
 
 .updateDate{
 	position:relative;
-	left:60%;
+	/*left:60%;*/
+	text-align: right;
 	margin-block-start: 0em;
-	margin-left:5px;
+	margin-left:150px;
 	margin-right:5px;
 	margin-block-end: 0em;
 }
 
 h3{
-	width: 20em;
-	height: 2em;
+	/*width: 20em;*/
+	/*height: 2em;*/
 	background-color: #fff8dc;
+	margin-right: 5px;
 }
 
 
 .board_main{
-	border: 2px solid;
+	border: 2px solid #f4a460;
 	margin-block-start: 0em;
 	margin-left:5px;
 	margin-right:5px;
@@ -134,11 +144,8 @@ h3{
 	height:150px;
 }
 
-
-
 .board_main_input{
 	font-size:14pt;
-	border: 2px solid;
 	margin-block-start: 0em;
 	margin-left:5px;
 	margin-right:5px;
@@ -146,11 +153,17 @@ h3{
 	height:150px;
 	width:95.5%;
 	resize:none;
+	background-color: #fff8dc;
+	border: 1px solid #f4a460;
+	outline: none;
+	font-family:'Comic Sans MS';
+
 }
 
 .editDelete{
 	text-align:right;
 	margin-right:5px;
+	margin-top: 5px;
 }
 
 .reaction{
@@ -167,9 +180,24 @@ h3{
 
 .reactionRegist{
 	width:45%;
+	height: 2em;
+	background-color: #f4a460;
+	color: #ffffff;
+	border: none;
+	border-radius: 15px;
+	margin-right: 10px;
+	margin-bottom: 8px;
+	font-weight: bold;
+	box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 2px 2px 3px rgba(0, 0, 0, 0.19);
 }
 
+.reactionRegist:hover {
+	background-color: #ff8c00;
+}
 
+.reactionRegist:active {
+	background-color: #ffd700;
+}
 .smile{
 
 	width: 30%;    /* 横幅を割合で指定 */
@@ -204,7 +232,7 @@ h3{
 
 
 .reply{
-	border: 2px solid;
+ 	border: 2px solid #f4a460;
 	margin-block-start: 0em;
 	margin-left:5px;
 	margin-right:5px;
@@ -219,6 +247,13 @@ h3{
 	margin-right:5px;
 	margin-block-end: 0em;
 	width:97.2%;
+	background-color: #ffe4e1;	/*色もう少し薄く*/
+	border: 1px solid #f08080;
+	outline: none;
+	font-family:'Comic Sans MS';
+	background-color: #fff8dc;
+	border: 1px solid #f4a460;
+	outline: none;
 }
 
 
@@ -227,24 +262,97 @@ h3{
 	vertical:縦のみ可動可 horizontal:横のみ可動可*/
 	resize: vertical;
 	width:97.5%;
+	margin-top: 5px;
 	margin-left:5px;
+	background-color: #fff8dc;
+	border: 1px solid #f4a460;
+	outline: none;
+	font-family:'Comic Sans MS';
 }
 
 .reply_button{
-	text-align:right;
+	text-align: center;
+	width: 5em;
+	height: 2.5em;
+	background-color: #f4a460;
+	color: #ffffff;
+	border: none;
+	border-radius: 15px;
+	margin-right: 20px;
+	font-weight: bold;
+	box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 2px 2px 3px rgba(0, 0, 0, 0.19);
 }
 
+.reply_button:hover {
+	background-color: #ff8c00;
+}
+.reply_button:active {
+	background-color: #ffd700;
+}
 .search{
 	display:flex;
     margin: 0 auto 0 auto;
 	position:relative;
 	padding:15px 15px 0px 15px;
-
-
 }
-.searchbutton{
-	padding-top:10px;
-	marigin-top:5px;
+.search_input {
+	height: 2em;
+	background-color: #fffaf0;
+	border: 1px solid #f0e68e;
+	outline: none;
+	margin-bottom: 5px;
+	font-family:'Comic Sans MS';
+}
+.searchButton{
+	margin-top:5px;
+	text-align: center;
+	width: 4em;
+	height: 2.5em;
+	background-color: #f4a460;
+	color: #ffffff;
+	border: none;
+	border-radius: 15px;
+	margin-right: 10px;
+	font-weight: bold;
+	box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 2px 2px 3px rgba(0, 0, 0, 0.19);
+}
+
+
+.edit{
+	width: 7em;
+	height: 2.5em;
+	background-color: #f4a460;
+	color: #ffffff;
+	border: none;
+	border-radius: 15px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	font-weight: bold;
+	box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 2px 2px 3px rgba(0, 0, 0, 0.19);
+}
+.edit:hover{
+	background-color: #ff8c00;
+}
+.edit:active{
+	background-color: #ffd700;
+}
+.delete {
+	width: 7em;
+	height: 2.5em;
+	background-color: #f4a460;
+	color: #ffffff;
+	border: none;
+	border-radius: 15px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	font-weight: bold;
+	box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 2px 2px 3px rgba(0, 0, 0, 0.19);
+}
+.delete:hover{
+	background-color: #ff8c00;
+}
+.delete:active{
+	background-color: #ffd700;
 }
 
 
