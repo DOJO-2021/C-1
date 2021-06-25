@@ -29,7 +29,7 @@ public class ManagerVIewMenuServlet extends HttpServlet {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		 if (session.getAttribute("manager_mail") == null ) {
-			response.sendRedirect("/TeraChannel/LoginServlet");
+			response.sendRedirect("/TeraChannel/ManagerLoginServlet");
 			return;
 		}
 
@@ -52,7 +52,7 @@ public class ManagerVIewMenuServlet extends HttpServlet {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		 if (session.getAttribute("user_id") == null ) {
-			response.sendRedirect("/TeraChannel/LoginServlet");
+			response.sendRedirect("/TeraChannel/ManagerLoginServlet");
 			return;
 		}
 
