@@ -64,7 +64,7 @@ public class ManagerDao {
 		return loginResult;
 	}
 	//スコープにid,mail,pwを保存
-		public List<Manager> User(String manager_mail, String manager_pw) {
+		public List<Manager> Manager(String manager_mail, String manager_pw) {
 				Connection conn = null;
 				List<Manager> ManagerList = new ArrayList<Manager>();
 

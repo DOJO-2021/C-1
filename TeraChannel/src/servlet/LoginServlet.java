@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-//import dao.UserDao;
-import Mita.UserDao;
+import dao.UserDao;
 import model.LoginUser;
 import model.User;
 

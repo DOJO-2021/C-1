@@ -54,7 +54,7 @@ public class ManagerLoginServlet extends HttpServlet {
 			//Manager manager = new Manager();
 			ManagerDao mDao = new ManagerDao();
 
-			List<Manager> ManagerList = mDao.User(manager_mail, manager_pw);
+			List<Manager> ManagerList = mDao.Manager(manager_mail, manager_pw);
 
 
 			HttpSession session = request.getSession();
