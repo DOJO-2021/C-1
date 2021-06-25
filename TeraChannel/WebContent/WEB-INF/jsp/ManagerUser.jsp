@@ -156,7 +156,7 @@
 
 					</form>
 				</c:forEach>
-                </table>
+</table>
 
 			</div>
 

@@ -35,9 +35,9 @@
 
 
 <h3 style="text-align:right">
-<a href="/TeraChannel/BoardServlet">掲示板</a>
+<a href="/TeraChannel/ManagerViewMenuServlet">掲示板</a>
 <a href="/TeraChannel/ManagerUserServlet">ユーザー管理</a>
-<a href="/TeraChannel/LoginServlet">ログアウト</a>
+<a href="/TeraChannel/ManagerLogoutServlet">ログアウト</a>
 </h3>
 
 
