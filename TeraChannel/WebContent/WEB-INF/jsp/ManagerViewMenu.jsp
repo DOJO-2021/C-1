@@ -27,9 +27,7 @@
 				src="/TeraChannel/image/keijiban.jpg" alt="てらちゃんねる"></a>
 		</div>
 		<div class="navi">
-			<button onclick="location.href='/TeraChannel/BoardServlet'"
-				class="button_board">投稿</button>
-			<button onclick="location.href='/TeraChannel/MenuServlet'"
+			<button onclick="location.href='/TeraChannel/ManagerMenuServlet'"
 				class="button_menu">メニューページへ戻る</button>
 		</div>
 	</header>
@@ -78,7 +76,7 @@
 							<%--<input type="hidden" onclick="/TeraChannel/ViewMeneServlet${board_id}"> ${b.board_topic}"
 							--%>
 						<form action="ViewMenuServlet" method="post" >
-						<h10> <a href="/TeraChannel/ViewBoardServletTest?board_id=${b.board_id}">${b.board_topic}</a></h10>
+						<h10> <a href="/TeraChannel/ManagerViewBoardServlet?board_id=${b.board_id}">${b.board_topic}</a></h10>
 						</form>
 						<br>
 						<h11><pre> みんなのリアクション数：<c:out value="${b.board_smileTotal}" />   最終更新日：<c:forEach

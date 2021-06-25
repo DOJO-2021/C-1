@@ -130,7 +130,7 @@ public class ViewBoardServlet extends HttpServlet {
 				}
 			}//返信の編集ボタンが押されていた場合
 			else if(request.getParameter("submit").equals("返信:編集")) {
-
+				board_id = Integer.parseInt(request.getParameter("board_id"));
 				reply_id= Integer.parseInt(request.getParameter("reply_id"));
 				reply_main= request.getParameter("reply_main");
 
@@ -142,7 +142,7 @@ public class ViewBoardServlet extends HttpServlet {
 				}
 			}//返信の削除ボタンが押されていた場合
 			else if(request.getParameter("submit").equals("返信:削除")) {
-
+				board_id = Integer.parseInt(request.getParameter("board_id"));
 				reply_id= Integer.parseInt(request.getParameter("reply_id"));
 
 				if (rDao.deleteReply(reply_id)) {	// 削除成功
@@ -151,6 +151,7 @@ public class ViewBoardServlet extends HttpServlet {
 				else {						// 削除失敗
 					request.setAttribute("fail","返信の削除" );
 				}
+
 			}
 
 			//返信ボタンが押されていた場合

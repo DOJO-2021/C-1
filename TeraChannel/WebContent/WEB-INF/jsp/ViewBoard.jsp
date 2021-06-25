@@ -195,6 +195,7 @@
 										<input class="reply_input" type="text" name="reply_main"
 											value="${e.reply_main}">
 										<div class="editDelete">
+											<input type="hidden" name="board_id" value="${bd.board_id}">
 											<input class="edit" type="submit" name="submit" value="返信:編集">
 											<input class="delete" type="submit" name="submit"
 												value="返信:削除">
@@ -227,6 +228,7 @@
 										<input class="reply_input" type="text" name="reply_main"
 											value="${e.reply_main}">
 										<div class="editDelete">
+											<input type="hidden" name="board_id" value="${bd.board_id}">
 											<input class="edit" type="submit" name="submit" value="返信:編集">
 											<input class="delete" type="submit" name="submit"
 												value="返信:削除">

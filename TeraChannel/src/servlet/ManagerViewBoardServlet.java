@@ -38,12 +38,6 @@ public class ManagerViewBoardServlet extends HttpServlet {
 			response.sendRedirect("/Terachannel/src/ManagerLoginServlet");
 			return;
 		}
-
-
-		if (session.getAttribute("manager_mail") == null) {
-			response.sendRedirect("/Terachannel/src/ManagerLoginServlet");
-			return;
-		}
 		//この段階では、ViewMenuServlet.javaからrequestに投稿IDが格納されている状態
 		//なので、ここで呼び出して入れる必要がない
 		//フォワードをする前に返信の一覧を表示するためのデータを取ってくるメソッドで
@@ -90,12 +84,6 @@ public class ManagerViewBoardServlet extends HttpServlet {
 			int board_id,board_smile,board_shock,board_tear,reply_id;
 			String board_main,board_topic,board_update,reply_main,reply_date,search_reply;
 
-
-			//共通のユーザーIDの取得(セッションスコープから)
-			//下の行はセッションスコープに格納した仮置きのユーザーID
-			//session.setAttribute("user_id", 6);
-			int user_id=(int)session.getAttribute("user_id");
-
 			request.setAttribute("fail", "");
 
 			BoardDao bDao=new BoardDao();
@@ -119,7 +107,7 @@ public class ManagerViewBoardServlet extends HttpServlet {
 				}
 			}//返信の削除ボタンが押されていた場合
 			else if(request.getParameter("submit").equals("返信:削除")) {
-
+				board_id = Integer.parseInt(request.getParameter("board_id"));
 				reply_id= Integer.parseInt(request.getParameter("reply_id"));
 
 				if (rDao.deleteReply(reply_id)) {	// 削除成功

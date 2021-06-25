@@ -261,10 +261,9 @@ public class ReplyDao {
 
 
 
-	/*ユーザー側の詳細ページで編集を反映させる(投稿/返信)メソッド
-	・投稿部分:BoardDao.java
-	 */
-	public boolean editReply(String reply_main,int reply_id) {	//処理の結果をtrue,falseで返す
+	//ユーザー側の詳細ページで編集を反映させる(投稿/返信)メソッド
+
+	public boolean  editReply(String reply_main,int reply_id) {	//処理の結果をtrue,falseで返す
 		Connection conn = null;
 		boolean result = false;
 		boolean result_search=false;
