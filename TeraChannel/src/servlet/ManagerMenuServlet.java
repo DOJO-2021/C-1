@@ -26,11 +26,11 @@ public class ManagerMenuServlet extends HttpServlet {
 //
 
 	HttpSession session = request.getSession();
-	/*if (session.getAttribute("manager_mail") == null) {
+	if (session.getAttribute("manager_mail") == null) {
 		response.sendRedirect("/Terachannel/src/ManagerLoginServlet");
 		return;
 	}
-*/
+
 	// メニューページにフォワードする
 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerMenu.jsp");
 	dispatcher.forward(request, response);
@@ -43,10 +43,10 @@ public class ManagerMenuServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		/*if (session.getAttribute("manager_mail") == null) {
+		if (session.getAttribute("manager_mail") == null) {
 			response.sendRedirect("/Terachannel/src/ManagerLoginServlet");
 			return;
-		}*/
+		}
 		doGet(request, response);
 	}
 
