@@ -34,7 +34,7 @@
 <h1>管理者メニューページ</h1>
 
 
-<h3 style="text-align:right">
+<h3 style="text-align:right;">
 <a href="/TeraChannel/ManagerViewMenuServlet">掲示板</a>
 <a href="/TeraChannel/ManagerUserServlet">ユーザー管理</a>
 <a href="/TeraChannel/ManagerLogoutServlet">ログアウト</a>

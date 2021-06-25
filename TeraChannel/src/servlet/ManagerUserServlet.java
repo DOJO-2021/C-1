@@ -96,30 +96,6 @@ public class ManagerUserServlet extends HttpServlet {
 
 
 
-//		//ドクロカウント昇順降順メソッド
-//		if(request.getParameter("pulldown") != null) {
-//	    	//pulldownがnullじゃなない場合、新着順の処理する
-//			if (request.getParameter("pulldown").equals("newevent")) {
-//				List<User> userList = uDao.selectByCount(1);
-//				//取得結果をリクエストスコープに格納する
-//				request.setAttribute("userList", userList);
-//			} else if (request.getParameter("pulldown").equals("oldevent")) {
-//				List<User> userList = uDao.selectByCount(0);
-//				request.setAttribute("userList", userList);
-//			}
-//
-//
-//			// ユーザー管理ページにフォワードする
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerUser.jsp");
-//			dispatcher.forward(request, response);
-//
-//		}
-
-
-
-
-
-
 
 
 		// ドクロカウント昇順降順か表示する
@@ -149,31 +125,6 @@ public class ManagerUserServlet extends HttpServlet {
 
 	    }
 
-
-
-
-
-
-
-
-
-
-//		//更新日時昇順降順メソッド
-//		if(request.getParameter("pulldown") != null) {
-//	    	//pulldownがnullじゃなない場合、新着順の処理する
-//			if (request.getParameter("pulldown").equals("newdate")) {
-//				List<User> userList = uDao.selectByCount(1);
-//				//取得結果をリクエストスコープに格納する
-//				request.setAttribute("userList", userList);
-//			} else if (request.getParameter("pulldown").equals("olddate")) {
-//				List<User> userList = uDao.selectByCount(0);
-//				request.setAttribute("userList", userList);
-//			}
-//
-//			// ユーザー管理ページにフォワードする
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerUser.jsp");
-//			dispatcher.forward(request, response);
-//		}
 
 
 

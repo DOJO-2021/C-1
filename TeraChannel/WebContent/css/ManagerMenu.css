@@ -69,11 +69,55 @@ p {
 .manual {
 	margin-right: 10px;
 }
-
+/*
 .manual {
 	width: 20em; border: solid 3px #000;
 }
-
+*/
 .notice {
 	width: 60em; border: solid 3px #000;
 }
+
+
+
+.manual{
+	width: 20em;
+	margin-right: 15px;
+	font-family:'Comic Sans MS';
+  	background: #eee8aa;
+ 	border-left: 7px dotted rgba(255,0,0,0.2);
+ 	box-shadow: 0 0 0 5 #ffff00;
+ 	padding: 1em;
+	max-width: 225px;
+}
+.manual p {
+	font-size: 13px;
+}
+
+.notice{
+	/*padding:0px;*/
+	margin:5px,auto;
+	border: 2px solid;
+	max-width: 38em;
+	padding-left: 0.5em;
+	padding-top: 1em;
+	background: #eee8aa;
+	box-shadow: 0px 0px 0px 4px #ffff00;
+	border: dashed 2px white;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

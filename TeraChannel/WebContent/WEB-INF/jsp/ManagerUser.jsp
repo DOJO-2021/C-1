@@ -36,63 +36,32 @@
 
 		<!-- ボタン部分 -->
 		<div>
-
+          <table class="btn_id">
+          <tr>
+            <td>
 			<form method="POST" action="/TeraChannel/ManagerUserServlet">
 				<input type="text" name="text" size="5"> <input class="btn"
 					type="submit" name="search" value="ID検索">
 			</form>
-
-
-
-			<!--
-<form id="submit_form1" method="post" action="#">
-<select id= "submit_select1"  name="reaction">
-	<option   value="newdokuro">ドクロカウント：昇順</option>
-	<option   value="olddokuro">ドクロカウント：降順</option>
-</select>
-</form>
-
-<form id="submit_form2" method="post" action="#">
-<select id= "submit_select2"  name="reaction">
-	<option   value="newdatet">最終更新日時：昇順</option>
-	<option   value="olddate">最終更新日時：降順</option>
-</select>
-</form>
--->
-
-
-
-
-
+			</td>
+            <td>
 			<form action="ManagerUserServlet" method="post" id="docro">
 				<select id="reaction" name="reaction" onchange="submit(this.form)">
 					<option value="newevent" ${reaction1}>ドクロカウント：昇順</option>
 					<option value="oldevant" ${reaction2}>ドクロカウント：降順</option>
 				</select>
 			</form>
-
+			</td>
+            <td>
 			<form action="ManagerUserServlet" method="post" id="update">
 				<select id="refresh" name="refresh" onchange="submit(this.form)">
 					<option value="newdate" ${refresh1}>最終更新日時：昇順</option>
 					<option value="olddate" ${refresh2}>最終更新日時：降順</option>
 				</select>
 			</form>
-
-
-
-			<!--  保留
-<form method="POST" action="/TeraChannel/ManagerUserServlet">
-<input type="submit" name="1" value="昇順">
-<input type="submit" name="2" value="降順">
-</form>
--->
-
-			<!--  保留
-<select name="update">
-<option value="=update">更新順</option>
-</select>
--->
-
+			</td>
+          </tr>
+          </table>
 		</div>
 
 		<div class="menu">
