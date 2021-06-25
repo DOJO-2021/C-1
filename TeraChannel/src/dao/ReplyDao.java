@@ -204,7 +204,7 @@ public class ReplyDao {
 			//検閲(result_search)のtrue/falseでinsert文を実行
 			if (result_search) {
 				// SQL文を準備する	true
-				String sql2 = "insert into reply values (null, ?,current_time, ?, ?)";
+				String sql2 = "insert into reply values (null, ?,current_timestamp, ?, ?)";
 				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
 				// SQL文を完成させる		idは自動採番(元がnull)なので記述不要	？の位置に実際に挿入するための記述
@@ -305,7 +305,7 @@ public class ReplyDao {
 			//検閲(result_search)のtrue/falseでinsert文を実行
 			if (result_search) {
 				// SQL文を準備する	true
-				String sql2 = "update reply set reply_main=?,reply_date=current_time where reply_id=?";
+				String sql2 = "update reply set reply_main=?,reply_date=current_timestamp where reply_id=?";
 				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
 				// SQL文を完成させる		idは自動採番(元がnull)なので記述不要	？の位置に実際に挿入するための記述

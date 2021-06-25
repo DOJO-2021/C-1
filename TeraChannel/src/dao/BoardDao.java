@@ -12,6 +12,7 @@ import model.Board;
 import model.Reply;
 
 public class BoardDao {
+
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
 	public int insert(Board card) { //処理の結果をtrue,falseで返す
 		Connection conn = null;
@@ -253,7 +254,7 @@ public class BoardDao {
 			//検閲(result_search)のtrue/falseでinsert文を実行
 			if (result_search) {
 				// SQL文を準備する	true
-				String sql2 = "update board set board_main=?,board_update=current_time where board_id=?";
+				String sql2 = "update board set board_main=?,board_update=current_timestamp where board_id=?";
 				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
 				// SQL文を完成させる		idは自動採番(元がnull)なので記述不要	？の位置に実際に挿入するための記述
@@ -395,7 +396,7 @@ public class BoardDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
 
 			// SQL文を準備する	true
-			String sql = "update board set board_smile=?,board_update=current_time,board_shock=?,board_tear=? where board_id=?";
+			String sql = "update board set board_smile=?,board_update=current_timestamp,board_shock=?,board_tear=? where board_id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

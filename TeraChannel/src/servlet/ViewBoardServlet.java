@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Takahashi.UserDao;
 import dao.BoardDao;
 import dao.ReplyDao;
+import dao.UserDao;
 import model.Board;
 import model.Reply;
 import model.User;
@@ -121,6 +121,7 @@ public class ViewBoardServlet extends HttpServlet {
 				if (bDao.deleteBoard(board_id)) {	// 削除成功
 						//投稿自体の削除に成功した場合は、メニューページにリダイレクトを行う
 						response.sendRedirect("/TeraChannel/ViewMenuServlet");
+						return;
 				}
 				else {						// 削除失敗
 
