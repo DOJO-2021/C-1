@@ -135,6 +135,72 @@ public class UserDao {
 	}
 
 
+
+
+	//ID検索
+		public User dokuro(int user_id) {
+			Connection conn = null;
+
+
+			try {
+				// JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:\\pleiades\\workspace\\C-1\\database", "sa", "123");
+
+				// SQL文を準備する
+				String sql = "select * from user where user_id = ?";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+
+				// SQL文を完成させる
+				pStmt.setInt(1, user_id);
+
+				// SQL文を実行し、結果表を取得する
+				ResultSet rs = pStmt.executeQuery();
+
+				// 結果表をコレクションにコピーする
+				rs.next();
+					User user = new User(
+					rs.getInt("user_id"),
+					rs.getString("user_name"),
+					rs.getString("user_pw"),
+					rs.getInt("user_type"),
+					rs.getString("user_mail"),
+					rs.getInt("user_count"),
+					rs.getInt("user_nameCount"),
+					rs.getString("user_update")
+					);
+
+					// 結果を返す
+					return user;
+
+
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				return null;
+			}
+			finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+						return null;
+					}
+				}
+			}
+
+
+		}
+
 // カウント検索(昇順降順)
 		public List<User> selectByCount(int key) {
 			Connection conn = null;

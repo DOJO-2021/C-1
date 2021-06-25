@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Takahashi.UserDao;
+import model.User;
+
 /**
  * Servlet implementation class MenuServlet
  */
@@ -27,6 +30,13 @@ public class MenuServlet extends HttpServlet {
 			response.sendRedirect("/TeraChannel/LoginServlet");
 			return;
 		}
+
+
+		UserDao uDao=new UserDao();
+		User user=uDao.dokuro((int)session.getAttribute("user_id"));
+		int dokuro=user.getUser_count();
+
+		request.setAttribute("dokuro",dokuro);
 
 		// メニューページにフォワードする
         int user_type = (int)session.getAttribute("user_type");

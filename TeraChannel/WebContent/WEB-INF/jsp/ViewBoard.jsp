@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>てらちゃんねる</title>
+<title>TeraChannel | ViewBoard</title>
 <link rel="stylesheet" href="/TeraChannel/css/ViewBoard.css">
 
 
@@ -16,11 +16,11 @@
 
 <body>
 	<!-- 失敗処理だった場合のアラート処理 -->
-		<c:if  test="${not empty fail}">
-		 <script type="text/javascript">
-		 window.alert("${fail}");
-		 </script>
-		</c:if>
+	<c:if test="${not empty fail}">
+		<script type="text/javascript">
+			window.alert("${fail}");
+		</script>
+	</c:if>
 	<!-- ヘッダーここから -->
 	<header>
 		<div class="teraco">
@@ -46,25 +46,30 @@
 		<div class="yokonarabi">
 			<!-- マニュアル表示部分 -->
 			<div class="rule">
-				<h2>ルール</h2>
+				<h4>
+					てらちゃんねる<br>利用のルール
+				</h4>
 				<p>
 					皆さんが快適に過ごすために以下のルールを守って使用して下さい。<br>
-					1.個人名の表記の有無に限らず特定個人を揶揄したような悪口を投稿したり誹謗中傷はしないでください。<br>
+					<br> 1.個人名の表記の有無に限らず特定個人を揶揄したような悪口を投稿したり誹謗中傷はしないでください。<br>
 					相手を罵るなどの挑発的な言葉や、言葉尻をとらえるような揚げ足取り等の書き込みも、トラブルの元となりますのでやめてください。<br>
+					<br>
 					2.この掲示板は皆様の善意の書き込みによって成り立っていますが、掲示板に投稿された情報は必ずしも正確であるとは限りませんので、自己の責任と判断で掲示板をご利用ください。<br>
-					3.安全性に疑いのあるサイトのURLの記載はお控えください。<br>
+					<br> 3.安全性に疑いのあるサイトのURLの記載はお控えください。<br>
+					<br>
 					以上のルールが守れなかった場合、該当の投稿・返信の削除及び匿名化を解除し、実名を公表させていただく場合がありますので予めご了承ください。
 				</p>
 			</div>
 
 			<!-- 投稿内容表示部分 -->
-			<c:set var="checkID" value="${user_id}"/>
+			<c:set var="checkID" value="${user_id}" />
 			<div class="board">
-				<form class="board_form" method="POST" action="/TeraChannel/ViewBoardServlet">
+				<form class="board_form" method="POST"
+					action="/TeraChannel/ViewBoardServlet">
 
 					<!-- formタグで表示しないパラメータをリクエストスコープに格納するためのhiddenタグ -->
 					<input type="hidden" name="board_id" value="${bd.board_id}">
-					<input type="hidden" name="board_update"value="${bd.board_update}">
+					<input type="hidden" name="board_update" value="${bd.board_update}">
 					<input type="hidden" name="board_topic" value="${bd.board_topic}">
 
 					<p class="postDate">投稿日時:${bd.board_update}</p>
@@ -78,7 +83,7 @@
 
 							<!-- その上で実名化カウントが１以上だった場合 -->
 							<c:if test="${f.user_nameCount >=1}">
-							<h3>${bd.board_topic} &nbsp;&nbsp; 投稿者:${f.user_name}さん</h3>
+								<h3>${bd.board_topic}&nbsp;&nbsp; 投稿者:${f.user_name}さん</h3>
 								<!-- 利用しているユーザーと投稿者が一致していたら -->
 								<c:if test="${user_id == bd.user_id}">
 
@@ -102,7 +107,7 @@
 
 							<!-- その上で実名化カウントが0だった場合、通常の出力を行う -->
 							<c:if test="${f.user_nameCount == 0}">
-							<h3>${bd.board_topic} &nbsp;&nbsp; 投稿者:匿名${bd.user_id}さん</h3>
+								<h3>${bd.board_topic}&nbsp;&nbsp; 投稿者:匿名${bd.user_id}さん</h3>
 								<!-- 利用しているユーザーと投稿者が一致していたら -->
 								<c:if test="${user_id == bd.user_id}">
 
@@ -133,19 +138,22 @@
 					<!-- リアクション表示部分 -->
 					<div class="reaction">
 						<div>
-						 <input type="hidden" id="hidden_smile" name="smile" value="${bd.board_smile}">
+							<input type="hidden" id="hidden_smile" name="smile"
+								value="${bd.board_smile}">
 							<image class="smile" onclick="reactionSmileCount()"
 								src="image/smile.jpg" alt="リアクション（笑顔）"></image>
 							<p class="reactionCount" id="smile" name="smile">${bd.board_smile}</p>
 						</div>
 						<div>
-							<input type="hidden" id="hidden_shock" name="shock" value="${bd.board_shock}">
+							<input type="hidden" id="hidden_shock" name="shock"
+								value="${bd.board_shock}">
 							<image class="shock" onclick="reactionShockCount()"
 								src="image/shock.jpg" alt="リアクション（驚愕）"></image>
 							<p class="reactionCount" id="shock" name="shock">${bd.board_shock}</p>
 						</div>
 						<div>
-						<input type="hidden" id="hidden_tear" name="tear" value="${bd.board_tear}">
+							<input type="hidden" id="hidden_tear" name="tear"
+								value="${bd.board_tear}">
 							<image class="tear" onclick="reactionTearCount()"
 								src="image/tear.jpg" alt="リアクション（感涙）"></image>
 							<p class="reactionCount" id="tear" name="tear">${bd.board_tear}</p>
@@ -156,13 +164,14 @@
 						<input class="reactionRegist" type=submit name="submit"
 							value="リアクション">
 					</div>
-					</form>
+				</form>
 
 
-					<!-- ここから返信欄（forEach部分） -->
-					<!-- 矢印の部分はおそらく画像挿入の形 -->
-					<c:forEach var="e" items="${replyList}">
-						<form class="board_form" method="POST" action="/TeraChannel/ViewBoardServlet">
+				<!-- ここから返信欄（forEach部分） -->
+				<!-- 矢印の部分はおそらく画像挿入の形 -->
+				<c:forEach var="e" items="${replyList}">
+					<form class="board_form" method="POST"
+						action="/TeraChannel/ViewBoardServlet">
 						<input type="hidden" name="reply_id" value="${e.reply_id}">
 						<input type="hidden" name="reply_date" value="${e.reply_date}">
 
@@ -180,21 +189,23 @@
 									<!-- 利用者と返信者が同じだった場合 -->
 									<c:if test="${user_id == e.user_id}">
 										<div class="flex1">
-										👆${f.user_name}さん&nbsp;返信ID:${e.reply_id}
-										<p class="updateDate">登録日:${e.reply_date}</p>
+											👆${f.user_name}さん&nbsp;返信ID:${e.reply_id}
+											<p class="updateDate">登録日:${e.reply_date}</p>
 										</div>
-										<input class="reply_input" type="text" name="reply_main" value="${e.reply_main}">
+										<input class="reply_input" type="text" name="reply_main"
+											value="${e.reply_main}">
 										<div class="editDelete">
-										<input class="edit" type="submit" name="submit" value="返信:編集">
-										<input class="delete" type="submit" name="submit" value="返信:削除">
-									</div>
+											<input class="edit" type="submit" name="submit" value="返信:編集">
+											<input class="delete" type="submit" name="submit"
+												value="返信:削除">
+										</div>
 									</c:if>
 
 									<!--  反対の場合 -->
 									<c:if test="${user_id != e.user_id}">
 										<div class="flex1">
-										👆${f.user_name}さん&nbsp;返信ID:${e.reply_id}
-										<p class="updateDate" style="text-align:right">登録日:${e.reply_date}</p>
+											👆${f.user_name}さん&nbsp;返信ID:${e.reply_id}
+											<p class="updateDate" style="text-align: right">登録日:${e.reply_date}</p>
 										</div>
 										<p class="reply" name="reply_main">${e.reply_main}</p>
 
@@ -210,21 +221,23 @@
 									<!-- 利用者と返信者が同じだった場合 -->
 									<c:if test="${user_id == e.user_id}">
 										<div class="flex1">
-										👆${f.user_name}さん&nbsp;返信ID:${e.reply_id}
-										<p class="updateDate">登録日:${e.reply_date}</p>
+											👆${f.user_name}さん&nbsp;返信ID:${e.reply_id}
+											<p class="updateDate">登録日:${e.reply_date}</p>
 										</div>
-										<input class="reply_input" type="text" name="reply_main" value="${e.reply_main}">
+										<input class="reply_input" type="text" name="reply_main"
+											value="${e.reply_main}">
 										<div class="editDelete">
-										<input class="edit" type="submit" name="submit" value="返信:編集">
-										<input class="delete" type="submit" name="submit" value="返信:削除">
-									</div>
+											<input class="edit" type="submit" name="submit" value="返信:編集">
+											<input class="delete" type="submit" name="submit"
+												value="返信:削除">
+										</div>
 									</c:if>
 
 									<!--  反対の場合 -->
 									<c:if test="${user_id != e.user_id}">
 										<div class="flex1">
-										👆匿名${e.user_id}さん&nbsp;返信ID:${e.reply_id}
-										<p class="updateDate" style="text-align:right">登録日:${e.reply_date}</p>
+											👆匿名${e.user_id}さん&nbsp;返信ID:${e.reply_id}
+											<p class="updateDate" style="text-align: right">登録日:${e.reply_date}</p>
 										</div>
 										<p class="reply" name="reply_main">${e.reply_main}</p>
 
@@ -237,11 +250,12 @@
 
 						</c:forEach>
 
-						</form>
-					</c:forEach>
+					</form>
+				</c:forEach>
 
 
-				<form class="board_form" method="POST" action="/TeraChannel/ViewBoardServlet">
+				<form class="board_form" method="POST"
+					action="/TeraChannel/ViewBoardServlet">
 					<!-- 返信の最後の部分はtextareaで表示（forEach文の外） -->
 
 					<input type="hidden" name="board_id" value="${bd.board_id}">
@@ -249,21 +263,23 @@
 					<textarea class="reply_text" name="reply_main"
 						placeholder="返信内容を入力してください" rows="4" cols="60"></textarea>
 					<div class="editDelete">
-					<input class="reply_button" type="submit" name="submit" value="返信">
+						<input class="reply_button" type="submit" name="submit" value="返信">
 					</div>
 					<br>
 				</form>
 			</div>
 
 
-			<form class="board_form" method="POST" action="/TeraChannel/ViewBoardServlet">
+			<form class="board_form" method="POST"
+				action="/TeraChannel/ViewBoardServlet">
 
-				<input type="hidden" name="board_id"value="${bd.board_id}">
+				<input type="hidden" name="board_id" value="${bd.board_id}">
 				<div class="search">
-				<input class="search_input" type="text" name="search_reply" placeholder="検索内容">
+					<input class="search_input" type="text" name="search_reply"
+						placeholder="検索内容">
 				</div>
 				<div class="editDelete">
-				<input class="searchButton" type="submit" name="submit" value="検索">
+					<input class="searchButton" type="submit" name="submit" value="検索">
 				</div>
 				<br>
 			</form>
@@ -278,9 +294,9 @@
 	<!-- ここからjavaScript -->
 	<script type="text/javascript">
 		'use strict';
-		let smileTF=1;
-		let shockTF=1;
-		let tearTF=1;
+		let smileTF = 1;
+		let shockTF = 1;
+		let tearTF = 1;
 		let countSmile;
 		let countShock;
 		let countTear;
@@ -300,7 +316,7 @@
 				countSmile++;
 				smileTF = 0;
 			}
-			document.getElementById("smile").innerHTML =countSmile;
+			document.getElementById("smile").innerHTML = countSmile;
 
 			//168,169行のどちらの書き方でも格納可
 			//document.getElementById("hidden_smile").outerHTML = '<input type="hidden" id="hidden_smile" name="SMILE" value="'+countSmile+'">';
@@ -323,7 +339,7 @@
 				countShock++;
 				shockTF = 0;
 			}
-			document.getElementById("shock").innerHTML =countShock;
+			document.getElementById("shock").innerHTML = countShock;
 			document.getElementById('hidden_shock').value = countShock;
 		}
 		//涙アイコンの増減
@@ -344,7 +360,6 @@
 			document.getElementById("tear").innerHTML = countTear;
 			document.getElementById('hidden_tear').value = countTear;
 		}
-
 	</script>
 	<!-- ここまでjavaScript -->
 	<!-- フッターここから -->

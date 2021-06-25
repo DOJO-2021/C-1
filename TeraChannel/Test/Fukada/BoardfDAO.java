@@ -25,42 +25,29 @@ public class BoardfDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/C-1/database", "sa", "123");
 
-
 			// SQL文1を準備する Boardテーブル用
 			//値が0だったらリアクションの多い順で返す
 			String sql = "";
-			if(push ==0) {
+			if (push == 0) {
 				sql = "SELECT "
-					+ "(BOARD_SMILE +  BOARD_SHOCK  + BOARD_TEAR ) AS REACTION , "
-					+ "BOARD_UPDATE ,BOARD_TOPIC  ,BOARD_ID "
-					+ "FROM BOARD "
-					+ "GROUP BY BOARD_TOPIC "
-					+ "ORDER BY "
-					+ "REACTION DESC";
+						+ "(BOARD_SMILE +  BOARD_SHOCK  + BOARD_TEAR ) AS REACTION , "
+						+ "BOARD_UPDATE ,BOARD_TOPIC  ,BOARD_ID "
+						+ "FROM BOARD "
+						+ "GROUP BY BOARD_TOPIC "
+						+ "ORDER BY "
+						+ "REACTION DESC";
 
-			} else if(push==1) {
+			} else if (push == 1) {
 				sql = "SELECT "
-					+ "(BOARD_SMILE +  BOARD_SHOCK  + BOARD_TEAR ) AS REACTION , "
-					+ "BOARD_UPDATE ,BOARD_TOPIC  ,BOARD_ID "
-					+ "FROM BOARD "
-					+ "GROUP BY BOARD_TOPIC "
-					+ "ORDER BY "
-					+ "REACTION ASC";
-			 }
+						+ "(BOARD_SMILE +  BOARD_SHOCK  + BOARD_TEAR ) AS REACTION , "
+						+ "BOARD_UPDATE ,BOARD_TOPIC  ,BOARD_ID "
+						+ "FROM BOARD "
+						+ "GROUP BY BOARD_TOPIC "
+						+ "ORDER BY "
+						+ "REACTION ASC";
+			}
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			// SQL文2を準備する Replyテーブル用
-			//値が0だったら新着順で返す
-			String sql_reply ="";
-			if(push==0) {
-			sql_reply = "SELECT REPLY_DATE FROM REPLY ORDER BY REPLY_DATE DESC LIMIT 1";
-
-			}else if(push==1) {
-			sql_reply = "SELECT REPLY_DATE FROM REPLY ORDER BY REPLY_DATE ASC LIMIT 1";
-			}
-			PreparedStatement pStmt_reply= conn.prepareStatement(sql_reply);
-
-			//SQL文1を実行し結果表を取得
 			ResultSet rs = pStmt.executeQuery();
 
 			//select文の結果をArrayListに格納
@@ -70,7 +57,22 @@ public class BoardfDAO {
 				page1.setBoard_update(rs.getString("board_update"));
 				page1.setBoard_topic(rs.getString("board_topic"));
 				page1.setBoard_id(rs.getInt("board_id"));
-				int board_id=rs.getInt("board_id");
+				int board_id = rs.getInt("board_id");
+
+				// SQL文2を準備する Replyテーブル用
+				//値が0だったら新着順で返す
+				String sql_reply = "";
+				if (push == 0) {
+					sql_reply = "SELECT REPLY_DATE FROM REPLY WHERE BOARD_ID = ? ORDER BY REPLY_DATE DESC LIMIT 1";
+
+				} else if (push == 1) {
+					sql_reply = "SELECT REPLY_DATE FROM REPLY WHERE BOARD_ID = ? ORDER BY REPLY_DATE ASC LIMIT 1";
+				}
+				PreparedStatement pStmt_reply = conn.prepareStatement(sql_reply);
+
+				//SQLを完成させる
+				// ?にpage1のboard_idをセット
+				pStmt_reply.setInt(1, rs.getInt("board_id"));
 
 				//SQL文2を実行し結果表を取得
 				ResultSet rsr = pStmt_reply.executeQuery();
@@ -81,8 +83,19 @@ public class BoardfDAO {
 
 					page1.getReply().add(page2);
 				}
+
+				//page1.getReply()が0件だったら
+				if(page1.getReply().size() == 0) {
+					Reply page2 = new Reply();
+					page2.setReply_date(rs.getString("board_update"));
+
+					page1.getReply().add(page2);
+				}
+
 				topListMain.add(page1);
+
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			topListMain = null;
@@ -107,7 +120,7 @@ public class BoardfDAO {
 	//見出し、投稿内容、返信の文字検索
 	public List<Board> select(String word) {
 		Connection conn = null;
-		List<Board> topListMain= new ArrayList<Board>();
+		List<Board> topListMain = new ArrayList<Board>();
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
@@ -144,7 +157,7 @@ public class BoardfDAO {
 				page1.setBoard_update(rs.getString("board_update"));
 				page1.setBoard_topic(rs.getString("board_topic"));
 				page1.setBoard_id(rs.getInt("board_id"));
-				int board_id=rs.getInt("board_id");
+				int board_id = rs.getInt("board_id");
 
 				//SQL文2を実行し、結果表を取得する
 				ResultSet rsr = pStmt_reply.executeQuery();

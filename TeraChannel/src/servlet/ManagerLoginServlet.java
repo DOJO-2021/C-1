@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 
 import dao.ManagerDao;
 import model.LoginUser;
@@ -50,7 +52,27 @@ public class ManagerLoginServlet extends HttpServlet {
 //編集中
 			// セッションスコープにIDを格納する
 			//Manager manager = new Manager();
+			ManagerDao mDao = new ManagerDao();
+
+			List<Manager> ManagerList = mDao.Manager(manager_mail, manager_pw);
+
+
 			HttpSession session = request.getSession();
+
+			for(Manager i:ManagerList) {
+				//IDを格納
+				session.setAttribute("manager_id", i.getManager_id());
+			//int sampleid=i.getUser_id();
+				//int sampletype=i.getUser_type();
+				//String samplename=i.getUser_name();
+				//mailを格納
+				session.setAttribute("manager_mail",manager_mail);
+				//pwを格納
+				session.setAttribute("manager_pw",manager_pw);;
+
+			}
+
+		//	HttpSession session = request.getSession();
 			session.setAttribute("manager_mail",manager_mail);
 
 			// メニューサーブレットにリダイレクトする

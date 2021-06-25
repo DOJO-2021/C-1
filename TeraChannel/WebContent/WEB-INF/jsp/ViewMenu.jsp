@@ -38,20 +38,25 @@
 	<div class=list>
 		<form  action="ViewMenuServlet" method="post" >
 			<input type="search" name="search" placeholder="キーワードを入力">
-			<input type="submit" name="submit"  value="検索" >
+			<input type="submit" name="submit"  value="検索" >&nbsp;
 		</form>
 
 		<form  action="ViewMenuServlet" method="post" id="re-ch" >
+		<div class = rea>
 			<select id="reaction" name="reaction" onchange="submit(this.form)" >
 				<option value="popular" ${reaction1}>リアクションの多い順</option>
 				<option value="notpopular" ${reaction2}>リアクションの少ない順</option>
 			</select>
-		</form>
+		</div>
+		</form>&nbsp;
 		<form  action="ViewMenuServlet" method="post" id="ref-ch" >
+		<div class = ref>
 		 	<select id="refresh" name="refresh"  onchange="submit(this.form)">
+		 		<option hidden>選択してください</option>
 				<option value="newevent" ${refresh1}>新着順</option>
 				<option value="oldevant" ${refresh2}>古い順</option>
 			</select>
+		</div>
 		</form>
 	</div>
 	<!-- メイン -->
@@ -83,8 +88,10 @@
 							<%--<input type="hidden" onclick="/TeraChannel/ViewMeneServlet${board_id}"> ${b.board_topic}"
 							--%>
 						<form action="ViewMenuServlet" method="post" >
-						<h10> <a href="/TeraChannel/ViewBoardServlet?board_id=${b.board_id}">${b.board_topic}</a></h10>
+						<div class fon>
+						<h15> <a href="/TeraChannel/ViewBoardServlet?board_id=${b.board_id}">${b.board_topic}</a></h15>
 						</form>
+						</div>
 						<br>
 						<h11><pre> みんなのリアクション数：<c:out value="${b.board_smileTotal}" />   最終更新日：<c:forEach
 						var="r" items="${b.reply}">${r.reply_date}</c:forEach>
@@ -145,7 +152,7 @@
 
 
 		//プルダウン切り替え(リアクション)
-		 /* const rech = document.getElementById('re-ch');
+		  const rech = document.getElementById('re-ch');
 			function exe() {
 		    location.href =rech.action;
 		}
@@ -154,7 +161,7 @@
 		const refch = document.getElementById('ref-ch');
 			function exec() {
 			location.href =refch.action;
-		} */
+		}
 
 	</script>
 </body>

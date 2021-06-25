@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Takahashi.UserDao;
 import dao.BoardDao;
 import dao.ReplyDao;
+import dao.UserDao;
 import model.Board;
 import model.Reply;
 import model.User;
@@ -30,12 +30,17 @@ public class ViewBoardServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
+
+		HttpSession session = request.getSession();
+		if (session.getAttribute("user_id") == null) {
+			response.sendRedirect("/Terachannel/src/LoginServlet");
+			return;
+		}
 		//この段階では、ViewMenuServlet.javaからrequestに投稿IDが格納されている状態
 		//なので、ここで呼び出して入れる必要がない
 		//フォワードをする前に返信の一覧を表示するためのデータを取ってくるメソッドで
 		//リクエストスコープに格納する
-		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
 		//int board_id = Integer.parseInt(request.getParameter("BOARD_ID"));
 
 		int board_id=Integer.parseInt(request.getParameter("board_id"));
@@ -116,6 +121,7 @@ public class ViewBoardServlet extends HttpServlet {
 				if (bDao.deleteBoard(board_id)) {	// 削除成功
 						//投稿自体の削除に成功した場合は、メニューページにリダイレクトを行う
 						response.sendRedirect("/TeraChannel/ViewMenuServlet");
+						return;
 				}
 				else {						// 削除失敗
 

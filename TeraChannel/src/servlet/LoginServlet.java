@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-//import dao.UserDao;
-import Mita.UserDao;
+import dao.UserDao;
 import model.LoginUser;
 import model.User;
 
@@ -69,9 +68,9 @@ public class LoginServlet extends HttpServlet {
 					for(LoginUser i:UserList) {
 						//IDを格納
 						session.setAttribute("user_id", i.getUser_id());
-					int sampleid=i.getUser_id();
-						int sampletype=i.getUser_type();
-						String samplename=i.getUser_name();
+					//int sampleid=i.getUser_id();
+						//int sampletype=i.getUser_type();
+						//String samplename=i.getUser_name();
 						//typeを格納
 						session.setAttribute("user_type",i.getUser_type());
 						//nameを格納

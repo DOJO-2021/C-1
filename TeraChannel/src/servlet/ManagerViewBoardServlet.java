@@ -32,12 +32,22 @@ public class ManagerViewBoardServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
+		if (session.getAttribute("manager_mail") == null) {
+			response.sendRedirect("/Terachannel/src/ManagerLoginServlet");
+			return;
+		}
+
+
+		if (session.getAttribute("manager_mail") == null) {
+			response.sendRedirect("/Terachannel/src/ManagerLoginServlet");
+			return;
+		}
 		//この段階では、ViewMenuServlet.javaからrequestに投稿IDが格納されている状態
 		//なので、ここで呼び出して入れる必要がない
 		//フォワードをする前に返信の一覧を表示するためのデータを取ってくるメソッドで
 		//リクエストスコープに格納する
-		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
 
 		int board_id = Integer.parseInt(request.getParameter("board_id"));
 
@@ -68,7 +78,7 @@ public class ManagerViewBoardServlet extends HttpServlet {
 		//まだリダイレクト機能は使いたくないのでコメントアウト
 		HttpSession session = request.getSession();
 		if (session.getAttribute("manager_mail") == null) {
-			response.sendRedirect("/Terachannel/src/LoginServlet");
+			response.sendRedirect("/Terachannel/src/ManagerLoginServlet");
 			return;
 		}
 
@@ -98,7 +108,9 @@ public class ManagerViewBoardServlet extends HttpServlet {
 				board_id = Integer.parseInt(request.getParameter("board_id"));
 
 				if (bDao.deleteBoard(board_id)) {	// 削除成功
-
+					//投稿自体の削除に成功した場合は、メニューページにリダイレクトを行う
+					response.sendRedirect("/TeraChannel/ManagerViewMenuServlet");
+					return;
 				}
 				else {						// 削除失敗
 
