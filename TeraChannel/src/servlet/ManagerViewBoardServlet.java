@@ -34,6 +34,10 @@ public class ManagerViewBoardServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+		if (session.getAttribute("manager_mail") == null) {
+			response.sendRedirect("/Terachannel/src/ManagerLoginServlet");
+			return;
+		}
 
 
 		if (session.getAttribute("manager_mail") == null) {
@@ -104,7 +108,9 @@ public class ManagerViewBoardServlet extends HttpServlet {
 				board_id = Integer.parseInt(request.getParameter("board_id"));
 
 				if (bDao.deleteBoard(board_id)) {	// 削除成功
-
+					//投稿自体の削除に成功した場合は、メニューページにリダイレクトを行う
+					response.sendRedirect("/TeraChannel/ManagerViewMenuServlet");
+					return;
 				}
 				else {						// 削除失敗
 
