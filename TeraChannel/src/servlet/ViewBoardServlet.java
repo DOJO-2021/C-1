@@ -138,7 +138,7 @@ public class ViewBoardServlet extends HttpServlet {
 
 				}
 				else {						// 更新失敗
-					request.setAttribute("fail","返信の編集" );
+					request.setAttribute("fail","返信の編集に失敗しました" );
 				}
 			}//返信の削除ボタンが押されていた場合
 			else if(request.getParameter("submit").equals("返信:削除")) {
@@ -149,7 +149,7 @@ public class ViewBoardServlet extends HttpServlet {
 
 				}
 				else {						// 削除失敗
-					request.setAttribute("fail","返信の削除" );
+					request.setAttribute("fail","返信の削除に失敗しました" );
 				}
 
 			}
@@ -164,7 +164,7 @@ public class ViewBoardServlet extends HttpServlet {
 
 				}
 				else {						// 返信失敗
-					request.setAttribute("fail","返信登録" );
+					request.setAttribute("fail","返信の登録に失敗しました" );
 				}
 			}
 
@@ -180,7 +180,7 @@ public class ViewBoardServlet extends HttpServlet {
 					request.setAttribute("fail","リアクション登録に成功！" );
 				}
 				else {												// 更新失敗
-					request.setAttribute("fail","リアクション登録" );
+					request.setAttribute("fail","リアクション登録に失敗しました" );
 				}
 			}
 
