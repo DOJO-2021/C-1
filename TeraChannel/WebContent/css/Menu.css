@@ -3,11 +3,9 @@
 .nav li {
   display: inline;
   list-style-type: none;
-  padding-right: 20px;
-
+  padding-right: 50px;
 }
 .nav ul {
-  margin: 0 0 0 0;
   padding: 20px 10px 15px 20px;
  background-repeat: repeat-x;
 }
@@ -23,21 +21,12 @@
     color:  #3c454d;
     text-decoration: none;
 }
+.sample1{
+  margin-right: auto;
+  margin-left : auto;
+  width:700px;
+}
 /*ul*/
 ul {
   list-style: none;
 }
-
-/*  text-align: center;
- display: inline-block;
- .   {
-display: inline-block;
-wiiidth: 100px;
-}
-
-text-align: center;
- display: inline-block;
-
-<div class = "outer">
-  <div class = "inner">
- */

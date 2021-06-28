@@ -7,14 +7,12 @@
 <title>TERAKO</title>
 <link rel = "stylesheet" href="css/Menu.css">
 </head>
-<body>
+  <body>
 
-<div class = "outer">
-  <div class = "inner">
    <nav class = "nav" >
    <ul>
       <li><img src="image/teraco.jpg"></li>
-      <li>HOME</li>
+      <li>　　HOME</li>
       <li>コース受講</li>
       <li>動画視聴</li>
       <li>講義生配信</li>
@@ -27,22 +25,21 @@
           </select>
       <li><a href="/TeraChannel/ViewMenuServlet">掲示板</a></li>
    </ul>
-
  </nav>
-</div>
- </div>
- <hr>
 
-<h3>　　　現在のあなたの段位:段位なし</h3>
-<h3>　　　あなたのドクロカウント:${dokuro}<br>　　　(ドクロカウント３つで匿名が実名化されます)</h3>
-<h3>　　　メインメニュー</h3>
+ <hr width = "100%">
+
+<div class="sample1">
+<h2>現在のあなたの段位:段位なし</h2>
+<h3>あなたのドクロカウント:${dokuro}<br>　　　(ドクロカウント３つで匿名が実名化されます)</h3>
+<h2>メインメニュー</h2>
 
 <hr align="left" width = "800">
   <ul>
-    <li>　　　パーソナルスキルコース</li>
-    <li>　　　IT関連</li>
-    <li>　　　Java基礎</li>
-    <li>　　　開発演習[現在開発中]</li>
+    <li>パーソナルスキルコース</li>
+    <li>IT関連</li>
+    <li>Java基礎</li>
+    <li>開発演習[現在開発中]</li>
   </ul>
 <hr align="left" width="800">
 <br>
@@ -62,7 +59,9 @@
     <li>20210524の日報に1件のコメントがついてます</li>
   </ul>
 </div>
+</div>
 </body>
+
  <footer>
  <br>
    <p>
