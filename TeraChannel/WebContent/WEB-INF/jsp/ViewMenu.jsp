@@ -53,7 +53,6 @@
 		<div class="search">
 			<input class="search_input" type="search" name="search" placeholder="キーワードを入力">
 		</div>
-
 		<div class="editDelete">
 			<input class="searchButton" type="submit" name="submit"  value="検索" >&nbsp;
 		</div>
