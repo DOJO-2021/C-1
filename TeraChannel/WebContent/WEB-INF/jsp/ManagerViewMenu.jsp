@@ -19,11 +19,11 @@
 	<!-- ヘッダーここから -->
 	<header>
 		<div class="teraco">
-			<a href="/TeraChannel/MenuServlet"><img
+			<a href="/TeraChannel/ManagerMenuServlet"><img
 				src="/TeraChannel/image/teraco.jpg" alt="TERACO"></a>
 		</div>
 		<div class="terachan">
-			<a href="/TeraChannel/ViewMenuServlet"><img
+			<a href="/TeraChannel/ManagerViewMenuServlet"><img
 				src="/TeraChannel/image/keijiban.jpg" alt="てらちゃんねる"></a>
 		</div>
 		<div class="navi">
@@ -34,22 +34,22 @@
 	<!-- ヘッダーここまで -->
 
 	<div class=list>
-		<form  action="ViewMenuServlet" method="post" >
-			<input type="search" name="search" placeholder="キーワードを入力">
-			<input type="submit" name="submit"  value="検索" >
-		</form>
 
-		<form  action="ViewMenuServlet" method="post" id="re-ch" >
-			<select id="reaction" name="reaction" onchange="submit(this.form)" >
+		<form  action="ManagerViewMenuServlet" method="post" id="re-ch" >
+			<select  class="dropdown-select"  id="reaction" name="reaction" onchange="submit(this.form)" >
 				<option value="popular" ${reaction1}>リアクションの多い順</option>
 				<option value="notpopular" ${reaction2}>リアクションの少ない順</option>
 			</select>
 		</form>
-		<form  action="ViewMenuServlet" method="post" id="ref-ch" >
-		 	<select id="refresh" name="refresh"  onchange="submit(this.form)">
+		<form  action="ManagerViewMenuServlet" method="post" id="ref-ch" >
+		 	<select  class="dropdown-select"  id="refresh" name="refresh"  onchange="submit(this.form)">
 				<option value="newevent" ${refresh1}>新着順</option>
 				<option value="oldevant" ${refresh2}>古い順</option>
 			</select>
+		</form>
+		<form  action="ManagerViewMenuServlet" method="post" >
+			<input type="search" name="search" placeholder="キーワードを入力">
+			<input type="submit" name="submit"  value="検索" >
 		</form>
 	</div>
 	<!-- メイン -->
@@ -73,9 +73,7 @@
 					<c:forEach var="b" items="${topListMain}">
 						<p>
 
-							<%--<input type="hidden" onclick="/TeraChannel/ViewMeneServlet${board_id}"> ${b.board_topic}"
-							--%>
-						<form action="ViewMenuServlet" method="post" >
+						<form action="ManagerViewMenuServlet" method="post" >
 						<h10> <a href="/TeraChannel/ManagerViewBoardServlet?board_id=${b.board_id}">${b.board_topic}</a></h10>
 						</form>
 						<br>
@@ -137,17 +135,19 @@
 
 
 
-		//プルダウン切り替え(リアクション)
-		 /* const rech = document.getElementById('re-ch');
+		プルダウン切り替え(リアクション)
+		  const rech = document.getElementById('re-ch');
 			function exe() {
 		    location.href =rech.action;
 		}
 
-		//プルダウン切り替え(新着)
+		プルダウン切り替え(新着)
 		const refch = document.getElementById('ref-ch');
 			function exec() {
 			location.href =refch.action;
-		} */
+		}
+
+
 
 	</script>
 </body>

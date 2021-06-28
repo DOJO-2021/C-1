@@ -36,6 +36,19 @@
 	<!-- ヘッダーここまで -->
 
 	<div class=list>
+
+		<form  action="ViewMenuServlet" method="post" id="re-ch" >
+			<select  class="dropdown-select" id="reaction" name="reaction" onchange="submit(this.form)" >
+				<option value="popular" ${reaction1}>リアクションの多い順</option>
+				<option value="notpopular" ${reaction2}>リアクションの少ない順</option>
+			</select>
+		</form>&nbsp;
+		<form  action="ViewMenuServlet" method="post" id="ref-ch" >
+		 	<select  class="dropdown-select" id="refresh" name="refresh"  onchange="submit(this.form)">
+				<option value="newevent" ${refresh1}>新着順</option>
+				<option value="oldevant" ${refresh2}>古い順</option>
+			</select>
+		</form>
 		<form  action="ViewMenuServlet" method="post" >
 		<div class="search">
 			<input class="search_input" type="search" name="search" placeholder="キーワードを入力">
@@ -43,23 +56,6 @@
 
 		<div class="editDelete">
 			<input class="searchButton" type="submit" name="submit"  value="検索" >&nbsp;
-		</div>
-		</form>
-
-		<form  action="ViewMenuServlet" method="post" id="re-ch" >
-		<div class = rea>
-			<select id="reaction" name="reaction" onchange="submit(this.form)" >
-				<option value="popular" ${reaction1}>リアクションの多い順</option>
-				<option value="notpopular" ${reaction2}>リアクションの少ない順</option>
-			</select>
-		</div>
-		</form>&nbsp;
-		<form  action="ViewMenuServlet" method="post" id="ref-ch" >
-		<div class = ref>
-		 	<select id="refresh" name="refresh"  onchange="submit(this.form)">
-				<option value="newevent" ${refresh1}>新着順</option>
-				<option value="oldevant" ${refresh2}>古い順</option>
-			</select>
 		</div>
 		</form>
 	</div>
@@ -166,6 +162,7 @@
 			function exec() {
 			location.href =refch.action;
 		}
+
 
 	</script>
 </body>
