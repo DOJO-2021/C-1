@@ -72,7 +72,7 @@
 						<!-- 投稿者のIDとユーザーIDが一致していた場合 -->
 						<c:if test="${f.user_id == bd.user_id}">
 
-							<h3>${bd.board_topic} &nbsp;&nbsp; 投稿者:${f.user_name}さん</h3>
+							<h3>${bd.board_topic} &nbsp;&nbsp; 投稿者:${f.user_name}さん &nbsp;ユーザーID:${f.user_id}</h3>
 
 							<textarea class="board_main_input" name="board_main" rows="8"
 								cols="60">${bd.board_main}</textarea>
@@ -119,7 +119,7 @@
 								<!-- 投稿者のIDとユーザーIDが一致していた場合 -->
 								<c:if test="${f.user_id == e.user_id}">
 										<div class="flex1">
-											👆${f.user_name}さん&nbsp;返信ID:${e.reply_id}
+											👆${f.user_name}さん&nbsp;ユーザーID:${f.user_id}&nbsp;返信ID:${e.reply_id}
 											<p class="updateDate">登録日:${e.reply_date}</p>
 										</div>
 											<input class="reply_input" type="text" name="reply_main" value="${e.reply_main}">

@@ -108,7 +108,7 @@ public class ViewBoardServlet extends HttpServlet {
 
 				}
 				else {												// 更新失敗
-					request.setAttribute("fail","投稿の編集" );
+					//request.setAttribute("fail","投稿の編集" );
 					//同じServletに再フォワードを行ってhtmlの<c:if>を使ってjavascriptでその場でエラーアラートを出すか
 					//上の場合それを識別するようのパラメータを一つ作ってあげる必要がある
 
@@ -125,7 +125,7 @@ public class ViewBoardServlet extends HttpServlet {
 				}
 				else {						// 削除失敗
 
-					request.setAttribute("fail","投稿の削除" );
+					//request.setAttribute("fail","投稿の削除" );
 
 				}
 			}//返信の編集ボタンが押されていた場合
@@ -149,7 +149,7 @@ public class ViewBoardServlet extends HttpServlet {
 
 				}
 				else {						// 削除失敗
-					request.setAttribute("fail","返信の削除に失敗しました" );
+					//request.setAttribute("fail","返信の削除に失敗しました" );
 				}
 
 			}
@@ -164,7 +164,7 @@ public class ViewBoardServlet extends HttpServlet {
 
 				}
 				else {						// 返信失敗
-					request.setAttribute("fail","返信の登録に失敗しました" );
+					//request.setAttribute("fail","返信の登録に失敗しました" );
 				}
 			}
 
