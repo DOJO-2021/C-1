@@ -1,0 +1,29 @@
+-- テーブル削除
+drop table if exists manager;
+-- テーブル作成
+create table manager (
+  manager_id int primary key auto_increment,
+  manager_pw varchar(20) not null,
+  manager_mail varchar(100) not null
+);
+-- データ追加
+insert into manager values (
+null,
+'akita',
+'akita@example.com'
+);
+insert into manager values (
+null,
+'yamagata',
+'yamagata@example.com'
+);
+insert into manager values (
+null,
+'hukusima',
+'hukusima@example.com'
+);
+insert into manager values (
+null,
+'ibaraki',
+'ibaraki@example.com'
+);

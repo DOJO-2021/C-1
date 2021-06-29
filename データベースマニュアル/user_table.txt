@@ -1,0 +1,325 @@
+
+-- テーブル削除
+drop table if exists user;
+-- テーブル作成
+create table user (
+  user_id int primary key auto_increment,
+  user_name varchar(20) not null,
+  user_pw varchar(20) not null,
+  user_type int not null,
+  user_mail varchar(100) not null,
+  user_count int(3) default 0,
+  user_nameCount int default 0,
+  user_update datetime   
+);
+-- データ追加
+insert into user values (
+null,
+'佐藤健二',
+'hokkaidou',
+'0',
+'hokkaidou@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'鈴木花子',
+'aomori',
+'0',
+'aomori@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'田中三郎',
+'iwate',
+'0',
+'iwate@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'伊藤紀香',
+'miyagi',
+'0',
+'miyagi@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'渡辺隆',
+'totigi',
+'1',
+'totigi@example.com',
+'1',
+'0',
+current_time
+);
+insert into user values (
+null,
+'山本光',
+'gunnma',
+'0',
+'gunnma@example.com',
+'2',
+'0',
+current_time
+);
+insert into user values (
+null,
+'小林幸子',
+'saitama',
+'0',
+'saitama@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'加藤健太',
+'tiba',
+'0',
+'tiba@example.com',
+'0',
+'1',
+current_time
+);
+insert into user values (
+null,
+'吉田真知子',
+'tokyo',
+'0',
+'tokyo@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'山田弘樹',
+'kanagawa',
+'0',
+'kanagawa@example.com',
+'0',
+'1',
+current_time
+);
+insert into user values (
+null,
+'佐々木達也',
+'nigata',
+'0',
+'nigata@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'山口瑠璃子',
+'toyama',
+'0',
+'toyama@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'井上直樹',
+'isikawa',
+'0',
+'isikawa@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'木村茉奈',
+'hukui',
+'0',
+'hukui@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'林博之',
+'yamanasi',
+'0',
+'yamanasi@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'清水愛理',
+'nagano',
+'0',
+'nagano@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'大野武',
+'gihu',
+'0',
+'gihu@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'長谷川亮',
+'sizuoka',
+'0',
+'sizuoka@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'池田奈々子',
+'aiti',
+'1',
+'aiti@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'野村七海',
+'mie',
+'0',
+'mie@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'永田治郎',
+'siga',
+'0',
+'siga@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'上野撫子',
+'kyoto',
+'0',
+'kyoto@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'大坂奈央',
+'oosaka',
+'0',
+'oosa@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'浜口純一',
+'hyougo',
+'0',
+'hyougo@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'浜田清',
+'nara',
+'0',
+'nara@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'石田桃子',
+'wakayama',
+'0',
+'wakayama@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'吉岡香織',
+'tottori',
+'0',
+'tottori@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'谷川由紀',
+'simane',
+'0',
+'simane@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'村上豊',
+'okayama',
+'0',
+'okayama@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'関口慎二',
+'hirosima',
+'0',
+'hirosima@example.com',
+'0',
+'0',
+current_time
+);
+insert into user values (
+null,
+'',
+'',
+'0',
+'@example.com',
+'0',
+'0',
+current_time
+);

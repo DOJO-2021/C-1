@@ -1,0 +1,245 @@
+-- テーブル削除
+drop table if exists board;
+-- テーブル作成
+create table board (
+  board_id int primary key auto_increment,
+  board_topic varchar(40) not null,
+  board_main varchar(500) not null,
+  board_smile int default 0,
+  board_shock int default 0,
+  board_tear int default 0,
+  board_update datetime,
+  user_id int
+);
+-- データ追加
+insert into board values (
+null,
+'HTMLのコメントアウト',
+' HTMLのコメントアウトの書き方を教えてください。',
+'1',
+'0',
+'3',
+current_time,
+'1'
+);
+insert into board values (
+null,
+'「や」から始まる甘いもの',
+'「や」から始まる甘いものといえば何が思いつきますか？。',
+'0',
+'6',
+'2',
+current_time,
+'3'
+);
+insert into board values (
+null,
+'休みの日',
+'休みの日は何をして過ごしていますか？',
+'5',
+'10',
+'1',
+current_time,
+'2'
+);
+insert into board values (
+null,
+'eclipse',
+'eclipseのインデントの自動インデントの方法を教えてください。',
+'0',
+'0',
+'0',
+current_time,
+'7'
+);
+insert into board values (
+null,
+'プログラム',
+'身の回りにあるプログラムが内蔵されているものを教えてください。',
+'12',
+'6',
+'0',
+current_time,
+'9'
+);
+insert into board values (
+null,
+'イニシャルコストとランニングコスト',
+'イニシャルコストとランニングコストの例を教えてください。',
+'11',
+'2',
+'9',
+current_time,
+'11'
+);
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+insert into board values (
+null,
+'「は」で始まる子供が大好きなものは？',
+'「は」で始まる子供が大好きなものをたくさん知りたいです。',
+'20',
+'20',
+'20',
+current_time,
+'13'
+);
+insert into board values (
+null,
+'エンジニアを目指した理由',
+'エンジニアを目指した理由を教えてください。',
+'2',
+'5',
+'16',
+current_time,
+'15'
+);
+insert into board values (
+null,
+'ペット飼いたい',
+'一人暮らしはとてもさみしいのペットを飼いたいと考えてます。みなさんの飼ったことあるペットを教えてください。',
+'5',
+'6',
+'7',
+current_time,
+'17'
+);
+insert into board values (
+null,
+'朝ごはん',
+'朝ごはんはご飯派ですか？パン派ですか？',
+'0',
+'5',
+'0',
+current_time,
+'21'
+);
+insert into board values (
+null,
+'運動不足',
+'最近、家にいることが多くなり運動不足を感じています。なにかスポーツを始めたいのですが、おすすめのスポーツを教えてください。',
+'0',
+'8',
+'7',
+current_time,
+'23'
+);
+insert into board values (
+null,
+'夜ご飯',
+'今日の夜ご飯の参考にしたいので、食べたいもの教えてください。',
+'2',
+'5',
+'6',
+current_time,
+'25'
+);
+insert into board values (
+null,
+'もしも魔法が使えたら',
+'もしも魔法が使えたら何をしますか？私は世の中の悪を全滅してみたいです。。',
+'12',
+'2',
+'6',
+current_time,
+'27'
+);
+insert into board values (
+null,
+'今日のおやつ',
+'今日のおやつの参考にしたいので、おすすめのお菓子を教えてください。',
+'4',
+'8',
+'7',
+current_time,
+'29'
+);
+insert into board values (
+null,
+'アイス',
+'今年も暑くなりましたね。アイスが食べたくなりました。おすすめのアイスを教えてください。',
+'9',
+'2',
+'1',
+current_time,
+'4'
+);
+insert into board values (
+null,
+'「あ」で始まる日本が世界に誇れるもの',
+'「あ」で始まる日本が世界に誇れるものはなんですか。',
+'3',
+'6',
+'2',
+current_time,
+'6'
+);
+insert into board values (
+null,
+'タイピング',
+'タイピングのスコアが伸び悩んでいます。なにかアドバイスをお願いします。',
+'11',
+'5',
+'9',
+current_time,
+'8'
+);
+insert into board values (
+null,
+'おすすめのアプリ',
+'おすすめのアプリを教えてください。',
+'12',
+'5',
+'8',
+current_time,
+'10'
+);
+insert into board values (
+null,
+'洗濯',
+'今日は洗濯物を外の干しています。今日は雨降らないですよね？',
+'0',
+'0',
+'15',
+current_time,
+'12'
+);
+insert into board values (
+null,
+'「さ」で始まる人から言われて嬉しい言葉',
+'「さ」で始まる人から言われて嬉しい言葉はなんですか？',
+'12',
+'2',
+'2',
+current_time,
+'14'
+);
+insert into board values (
+null,
+'',
+'',
+'0',
+'0',
+'0',
+current_time,
+'0'
+);
+insert into board values (
+null,
+'',
+'',
+'0',
+'0',
+'0',
+current_time,
+'0'
+);
+insert into board values (
+null,
+'',
+'',
+'0',
+'0',
+'0',
+current_time,
+'0'
+);

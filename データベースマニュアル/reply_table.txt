@@ -1,0 +1,288 @@
+-- テーブル削除
+drop table if exists reply;
+-- テーブル作成
+create table reply (
+  reply_id int primary key auto_increment,
+  reply_main text(400) not null,
+  reply_date datetime,
+  user_id int,
+  board_id int
+);
+-- データ追加
+insert into reply values (
+null,
+'<!-- コメントアウト -->と記述することでコメントアウトできますよ。',
+current_time,
+'2',
+'1' 
+);
+insert into reply values (
+null,
+'焼きプリンですかね～',
+current_time,
+'4',
+'2' 
+);
+insert into reply values (
+null,
+'焼き芋ですね',
+current_time,
+'8',
+'2' 
+);
+insert into reply values (
+null,
+'八つ橋です。',
+current_time,
+'10',
+'2' 
+);
+insert into reply values (
+null,
+'料理したり掃除したりとかかなぁ',
+current_time,
+'6',
+'3' 
+);
+insert into reply values (
+null,
+'家でゴロゴロしてる感じですね。',
+current_time,
+'12',
+'3' 
+);
+insert into reply values (
+null,
+'eclipseの便利機能、ショートカット「ctrl + shift + f」を押すことで
+インデントをそろえるなど、ソースコードの体裁を整えてくれますよ。',
+current_time,
+'8',
+'4' 
+);
+insert into reply values (
+null,
+'たくさんありますよ。家の中にあるものだと洗濯機や炊飯器などが該当します。',
+current_time,
+'10',
+'5' 
+);
+insert into reply values (
+null,
+'例えば、アパートやマンションを借りている人は、最初に敷金や礼金を払います。このコストがイニシャルコストになります。対して、毎月払うの家賃がランニングコストになります。',
+current_time,
+'12',
+'6' 
+);
+ーーーーーーーーーーーーーーーーーーーーーーーーーー
+insert into reply values (
+null,
+'ハム太郎大好きです。小さいころよく見てました。',
+current_time,
+'14',
+'7' 
+);
+insert into reply values (
+null,
+'ハイチューです。今でもよく食べています。グレープ味がお気に入りです。',
+current_time,
+'16',
+'7' 
+);
+
+insert into reply values (
+null,
+'ハリーポッターをよく見てました。',
+current_time,
+'18',
+'7' 
+);
+
+insert into reply values (
+null,
+'ハンバーガーを食べたいです。ポテトも食べたいです。',
+current_time,
+'20',
+'7' 
+);
+insert into reply values (
+null,
+'ハローキティです。ハローキティのポップコーンの歌が頭から離れないです。',
+current_time,
+'22',
+'7' 
+);
+insert into reply values (
+null,
+'ハリーポッター大好きです。エクスペクト・パトローナムをよく唱えていました。',
+current_time,
+'24',
+'7' 
+);
+insert into reply values (
+null,
+'はちみつですかね。子供は甘いものが好きなイメージあります。',
+current_time,
+'6',
+'7' 
+);
+insert into reply values (
+null,
+'高校、大学で学んできたプログラミングの知識を生かしたいと思ったので。',
+current_time,
+'26',
+'8' 
+);
+insert into reply values (
+null,
+'PCに興味があり、関わることのできる仕事をやりたかったためです～',
+current_time,
+'28',
+'8' 
+);
+insert into reply values (
+null,
+'ウサギは癒されますよ。',
+current_time,
+'3',
+'9' 
+);
+insert into reply values (
+null,
+'猫にすべきです。理由は飼ってみたら分かります。',
+current_time,
+'5',
+'9' 
+);
+insert into reply values (
+null,
+'犬もいいですよ～。毎日の散歩が日課になっています。。',
+current_time,
+'7',
+'9' 
+);
+insert into reply values (
+null,
+'朝はパンで決まりですね。',
+current_time,
+'9',
+'10' 
+);
+insert into reply values (
+null,
+'縄跳びは運動不足解消におすすめですよ。',
+current_time,
+'13',
+'11' 
+);
+insert into reply values (
+null,
+'焼きそばたべたいなぁ',
+current_time,
+'15',
+'12' 
+);
+insert into reply values (
+null,
+'コロッケ食べたいよ～',
+current_time,
+'17',
+'12' 
+);
+insert into reply values (
+null,
+'若返りたいです。最近、腰が痛いので。',
+current_time,
+'21',
+'13' 
+);
+insert into reply values (
+null,
+'かめはめ波を打てるようになりたいです。',
+current_time,
+'23',
+'13' 
+);
+insert into reply values (
+null,
+'ねるねるねるね',
+current_time,
+'25',
+'14' 
+);
+insert into reply values (
+null,
+'ハーゲンダッツたべたいなぁ',
+current_time,
+'2',
+'15' 
+);
+insert into reply values (
+null,
+'アンパンマンですね。愛と勇気が友達ってかっこいいですよね。',
+current_time,
+'27',
+'16' 
+);
+insert into reply values (
+null,
+'指の位置はホームポジションを意識することとスピードよりも指の位置の正確さを意識してみてください。',
+current_time,
+'1',
+'17' 
+);
+insert into reply values (
+null,
+'Progateというプログラミングのアプリです。プログラミングの勉強ができるのでおすすめです。',
+current_time,
+'2',
+'18' 
+);
+insert into reply values (
+null,
+'雨が降らないことを願いましょう',
+current_time,
+'3',
+'19' 
+);
+insert into reply values (
+null,
+'「財布の中身全部あげるよ。」と言われたらうれしいですね。そんな人に会いたいなぁ',
+current_time,
+'4',
+'20' 
+);
+insert into reply values (
+null,
+'返信メイン',
+current_time,
+'user_id',
+'board_id' 
+);
+insert into reply values (
+null,
+'返信メイン',
+current_time,
+'user_id',
+'board_id' 
+);
+insert into reply values (
+null,
+'返信メイン',
+current_time,
+'user_id',
+'board_id' 
+);
+insert into reply values (
+null,
+'返信メイン',
+current_time,
+'user_id',
+'board_id' 
+);
+insert into reply values (
+null,
+'返信メイン',
+current_time,
+'user_id',
+'board_id' 
+);

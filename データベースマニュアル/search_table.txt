@@ -1,0 +1,434 @@
+-- テーブル削除
+drop table if exists search;
+-- テーブル作成
+create table search (
+  search_id int primary key auto_increment,
+  search_word varchar(10) not null
+);
+-- データ追加
+insert into search values (
+null,
+'ばか'
+);
+insert into search values (
+null,
+'バカ'
+);
+insert into search values (
+null,
+'あほ'
+);
+insert into search values (
+null,
+'アホ'
+);
+insert into search values (
+null,
+'頭おかしい'
+);
+insert into search values (
+null,
+'死ね'
+);
+
+insert into search values (
+null,
+'くそやろう'
+);
+
+insert into search values (
+null,
+'デブ'
+);
+
+insert into search values (
+null,
+'ブス'
+);
+
+insert into search values (
+null,
+'ババア'
+);
+
+insert into search values (
+null,
+'ばばあ'
+);
+
+insert into search values (
+null,
+'ジジイ'
+);
+
+insert into search values (
+null,
+'じじい'
+);
+
+insert into search values (
+null,
+'ムカつく'
+);
+
+insert into search values (
+null,
+'はげ頭'
+);
+
+insert into search values (
+null,
+'ハゲ'
+);
+
+insert into search values (
+null,
+'死んだ方がいい'
+);
+
+insert into search values (
+null,
+'ザコ'
+);
+
+insert into search values (
+null,
+'生きてる価値なし'
+);
+
+insert into search values (
+null,
+'嘘つき'
+);
+
+insert into search values (
+null,
+'臭いよ'
+);
+
+insert into search values (
+null,
+'くたばれ'
+);
+
+insert into search values (
+null,
+'殺す'
+);
+
+insert into search values (
+null,
+'死んじゃえ'
+);
+
+insert into search values (
+null,
+'世界一きもい'
+);
+
+insert into search values (
+null,
+'使えねえな'
+);
+
+insert into search values (
+null,
+'溶けてなくなれ！'
+);
+insert into search values (
+null,
+'脳みそ足りてる'
+);
+insert into search values (
+null,
+'ほっとけよそんなカス'
+);
+insert into search values (
+null,
+'ムカつくわ'
+);
+insert into search values (
+null,
+'をかしいよ。頭'
+);
+insert into search values (
+null,
+'クソ以下'
+);
+insert into search values (
+null,
+'頭悪いね'
+);
+insert into search values (
+null,
+'うざい'
+);
+insert into search values (
+null,
+'ウザイ'
+);
+insert into search values (
+null,
+'役立たず'
+);
+insert into search values (
+null,
+'器が小さいですね'
+);
+insert into search values (
+null,
+'老けてますね'
+);
+insert into search values (
+null,
+'仕事ができないね'
+);
+insert into search values (
+null,
+'頼りにならないね'
+);
+insert into search values (
+null,
+'清潔感ないね'
+);
+insert into search values (
+null,
+'汚いね'
+);
+insert into search values (
+null,
+'ケチですね'
+);
+insert into search values (
+null,
+'センスないですね'
+);
+insert into search values (
+null,
+'気が利かないね'
+);
+insert into search values (
+null,
+'教え方下手ですね'
+);
+insert into search values (
+null,
+'そんなこと常識'
+);
+insert into search values (
+null,
+'バーカ'
+);
+insert into search values (
+null,
+'ばーか'
+);
+insert into search values (
+null,
+'あーほ'
+);
+insert into search values (
+null,
+'アーホ'
+);
+insert into search values (
+null,
+'ぶさいく'
+);
+insert into search values (
+null,
+'ブサイク'
+);
+insert into search values (
+null,
+'やる気あんの'
+);
+insert into search values (
+null,
+'消えてしまえ'
+);
+insert into search values (
+null,
+'これだから初心者'
+);
+insert into search values (
+null,
+'氏ね'
+);
+５７ーーーーーーーーーーーーーーーーーーーー
+insert into search values (
+null,
+'使えないね人だね'
+);
+insert into search values (
+null,
+'消えてなくなれ'
+);
+insert into search values (
+null,
+'消えればいいのに'
+);
+insert into search values (
+null,
+'大人のくせに'
+);
+insert into search values (
+null,
+'生まれてくるな'
+);
+insert into search values (
+null,
+'頭悪そうだね'
+);
+insert into search values (
+null,
+'頭くるってるね'
+);
+insert into search values (
+null,
+'脳みそありますか'
+);
+insert into search values (
+null,
+'蹴とばすぞ'
+);
+insert into search values (
+null,
+'生きてる意味なし'
+);
+insert into search values (
+null,
+'勘が悪いね'
+);
+insert into search values (
+null,
+'いじわるだね'
+);
+insert into search values (
+null,
+'意地悪だね'
+);
+insert into search values (
+null,
+'死んでくれ'
+);
+insert into search values (
+null,
+'マジむかつく'
+);
+insert into search values (
+null,
+'人間のくず'
+);
+insert into search values (
+null,
+'人間のかす'
+);
+insert into search values (
+null,
+'うるさい'
+);
+insert into search values (
+null,
+'うるせえ'
+);
+insert into search values (
+null,
+'くたばってしまえ'
+);
+insert into search values (
+null,
+'でたらめ言うな'
+);
+insert into search values (
+null,
+'学校に来るな'
+);
+insert into search values (
+null,
+'会社にくるな'
+);
+insert into search values (
+null,
+'電車に乗るな'
+);
+８１ーーーーーーーーーーーーーーー
+insert into search values (
+null,
+'無能ですね'
+);
+insert into search values (
+null,
+'無能な人ですね'
+);
+insert into search values (
+null,
+'こんなのも分からんの'
+);
+insert into search values (
+null,
+'なにができるの'
+);
+insert into search values (
+null,
+'人ですか'
+);
+insert into search values (
+null,
+'呪ってやる'
+);
+insert into search values (
+null,
+'のろまですね'
+);
+insert into search values (
+null,
+'センスないね'
+);
+insert into search values (
+null,
+'かっこつけるな'
+);
+insert into search values (
+null,
+'ケチくそですね'
+);
+insert into search values (
+null,
+'やるきないなら帰れ'
+);
+ーーーーーーーー
+insert into search values (
+null,
+'地獄に落ちろ'
+);
+insert into search values (
+null,
+'保育園からやり直せ'
+);
+insert into search values (
+null,
+'しばくぞ'
+);
+insert into search values (
+null,
+'しばきたおすぞ'
+);
+insert into search values (
+null,
+'似合ってないよ'
+);
+insert into search values (
+null,
+'なんにもできないね'
+);
+insert into search values (
+null,
+'老害ですね'
+);
+insert into search values (
+null,
+'社会のくずですね'
+);
+
+
