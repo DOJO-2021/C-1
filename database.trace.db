@@ -1,0 +1,1899 @@
+2021-06-10 18:06:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "        
+INSERT INTO USER VALUES (
+NULL,
+'',
+'',
+'0',
+'',
+'0',
+'0',
+)[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "        
+INSERT INTO USER VALUES (
+NULL,
+'',
+'',
+'0',
+'',
+'0',
+'0',
+)[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+-- データ追加
+insert into user values (
+null,
+'',
+'',
+'0',
+'',
+'0',
+'0',
+) [42001-200]
+2021-06-10 18:06:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "        
+INSERT INTO BOARD (
+NULL[*],
+'',
+'',
+'0',
+'0',
+'0',
+'',
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "        
+INSERT INTO BOARD (
+NULL[*],
+'',
+'',
+'0',
+'0',
+'0',
+'',
+''
+)"; expected "identifier"; SQL statement:
+-- データ追加
+insert into board (
+null,
+'',
+'',
+'0',
+'0',
+'0',
+'',
+''
+) [42001-200]
+2021-06-10 18:06:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "        
+INSERT INTO REPLY (
+NULL[*],
+'',
+'',
+'',
+'' 
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "        
+INSERT INTO REPLY (
+NULL[*],
+'',
+'',
+'',
+'' 
+)"; expected "identifier"; SQL statement:
+-- データ追加
+insert into reply (
+null,
+'',
+'',
+'',
+'' 
+) [42001-200]
+2021-06-10 18:06:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "        
+INSERT INTO MANAGER (
+NULL[*],
+'',
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "        
+INSERT INTO MANAGER (
+NULL[*],
+'',
+''
+)"; expected "identifier"; SQL statement:
+-- データ追加
+insert into manager (
+null,
+'',
+''
+) [42001-200]
+2021-06-10 18:06:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "        
+INSERT INTO SEARCH (
+NULL[*],
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "        
+INSERT INTO SEARCH (
+NULL[*],
+''
+)"; expected "identifier"; SQL statement:
+-- データ追加
+insert into search (
+null,
+''
+) [42001-200]
+2021-06-10 18:10:31 database: wrong user or password; user: "SA"
+org.h2.message.DbException: ユーザ名またはパスワードが不正です
+Wrong user name or password [28000-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.engine.Engine.openSession(Engine.java:131)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:309)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:289)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:785)
+	at org.h2.server.web.WebApp.test(WebApp.java:947)
+	at org.h2.server.web.WebApp.process(WebApp.java:238)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:173)
+	at org.h2.server.web.WebThread.process(WebThread.java:139)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: ユーザ名またはパスワードが不正です
+Wrong user name or password [28000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:461)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 21 more
+2021-06-14 13:26:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "        
+INSERT INTO USER VALUES (
+NULL,
+'佐藤一郎',
+'hokkaidou',
+'0',
+'hokkaidou@example.com',
+'0',
+'0',
+)[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "        
+INSERT INTO USER VALUES (
+NULL,
+'佐藤一郎',
+'hokkaidou',
+'0',
+'hokkaidou@example.com',
+'0',
+'0',
+)[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+-- データ追加
+insert into user values (
+null,
+'佐藤一郎',
+'hokkaidou',
+'0',
+'hokkaidou@example.com',
+'0',
+'0',
+) [42001-200]
+2021-06-14 13:26:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO USER VALUES (
+NULL,
+'鈴木花子',
+'aomori',
+'0',
+'aomori@example.com',
+'0',
+'0',
+)[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO USER VALUES (
+NULL,
+'鈴木花子',
+'aomori',
+'0',
+'aomori@example.com',
+'0',
+'0',
+)[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+insert into user values (
+null,
+'鈴木花子',
+'aomori',
+'0',
+'aomori@example.com',
+'0',
+'0',
+) [42001-200]
+2021-06-14 13:26:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO USER VALUES (
+NULL,
+'田中次郎',
+'iwate',
+'0',
+'iwate@example.com',
+'0',
+'0',
+)[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO USER VALUES (
+NULL,
+'田中次郎',
+'iwate',
+'0',
+'iwate@example.com',
+'0',
+'0',
+)[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+insert into user values (
+null,
+'田中次郎',
+'iwate',
+'0',
+'iwate@example.com',
+'0',
+'0',
+) [42001-200]
+2021-06-14 13:30:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "        
+INSERT INTO USER VALUES (
+NULL,
+'佐藤一郎',
+'hokkaidou',
+'0',
+'hokkaidou@example.com',
+'0',
+'0',
+)[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "        
+INSERT INTO USER VALUES (
+NULL,
+'佐藤一郎',
+'hokkaidou',
+'0',
+'hokkaidou@example.com',
+'0',
+'0',
+)[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+-- データ追加
+insert into user values (
+null,
+'佐藤一郎',
+'hokkaidou',
+'0',
+'hokkaidou@example.com',
+'0',
+'0',
+) [42001-200]
+2021-06-14 13:30:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO USER VALUES (
+NULL,
+'鈴木花子',
+'aomori',
+'0',
+'aomori@example.com',
+'0',
+'0',
+)[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO USER VALUES (
+NULL,
+'鈴木花子',
+'aomori',
+'0',
+'aomori@example.com',
+'0',
+'0',
+)[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+insert into user values (
+null,
+'鈴木花子',
+'aomori',
+'0',
+'aomori@example.com',
+'0',
+'0',
+) [42001-200]
+2021-06-14 13:30:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO USER VALUES (
+NULL,
+'田中次郎',
+'iwate',
+'0',
+'iwate@example.com',
+'0',
+'0',
+)[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO USER VALUES (
+NULL,
+'田中次郎',
+'iwate',
+'0',
+'iwate@example.com',
+'0',
+'0',
+)[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+insert into user values (
+null,
+'田中次郎',
+'iwate',
+'0',
+'iwate@example.com',
+'0',
+'0',
+) [42001-200]
+2021-06-14 13:31:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "        
+INSERT INTO USER VALUES (
+NULL,
+'佐藤一郎',
+'hokkaidou',
+'0',
+'hokkaidou@example.com',
+'0',
+'0',
+)[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "        
+INSERT INTO USER VALUES (
+NULL,
+'佐藤一郎',
+'hokkaidou',
+'0',
+'hokkaidou@example.com',
+'0',
+'0',
+)[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+-- データ追加
+insert into user values (
+null,
+'佐藤一郎',
+'hokkaidou',
+'0',
+'hokkaidou@example.com',
+'0',
+'0',
+) [42001-200]
+2021-06-14 13:35:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO USER VALUES (
+NULL,
+'',
+'',
+'0',
+'',
+'0',
+'0',
+)[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO USER VALUES (
+NULL,
+'',
+'',
+'0',
+'',
+'0',
+'0',
+)[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+insert into user values (
+null,
+'',
+'',
+'0',
+'',
+'0',
+'0',
+) [42001-200]
+2021-06-14 13:37:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "        
+INSERT INTO USER VALUES (
+NULL,
+'',
+'',
+'0',
+'',
+'0',
+'0',
+)[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "        
+INSERT INTO USER VALUES (
+NULL,
+'',
+'',
+'0',
+'',
+'0',
+'0',
+)[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+-- データ追加
+insert into user values (
+null,
+'',
+'',
+'0',
+'',
+'0',
+'0',
+) [42001-200]
+2021-06-14 13:50:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "'' (USER: ""TYPE"" INT NOT NULL)"
+Data conversion error converting "'' (USER: ""TYPE"" INT NOT NULL)"; SQL statement:
+insert into user values (
+null,
+'',
+'',
+'',
+'',
+'',
+''
+) [22018-200]
+2021-06-14 13:54:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO USER VALUES (
+NULL,
+'',
+'',
+'0',
+'',
+'0',
+'0',
+)[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO USER VALUES (
+NULL,
+'',
+'',
+'0',
+'',
+'0',
+'0',
+)[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+insert into user values (
+null,
+'',
+'',
+'0',
+'',
+'0',
+'0',
+) [42001-200]
+2021-06-14 14:42:55 jdbc[4]: null
+org.h2.message.DbException: アプリケーションにより閉じられていない接続がガベージコレクトされました
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:309)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:289)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:785)
+	at org.h2.server.web.WebApp.login(WebApp.java:1008)
+	at org.h2.server.web.WebApp.process(WebApp.java:223)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:173)
+	at org.h2.server.web.WebThread.process(WebThread.java:139)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: アプリケーションにより閉じられていない接続がガベージコレクトされました
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 16 more
+2021-06-14 14:53:26 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "        
+INSERT INTO BOARD (
+NULL[*],
+'タイトルサンプル１',
+'投稿メインサンプル１',
+'0',
+'0',
+'0',
+'2021/06/01 13:00',
+'1'
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "        
+INSERT INTO BOARD (
+NULL[*],
+'タイトルサンプル１',
+'投稿メインサンプル１',
+'0',
+'0',
+'0',
+'2021/06/01 13:00',
+'1'
+)"; expected "identifier"; SQL statement:
+-- データ追加
+insert into board (
+null,
+'タイトルサンプル１',
+'投稿メインサンプル１',
+'0',
+'0',
+'0',
+'2021/06/01 13:00',
+'1'
+) [42001-200]
+2021-06-14 14:53:26 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO BOARD (
+NULL[*],
+'タイトルサンプル２',
+'投稿メインサンプル２',
+'0',
+'0',
+'0',
+'2021/06/01 14:05',
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO BOARD (
+NULL[*],
+'タイトルサンプル２',
+'投稿メインサンプル２',
+'0',
+'0',
+'0',
+'2021/06/01 14:05',
+''
+)"; expected "identifier"; SQL statement:
+insert into board (
+null,
+'タイトルサンプル２',
+'投稿メインサンプル２',
+'0',
+'0',
+'0',
+'2021/06/01 14:05',
+''
+) [42001-200]
+2021-06-14 14:53:49 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO BOARD (
+NULL[*],
+'',
+'',
+'0',
+'0',
+'0',
+'',
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO BOARD (
+NULL[*],
+'',
+'',
+'0',
+'0',
+'0',
+'',
+''
+)"; expected "identifier"; SQL statement:
+insert into board (
+null,
+'',
+'',
+'0',
+'0',
+'0',
+'',
+''
+) [42001-200]
+2021-06-14 14:55:32 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO BOARD (
+NULL[*],
+'',
+'',
+'',
+'',
+'',
+'',
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO BOARD (
+NULL[*],
+'',
+'',
+'',
+'',
+'',
+'',
+''
+)"; expected "identifier"; SQL statement:
+insert into board (
+null,
+'',
+'',
+'',
+'',
+'',
+'',
+''
+) [42001-200]
+2021-06-14 14:55:32 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO BOARD (
+NULL[*],
+'',
+'',
+'',
+'',
+'',
+'',
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO BOARD (
+NULL[*],
+'',
+'',
+'',
+'',
+'',
+'',
+''
+)"; expected "identifier"; SQL statement:
+insert into board (
+null,
+'',
+'',
+'',
+'',
+'',
+'',
+''
+) [42001-200]
+2021-06-14 14:56:34 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO BOARD (
+NULL[*],
+'',
+'',
+'0',
+'0',
+'0',
+'',
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO BOARD (
+NULL[*],
+'',
+'',
+'0',
+'0',
+'0',
+'',
+''
+)"; expected "identifier"; SQL statement:
+insert into board (
+null,
+'',
+'',
+'0',
+'0',
+'0',
+'',
+''
+) [42001-200]
+2021-06-14 14:57:22 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO BOARD (
+NULL[*],
+'タイトルサンプル１',
+'投稿メインサンプル１',
+'0',
+'0',
+'0',
+'2021/06/01 13:00',
+'1'
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO BOARD (
+NULL[*],
+'タイトルサンプル１',
+'投稿メインサンプル１',
+'0',
+'0',
+'0',
+'2021/06/01 13:00',
+'1'
+)"; expected "identifier"; SQL statement:
+insert into board (
+null,
+'タイトルサンプル１',
+'投稿メインサンプル１',
+'0',
+'0',
+'0',
+'2021/06/01 13:00',
+'1'
+) [42001-200]
+2021-06-14 14:58:42 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO BOARD (
+NULL[*],
+'',
+'',
+'0',
+'0',
+'0',
+'',
+NULL
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO BOARD (
+NULL[*],
+'',
+'',
+'0',
+'0',
+'0',
+'',
+NULL
+)"; expected "identifier"; SQL statement:
+insert into board (
+null,
+'',
+'',
+'0',
+'0',
+'0',
+'',
+null
+) [42001-200]
+2021-06-14 15:14:50 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO BOARD (
+NULL[*],
+'タイトルサンプル２',
+'投稿メインサンプル２',
+'0',
+'0',
+'0',
+'2021-06-01 13:21:35',
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO BOARD (
+NULL[*],
+'タイトルサンプル２',
+'投稿メインサンプル２',
+'0',
+'0',
+'0',
+'2021-06-01 13:21:35',
+''
+)"; expected "identifier"; SQL statement:
+insert into board (
+null,
+'タイトルサンプル２',
+'投稿メインサンプル２',
+'0',
+'0',
+'0',
+'2021-06-01 13:21:35',
+''
+) [42001-200]
+2021-06-14 15:16:36 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "        
+INSERT INTO MANAGER (
+NULL[*],
+'akita',
+'akita@example.com'
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "        
+INSERT INTO MANAGER (
+NULL[*],
+'akita',
+'akita@example.com'
+)"; expected "identifier"; SQL statement:
+-- データ追加
+insert into manager (
+null,
+'akita',
+'akita@example.com'
+) [42001-200]
+2021-06-14 15:16:36 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO MANAGER (
+NULL[*],
+'yamagata',
+'yamagata@example.com'
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO MANAGER (
+NULL[*],
+'yamagata',
+'yamagata@example.com'
+)"; expected "identifier"; SQL statement:
+insert into manager (
+null,
+'yamagata',
+'yamagata@example.com'
+) [42001-200]
+2021-06-14 15:16:36 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO MANAGER (
+NULL[*],
+'hukusima',
+'hukusima@example.com'
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO MANAGER (
+NULL[*],
+'hukusima',
+'hukusima@example.com'
+)"; expected "identifier"; SQL statement:
+insert into manager (
+null,
+'hukusima',
+'hukusima@example.com'
+) [42001-200]
+2021-06-14 15:16:36 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO MANAGER (
+NULL[*],
+'ibaraki',
+'ibaraki@example.com'
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO MANAGER (
+NULL[*],
+'ibaraki',
+'ibaraki@example.com'
+)"; expected "identifier"; SQL statement:
+insert into manager (
+null,
+'ibaraki',
+'ibaraki@example.com'
+) [42001-200]
+2021-06-14 15:17:46 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "        
+INSERT INTO MANAGER (
+NULL[*],
+'',
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "        
+INSERT INTO MANAGER (
+NULL[*],
+'',
+''
+)"; expected "identifier"; SQL statement:
+-- データ追加
+insert into manager (
+null,
+'',
+''
+) [42001-200]
+2021-06-14 15:18:36 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO MANAGER (
+NULL[*],
+'',
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO MANAGER (
+NULL[*],
+'',
+''
+)"; expected "identifier"; SQL statement:
+insert into manager (
+null,
+'',
+''
+) [42001-200]
+2021-06-14 15:19:43 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO MANAGER (
+NULL[*],
+'',
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO MANAGER (
+NULL[*],
+'',
+''
+)"; expected "identifier"; SQL statement:
+insert into manager (
+null,
+'',
+''
+) [42001-200]
+2021-06-14 15:20:30 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "        
+INSERT INTO MANAGER (
+NULL[*],
+'',
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "        
+INSERT INTO MANAGER (
+NULL[*],
+'',
+''
+)"; expected "identifier"; SQL statement:
+-- データ追加
+insert into manager (
+null,
+'',
+''
+) [42001-200]
+2021-06-14 15:21:30 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO MANAGER (
+NULL[*],
+'',
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO MANAGER (
+NULL[*],
+'',
+''
+)"; expected "identifier"; SQL statement:
+insert into manager (
+null,
+'',
+''
+) [42001-200]
+2021-06-14 15:23:24 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "        
+INSERT INTO SEARCH (
+NULL[*],
+'ばか'
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "        
+INSERT INTO SEARCH (
+NULL[*],
+'ばか'
+)"; expected "identifier"; SQL statement:
+-- データ追加
+insert into search (
+null,
+'ばか'
+) [42001-200]
+2021-06-14 15:23:24 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO SEARCH (
+NULL[*],
+'バカ'
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO SEARCH (
+NULL[*],
+'バカ'
+)"; expected "identifier"; SQL statement:
+insert into search (
+null,
+'バカ'
+) [42001-200]
+2021-06-14 15:23:24 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO SEARCH (
+NULL[*],
+'あほ'
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO SEARCH (
+NULL[*],
+'あほ'
+)"; expected "identifier"; SQL statement:
+insert into search (
+null,
+'あほ'
+) [42001-200]
+2021-06-14 15:23:24 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO SEARCH (
+NULL[*],
+'アホ'
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO SEARCH (
+NULL[*],
+'アホ'
+)"; expected "identifier"; SQL statement:
+insert into search (
+null,
+'アホ'
+) [42001-200]
+2021-06-14 15:24:20 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO SEARCH (
+NULL[*],
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO SEARCH (
+NULL[*],
+''
+)"; expected "identifier"; SQL statement:
+insert into search (
+null,
+''
+) [42001-200]
+2021-06-14 15:26:30 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO SEARCH (
+NULL[*],
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO SEARCH (
+NULL[*],
+''
+)"; expected "identifier"; SQL statement:
+insert into search (
+null,
+''
+) [42001-200]
+2021-06-14 15:28:07 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO SEARCH(
+NULL[*],
+''
+)"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO SEARCH(
+NULL[*],
+''
+)"; expected "identifier"; SQL statement:
+insert into search(
+null,
+''
+) [42001-200]
+2021-06-14 15:39:24 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SHOW FULL[*] TABLES"
+Syntax error in SQL statement "SHOW FULL[*] TABLES"; SQL statement:
+show full tables [42000-200]
+2021-06-14 15:39:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SHOW FULL[*] TABLE"
+Syntax error in SQL statement "SHOW FULL[*] TABLE"; SQL statement:
+show full table [42000-200]
+2021-06-14 15:41:37 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: "TIMESTAMP" 定数 "2021/06/01 13:00" を解析できません
+Cannot parse "TIMESTAMP" constant "2021/06/01 13:00"; SQL statement:
+insert into board values (
+null,
+'タイトルサンプル１',
+'投稿メインサンプル１',
+'0',
+'0',
+'0',
+'2021/06/01 13:00',
+'1'
+) [22007-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:457)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:136)
+	at org.h2.value.Value.convertToTimestamp(Value.java:1169)
+	at org.h2.value.Value.convertTo(Value.java:822)
+	at org.h2.value.Value.convertTo(Value.java:772)
+	at org.h2.value.TypeInfo.cast(TypeInfo.java:515)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:378)
+	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:845)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:187)
+	at org.h2.command.dml.Insert.update(Insert.java:151)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.NumberFormatException: For input string: "2021/0"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Integer.parseInt(Integer.java:770)
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:169)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:316)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:134)
+	... 19 more
+2021-06-14 15:41:37 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "'' (BOARD: ""USER_ID"" INT)"
+Data conversion error converting "'' (BOARD: ""USER_ID"" INT)"; SQL statement:
+insert into board values (
+null,
+'タイトルサンプル２',
+'投稿メインサンプル２',
+'0',
+'0',
+'0',
+'2021-06-01 13:21',
+''
+) [22018-200]
+2021-06-14 16:53:54 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: "TIMESTAMP" 定数 "2018/08/24 20:23:06" を解析できません
+Cannot parse "TIMESTAMP" constant "2018/08/24 20:23:06"; SQL statement:
+insert into board values (
+null,
+'タイトルサンプル１',
+'投稿メインサンプル１',
+'0',
+'0',
+'0',
+'2018/08/24 20:23:06',
+'1'
+) [22007-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:457)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:136)
+	at org.h2.value.Value.convertToTimestamp(Value.java:1169)
+	at org.h2.value.Value.convertTo(Value.java:822)
+	at org.h2.value.Value.convertTo(Value.java:772)
+	at org.h2.value.TypeInfo.cast(TypeInfo.java:515)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:378)
+	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:845)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:187)
+	at org.h2.command.dml.Insert.update(Insert.java:151)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.NumberFormatException: For input string: "2018/0"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Integer.parseInt(Integer.java:770)
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:169)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:316)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:134)
+	... 19 more
+2021-06-14 16:55:45 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "'' (BOARD: ""USER_ID"" INT)"
+Data conversion error converting "'' (BOARD: ""USER_ID"" INT)"; SQL statement:
+insert into board values (
+null,
+'タイトルサンプル２',
+'投稿メインサンプル２',
+'0',
+'0',
+'0',
+'2021-06-01 13:21:35',
+''
+) [22018-200]
+2021-06-14 16:55:45 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: "TIMESTAMP" 定数  を解析できません
+Cannot parse "TIMESTAMP" constant ; SQL statement:
+insert into board values (
+null,
+'',
+'',
+'0',
+'0',
+'0',
+'',
+null
+) [22007-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:457)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:136)
+	at org.h2.value.Value.convertToTimestamp(Value.java:1169)
+	at org.h2.value.Value.convertTo(Value.java:822)
+	at org.h2.value.Value.convertTo(Value.java:772)
+	at org.h2.value.TypeInfo.cast(TypeInfo.java:515)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:378)
+	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:845)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:187)
+	at org.h2.command.dml.Insert.update(Insert.java:151)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range: 0
+	at java.base/java.lang.StringLatin1.charAt(StringLatin1.java:47)
+	at java.base/java.lang.String.charAt(String.java:693)
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:145)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:316)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:134)
+	... 19 more
+2021-06-14 16:56:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: "TIMESTAMP" 定数  を解析できません
+Cannot parse "TIMESTAMP" constant ; SQL statement:
+insert into reply values (
+null,
+'',
+'',
+'',
+'' 
+) [22007-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:457)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:136)
+	at org.h2.value.Value.convertToTimestamp(Value.java:1169)
+	at org.h2.value.Value.convertTo(Value.java:822)
+	at org.h2.value.Value.convertTo(Value.java:772)
+	at org.h2.value.TypeInfo.cast(TypeInfo.java:515)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:378)
+	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:845)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:187)
+	at org.h2.command.dml.Insert.update(Insert.java:151)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range: 0
+	at java.base/java.lang.StringLatin1.charAt(StringLatin1.java:47)
+	at java.base/java.lang.String.charAt(String.java:693)
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:145)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:316)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:134)
+	... 19 more
+2021-06-15 08:51:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: "TIMESTAMP" 定数 "06-01 12:48:35" を解析できません
+Cannot parse "TIMESTAMP" constant "06-01 12:48:35"; SQL statement:
+-- データ追加
+insert into board values (
+null,
+'タイトルサンプル１',
+'投稿メインサンプル１',
+'0',
+'0',
+'0',
+'06-01 12:48:35',
+'1'
+) [22007-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:457)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:136)
+	at org.h2.value.Value.convertToTimestamp(Value.java:1169)
+	at org.h2.value.Value.convertTo(Value.java:822)
+	at org.h2.value.Value.convertTo(Value.java:772)
+	at org.h2.value.TypeInfo.cast(TypeInfo.java:515)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:378)
+	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:845)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:187)
+	at org.h2.command.dml.Insert.update(Insert.java:151)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.IllegalArgumentException: 06-01 12:48:35
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:157)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:316)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:134)
+	... 19 more
+2021-06-15 08:54:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: "TIMESTAMP" 定数 "06-01 12:48:35" を解析できません
+Cannot parse "TIMESTAMP" constant "06-01 12:48:35"; SQL statement:
+-- データ追加
+insert into board values (
+null,
+'タイトルサンプル１',
+'投稿メインサンプル１',
+'0',
+'0',
+'0',
+'06-01 12:48:35',
+'1'
+) [22007-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:457)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:136)
+	at org.h2.value.Value.convertToTimestamp(Value.java:1169)
+	at org.h2.value.Value.convertTo(Value.java:822)
+	at org.h2.value.Value.convertTo(Value.java:772)
+	at org.h2.value.TypeInfo.cast(TypeInfo.java:515)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:378)
+	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:845)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:187)
+	at org.h2.command.dml.Insert.update(Insert.java:151)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.IllegalArgumentException: 06-01 12:48:35
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:157)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:316)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:134)
+	... 19 more
+2021-06-15 08:55:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: "TIMESTAMP" 定数 "12:48:35" を解析できません
+Cannot parse "TIMESTAMP" constant "12:48:35"; SQL statement:
+-- データ追加
+insert into board values (
+null,
+'タイトルサンプル１',
+'投稿メインサンプル１',
+'0',
+'0',
+'0',
+'12:48:35',
+'1'
+) [22007-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:457)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:136)
+	at org.h2.value.Value.convertToTimestamp(Value.java:1169)
+	at org.h2.value.Value.convertTo(Value.java:822)
+	at org.h2.value.Value.convertTo(Value.java:772)
+	at org.h2.value.TypeInfo.cast(TypeInfo.java:515)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:378)
+	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:845)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:187)
+	at org.h2.command.dml.Insert.update(Insert.java:151)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.NumberFormatException: For input string: "12:4"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Integer.parseInt(Integer.java:770)
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:169)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:316)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:134)
+	... 19 more
+2021-06-15 09:12:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "'' (BOARD: ""USER_ID"" INT)"
+Data conversion error converting "'' (BOARD: ""USER_ID"" INT)"; SQL statement:
+insert into board values (
+null,
+'タイトルサンプル２',
+'投稿メインサンプル２',
+'0',
+'0',
+'0',
+'2021-06-01 13:21:35',
+''
+) [22018-200]
+2021-06-15 09:13:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "'' (BOARD: ""USER_ID"" INT)"
+Data conversion error converting "'' (BOARD: ""USER_ID"" INT)"; SQL statement:
+insert into board values (
+null,
+'タイトルサンプル２',
+'投稿メインサンプル２',
+'0',
+'0',
+'0',
+'2021-06-01 13:21:35',
+''
+) [22018-200]
+2021-06-15 10:00:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "ID" が見つかりません
+Table "ID" not found; SQL statement:
+select * from ID [42102-200]
+2021-06-15 10:22:59 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "TOPIC" が見つかりません
+Column "TOPIC" not found; SQL statement:
+select * from manager where topic like"%メイン%" [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.CompareLike.optimize(CompareLike.java:102)
+	at org.h2.command.dml.Select.prepare(Select.java:1209)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-06-15 10:23:33 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "TOPIC" が見つかりません
+Column "TOPIC" not found; SQL statement:
+select * from manager where TOPIC like"%メイン%" [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.CompareLike.optimize(CompareLike.java:102)
+	at org.h2.command.dml.Select.prepare(Select.java:1209)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-06-15 10:24:43 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "%メイン%" が見つかりません
+Column "%メイン%" not found; SQL statement:
+select * from BOARD where TOPIC like"%メイン%" [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.CompareLike.optimize(CompareLike.java:103)
+	at org.h2.command.dml.Select.prepare(Select.java:1209)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-06-15 10:24:57 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "%メ%" が見つかりません
+Column "%メ%" not found; SQL statement:
+select * from BOARD where TOPIC like"%メ%" [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.CompareLike.optimize(CompareLike.java:103)
+	at org.h2.command.dml.Select.prepare(Select.java:1209)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-06-15 10:25:47 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "%メ%" が見つかりません
+Column "%メ%" not found; SQL statement:
+select * from board where main like"%メ%" [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.CompareLike.optimize(CompareLike.java:103)
+	at org.h2.command.dml.Select.prepare(Select.java:1209)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-06-15 10:26:17 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "投稿メインサンプル１"
+Data conversion error converting "投稿メインサンプル１"; SQL statement:
+select * from board where main [22018-200]
+2021-06-15 10:27:45 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "%タイトル%" が見つかりません
+Column "%タイトル%" not found; SQL statement:
+select * from board where topic like"%タイトル%" [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.CompareLike.optimize(CompareLike.java:103)
+	at org.h2.command.dml.Select.prepare(Select.java:1209)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-06-15 10:27:54 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "%タイトル%" が見つかりません
+Column "%タイトル%" not found; SQL statement:
+select * from board where topic like"%タイトル%" [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.CompareLike.optimize(CompareLike.java:103)
+	at org.h2.command.dml.Select.prepare(Select.java:1209)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-06-15 10:29:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "タイトル%" が見つかりません
+Column "タイトル%" not found; SQL statement:
+select * from board where topic like"タイトル%" [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.CompareLike.optimize(CompareLike.java:103)
+	at org.h2.command.dml.Select.prepare(Select.java:1209)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-06-15 10:31:33 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT TOPIC FROM BOARD WHERE LIKE[*]""タイトル%"""; 期待されるステートメント "NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "SELECT TOPIC FROM BOARD WHERE LIKE[*]""タイトル%"""; expected "NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+select topic from board where like"タイトル%" [42001-200]
+2021-06-15 10:31:49 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "タイトル%" が見つかりません
+Column "タイトル%" not found; SQL statement:
+select topic from board where topic like"タイトル%" [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.CompareLike.optimize(CompareLike.java:103)
+	at org.h2.command.dml.Select.prepare(Select.java:1209)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-06-15 10:33:48 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "タイトルサンプル１"
+Data conversion error converting "タイトルサンプル１"; SQL statement:
+select * from board where topic [22018-200]
+2021-06-15 10:35:34 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "%タイトル%" が見つかりません
+Column "%タイトル%" not found; SQL statement:
+select * from board where topic like"%タイトル%" [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.CompareLike.optimize(CompareLike.java:103)
+	at org.h2.command.dml.Select.prepare(Select.java:1209)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-06-15 13:35:03 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLDataException: "TIMESTAMP" 定数 "current_timestamp" を解析できません
+Cannot parse "TIMESTAMP" constant "current_timestamp"; SQL statement:
+-- データ追加
+insert into board values (
+null,
+'タイトルサンプル１',
+'投稿メインサンプル１',
+'0',
+'0',
+'0',
+'current_timestamp',
+'1'
+) [22007-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:457)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:136)
+	at org.h2.value.Value.convertToTimestamp(Value.java:1169)
+	at org.h2.value.Value.convertTo(Value.java:822)
+	at org.h2.value.Value.convertTo(Value.java:772)
+	at org.h2.value.TypeInfo.cast(TypeInfo.java:515)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:378)
+	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:845)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:187)
+	at org.h2.command.dml.Insert.update(Insert.java:151)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.NumberFormatException: For input string: "current_times"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Integer.parseInt(Integer.java:770)
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:169)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:316)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:134)
+	... 19 more
+2021-06-15 13:39:13 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "TIMESTAMP" が見つかりません
+Column "TIMESTAMP" not found; SQL statement:
+-- データ追加
+insert into board values (
+null,
+'タイトルサンプル１',
+'投稿メインサンプル１',
+'0',
+'0',
+'0',
+timestamp,
+'1'
+) [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.command.dml.Insert.prepare(Insert.java:327)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-06-16 10:28:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "hokkaidou@exsample"
+Data conversion error converting "hokkaidou@exsample"; SQL statement:
+select count(*) from USER where MAIL and PW [22018-200]
+2021-06-16 10:29:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "hokkaidou"
+Data conversion error converting "hokkaidou"; SQL statement:
+select count(*) from USER where PW [22018-200]
+2021-06-16 10:31:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: パラメータ "#1" がセットされていません
+Parameter "#1" is not set; SQL statement:
+select count(*) from USER where MAIL = ? and PW = ? [90012-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:590)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.Parameter.checkSet(Parameter.java:83)
+	at org.h2.command.Prepared.checkParameters(Prepared.java:182)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:284)
+	at org.h2.command.Command.executeQuery(Command.java:195)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:222)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-06-16 10:31:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT COUNT(*) FROM USER WHERE MAIL =  AND PW[*] ="
+Syntax error in SQL statement "SELECT COUNT(*) FROM USER WHERE MAIL =  AND PW[*] ="; SQL statement:
+select count(*) from USER where MAIL =  and PW = [42000-200]
+2021-06-16 13:23:29 jdbc[6]: null
+org.h2.message.DbException: アプリケーションにより閉じられていない接続がガベージコレクトされました
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:309)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:289)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:785)
+	at org.h2.server.web.WebApp.login(WebApp.java:1008)
+	at org.h2.server.web.WebApp.process(WebApp.java:223)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:173)
+	at org.h2.server.web.WebThread.process(WebThread.java:139)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: アプリケーションにより閉じられていない接続がガベージコレクトされました
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 16 more
+2021-06-17 17:30:37 database: flush
+org.h2.message.DbException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:C:/pleiades/workspace/C-1/database.mv.db [1.4.199/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:C:/pleiades/workspace/C-1/database.mv.db [1.4.199/7]" [50000-199]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:90)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2787)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:441)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:404)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3343)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:95)
+	at org.h2.engine.Database.getPageStore(Database.java:2739)
+	at org.h2.engine.Database.open(Database.java:769)
+	at org.h2.engine.Database.openDatabase(Database.java:319)
+	at org.h2.engine.Database.<init>(Database.java:313)
+	at org.h2.engine.Engine.openSession(Engine.java:69)
+	at org.h2.engine.Engine.openSession(Engine.java:201)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:178)
+	at org.h2.engine.Engine.createSession(Engine.java:161)
+	at org.h2.engine.Engine.createSession(Engine.java:31)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:336)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:169)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:148)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Mita.UserDao.isLoginOK(UserDao.java:20)
+	at Mita.UserDaoTest.testIsLoginOK1(UserDaoTest.java:14)
+	at Mita.UserDaoTest.main(UserDaoTest.java:7)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:C:/pleiades/workspace/C-1/database.mv.db [1.4.199/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:C:/pleiades/workspace/C-1/database.mv.db [1.4.199/7]" [50000-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	... 27 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/pleiades/workspace/C-1/database.mv.db [1.4.199/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:883)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:390)
+	... 21 more
+2021-06-17 17:30:37 database: flush
+org.h2.message.DbException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:C:/pleiades/workspace/C-1/database.mv.db [1.4.199/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:C:/pleiades/workspace/C-1/database.mv.db [1.4.199/7]" [50000-199]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:90)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2787)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:441)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:404)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3343)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:95)
+	at org.h2.engine.Database.getPageStore(Database.java:2739)
+	at org.h2.engine.Database.open(Database.java:769)
+	at org.h2.engine.Database.openDatabase(Database.java:319)
+	at org.h2.engine.Database.<init>(Database.java:313)
+	at org.h2.engine.Engine.openSession(Engine.java:69)
+	at org.h2.engine.Engine.openSession(Engine.java:201)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:178)
+	at org.h2.engine.Engine.createSession(Engine.java:161)
+	at org.h2.engine.Engine.createSession(Engine.java:31)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:336)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:169)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:148)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Mita.UserDao.isLoginOK(UserDao.java:20)
+	at Mita.UserDaoTest.testIsLoginOK2(UserDaoTest.java:25)
+	at Mita.UserDaoTest.main(UserDaoTest.java:8)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:C:/pleiades/workspace/C-1/database.mv.db [1.4.199/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:C:/pleiades/workspace/C-1/database.mv.db [1.4.199/7]" [50000-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	... 27 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/pleiades/workspace/C-1/database.mv.db [1.4.199/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:883)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:390)
+	... 21 more
+2021-06-21 13:50:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM BOARD OREDER BY[*] BOARD_UPDATE DESC"
+Syntax error in SQL statement "SELECT * FROM BOARD OREDER BY[*] BOARD_UPDATE DESC"; SQL statement:
+select * from board oreder by board_update desc [42000-200]
+2021-06-21 13:52:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM BOARD WHERE BOARD_UPDATE OREDER[*] BY BOARD_UPDATE DESC"
+Syntax error in SQL statement "SELECT * FROM BOARD WHERE BOARD_UPDATE OREDER[*] BY BOARD_UPDATE DESC"; SQL statement:
+select * from board where board_update oreder by board_update desc [42000-200]
+2021-06-21 16:34:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "TIMESTAMP to BOOLEAN"
+Data conversion error converting "TIMESTAMP to BOOLEAN"; SQL statement:
+select * from board where board_update [22018-200]
+2021-06-21 16:51:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM BOARD WHERE BOARD_UPDATE OREDER[*] BY BOARD_UPDATE DESC"
+Syntax error in SQL statement "SELECT * FROM BOARD WHERE BOARD_UPDATE OREDER[*] BY BOARD_UPDATE DESC"; SQL statement:
+select * from board where board_update oreder by board_update desc [42000-200]
+2021-06-21 21:27:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM BOARD OREDER BY[*] BOARD_UPDATE DESC"
+Syntax error in SQL statement "SELECT * FROM BOARD OREDER BY[*] BOARD_UPDATE DESC"; SQL statement:
+select * from board oreder by board_update desc [42000-200]
+2021-06-21 21:28:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM BOARD OREDER BY[*] BOARD_UPDATE ORDER BY DESC"
+Syntax error in SQL statement "SELECT * FROM BOARD OREDER BY[*] BOARD_UPDATE ORDER BY DESC"; SQL statement:
+select * from board oreder by board_update order by desc [42000-200]
+2021-06-21 21:37:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "TIMESTAMP to BOOLEAN"
+Data conversion error converting "TIMESTAMP to BOOLEAN"; SQL statement:
+select * from board where board_update order by board_update desc [22018-200]
+2021-06-21 21:37:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM BOARD WHERE  ORDER[*] BY BOARD_UPDATE DESC"; 期待されるステートメント "NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "SELECT * FROM BOARD WHERE  ORDER[*] BY BOARD_UPDATE DESC"; expected "NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+select * from board where  order by board_update desc [42001-200]
+2021-06-21 21:37:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM BOARD WHERE ORDER[*] BY BOARD_UPDATE DESC"; 期待されるステートメント "NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "SELECT * FROM BOARD WHERE ORDER[*] BY BOARD_UPDATE DESC"; expected "NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+select * from board where order by board_update desc [42001-200]
+2021-06-22 15:27:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "'user_id' (REPLY: ""USER_ID"" INT)"
+Data conversion error converting "'user_id' (REPLY: ""USER_ID"" INT)"; SQL statement:
+insert into reply values (
+null,
+'ハーゲンダッツたべたいなぁ',
+current_time,
+'user_id',
+'15' 
+) [22018-200]
