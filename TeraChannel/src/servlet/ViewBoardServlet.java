@@ -41,7 +41,6 @@ public class ViewBoardServlet extends HttpServlet {
 		//なので、ここで呼び出して入れる必要がない
 		//フォワードをする前に返信の一覧を表示するためのデータを取ってくるメソッドで
 		//リクエストスコープに格納する
-		//int board_id = Integer.parseInt(request.getParameter("BOARD_ID"));
 
 		int board_id=Integer.parseInt(request.getParameter("board_id"));
 
@@ -209,7 +208,7 @@ public class ViewBoardServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 			//同じページ(サーブレット)にフォワード
-			//サーブレットへのフォワードでエラー発生中
+			//サーブレットへのフォワードはdoPostが呼び出されるため、フォワードではなくdoGetを呼び出している
 			request.setAttribute("board_id",request.getParameter("board_id"));
 			doGet(request,response);
 

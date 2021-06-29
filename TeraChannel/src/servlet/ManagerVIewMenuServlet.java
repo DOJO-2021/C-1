@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Fukada.BoardfDAO;
+import dao.BoardDao;
 import model.Board;
 
 
@@ -34,7 +34,7 @@ public class ManagerVIewMenuServlet extends HttpServlet {
 		}
 
 		//リストを取得する
-		BoardfDAO bdao = new BoardfDAO();
+		BoardDao bdao = new BoardDao();
 		List<Board> topListMain = bdao.topList(0);
 
 		//取得結果をリクエストスコープに格納する
@@ -51,7 +51,7 @@ public class ManagerVIewMenuServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		 if (session.getAttribute("user_id") == null ) {
+		 if (session.getAttribute("manager_mail") == null ) {
 			response.sendRedirect("/TeraChannel/ManagerLoginServlet");
 			return;
 		}
@@ -59,7 +59,7 @@ public class ManagerVIewMenuServlet extends HttpServlet {
 		//リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 
-	    BoardfDAO bdao = new BoardfDAO();
+		BoardDao bdao = new BoardDao();
 
 	 // 新着順か古い順か表示する
 	    if(request.getParameter("refresh") != null) {

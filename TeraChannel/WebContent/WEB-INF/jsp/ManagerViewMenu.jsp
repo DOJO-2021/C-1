@@ -35,20 +35,20 @@
 
 		<div class=list>
 
-		<form  action="ViewMenuServlet" method="post" id="re-ch" >
+		<form  action="ManagerViewMenuServlet" method="post" id="re-ch" >
 			<select  class="dropdown-select" id="reaction" name="reaction" onchange="submit(this.form)" >
 				<option value="popular" ${reaction1}>リアクションの多い順</option>
 				<option value="notpopular" ${reaction2}>リアクションの少ない順</option>
 			</select>
 		</form>&nbsp;
-		<form  action="ViewMenuServlet" method="post" id="ref-ch" >
+		<form  action="ManagerViewMenuServlet" method="post" id="ref-ch" >
 		 	<select  class="dropdown-select" id="refresh" name="refresh"  onchange="submit(this.form)">
 				<option value="newevent" ${refresh1}>新着順</option>
 				<option value="oldevant" ${refresh2}>古い順</option>
 			</select>
 		</form>
 
-		<form  action="ViewMenuServlet" method="post" >
+		<form  action="ManagerViewMenuServlet" method="post" >
 		<div class="search">
 			<input class="search_input" type="search" name="search" placeholder="キーワードを入力">
 		</div>

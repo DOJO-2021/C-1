@@ -11,8 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Takahashi.UserDao;
-//import dao.UserDao;
+import dao.UserDao;
 import model.User;
 
 /**

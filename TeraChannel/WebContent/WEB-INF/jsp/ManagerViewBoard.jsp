@@ -116,7 +116,7 @@
 
 							<c:forEach var="f" items="${userList}">
 
-								<!-- 投稿者のIDとユーザーIDが一致していた場合 -->
+
 								<c:if test="${f.user_id == e.user_id}">
 										<div class="flex1">
 											👆${f.user_name}さん&nbsp;ユーザーID:${f.user_id}&nbsp;返信ID:${e.reply_id}

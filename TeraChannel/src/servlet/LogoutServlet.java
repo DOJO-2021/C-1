@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.LoginUser;
-import model.User;
-import Mita.UserDao;
-
 /**
  * Servlet implementation class LogoutServlet
  */
@@ -28,15 +24,6 @@ public class LogoutServlet extends HttpServlet {
 		// セッションスコープを破棄する
 		HttpSession session = request.getSession();
 		session.invalidate();
-
-		// ログインページにリダイレクトする
-		//三田のコード
-		//LoginUser us=new LoginUser();
-
-		//request.setAttribute("taikinMessage",us.getUser_name() +"さん、今日も一日お疲れ様でした。");
-
-		//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
-		//dispatcher.forward(request, response);
 
 		request.setAttribute("taikinMessage","今日も一日お疲れ様でした。");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
